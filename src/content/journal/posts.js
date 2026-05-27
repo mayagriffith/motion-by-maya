@@ -1,0 +1,326 @@
+/**
+ * Blog posts
+ *
+ * To add a new article, copy the existing entry and update its fields.
+ * Body blocks support: paragraph, heading, list
+ */
+export const posts = [
+  {
+    slug: "yoga-complements-strength-training",
+    title: "How Yoga Complements Strength Training",
+    excerpt:
+      "Strength training builds power. Yoga builds awareness, mobility, and recovery. Together, they create a more complete approach to movement — one that supports both performance and longevity.",
+    coverImage: "/images/blog/yoga-strength-training.svg",
+    date: "2025-01-30",
+    tags: ["Strength", "Yoga", "Training"],
+    readingTime: 7,
+    featured: true,
+    seoDescription:
+      "How yoga complements strength training — mobility, recovery, breathwork, and sustainable movement for lifters and active lifestyles.",
+    body: [
+      {
+        type: "paragraph",
+        content:
+          "Yoga will not replace your lifts. And lifting will not magically improve mobility, balance, or nervous system recovery on its own. But when combined intentionally, the two practices support each other in ways that go far beyond stretching after leg day.",
+      },
+      {
+        type: "paragraph",
+        content:
+          "For a long time, yoga and strength training were treated like opposites. One was seen as mindful and restorative, the other intense and performance-focused. In reality, they solve different problems — and your body benefits from both.",
+      },
+      {
+        type: "heading",
+        content: "Strength Builds Capacity. Yoga Builds Sustainability.",
+      },
+      {
+        type: "paragraph",
+        content:
+          "Strength training helps you build muscle, bone density, power, and resilience. It teaches the body how to produce force and adapt to progressively heavier loads.",
+      },
+      {
+        type: "paragraph",
+        content: "Yoga develops a different set of qualities:",
+      },
+      {
+        type: "list",
+        items: [
+          "mobility",
+          "balance",
+          "coordination",
+          "breath control",
+          "body awareness",
+          "recovery capacity",
+        ],
+      },
+      {
+        type: "paragraph",
+        content:
+          "One practice teaches you how to generate tension. The other teaches you how to release it.",
+      },
+      {
+        type: "paragraph",
+        content: "That balance matters more than most people realize.",
+      },
+      {
+        type: "paragraph",
+        content:
+          "A body that is strong but constantly stiff, fatigued, or disconnected eventually starts compensating. Tight hips change squat mechanics. Limited ankle mobility affects running form. Chronic tension in the shoulders changes pressing patterns. Over time, small restrictions can turn into pain, instability, or burnout.",
+      },
+      {
+        type: "paragraph",
+        content:
+          "Yoga helps create space within the body so strength can continue developing sustainably.",
+      },
+      {
+        type: "heading",
+        content: "Mobility Is Not Just Flexibility",
+      },
+      {
+        type: "paragraph",
+        content:
+          "One of the biggest misconceptions about yoga is that it is only about becoming more flexible.",
+      },
+      {
+        type: "paragraph",
+        content: "Mobility is different.",
+      },
+      {
+        type: "paragraph",
+        content:
+          "Flexibility is passive range of motion. Mobility is your ability to actively control movement within that range.",
+      },
+      {
+        type: "paragraph",
+        content: "That distinction matters in strength training.",
+      },
+      {
+        type: "paragraph",
+        content:
+          "You do not just want flexible hips. You want hips that remain stable during lunges, deadlifts, running, and single-leg work. You do not just want shoulder mobility. You want shoulders that can move overhead without compensation while remaining strong and controlled.",
+      },
+      {
+        type: "paragraph",
+        content:
+          "Breath-led yoga develops both mobility and awareness. It teaches you to move with control instead of forcing range for the sake of aesthetics.",
+      },
+      {
+        type: "paragraph",
+        content: "In practice, this can translate to:",
+      },
+      {
+        type: "list",
+        items: [
+          "deeper and more stable squats",
+          "better overhead positioning",
+          "improved posture",
+          "reduced stiffness after lifting",
+          "greater core awareness",
+          "smoother movement patterns overall",
+        ],
+      },
+      {
+        type: "heading",
+        content: "Breath Matters More Than People Think",
+      },
+      {
+        type: "paragraph",
+        content:
+          "One of the most overlooked connections between yoga and lifting is breathwork.",
+      },
+      {
+        type: "paragraph",
+        content:
+          "Many people train hard while breathing shallowly and carrying constant tension through the jaw, neck, shoulders, and ribs. Over time, that “always on” state makes recovery harder.",
+      },
+      {
+        type: "paragraph",
+        content: "Yoga teaches controlled breathing under effort.",
+      },
+      {
+        type: "paragraph",
+        content: "Learning how to slow the breath, regulate intensity, and stay grounded while uncomfortable can improve:",
+      },
+      {
+        type: "list",
+        items: [
+          "workout recovery",
+          "core engagement",
+          "endurance",
+          "mental focus",
+          "stress management",
+        ],
+      },
+      {
+        type: "paragraph",
+        content:
+          "It also helps shift the nervous system out of constant fight-or-flight mode.",
+      },
+      {
+        type: "paragraph",
+        content:
+          "That does not mean every yoga class needs to be slow or restorative. Strong vinyasa and power flow classes can absolutely be physically challenging. The difference is that the challenge is paired with breath awareness rather than disconnected from it.",
+      },
+      {
+        type: "heading",
+        content: "Recovery Is Part of Training",
+      },
+      {
+        type: "paragraph",
+        content:
+          "A lot of active people unknowingly treat recovery as something optional. They focus on doing more:",
+      },
+      {
+        type: "list",
+        items: [
+          "more mileage",
+          "more lifting",
+          "more intensity",
+          "more classes",
+          "more volume",
+        ],
+      },
+      {
+        type: "paragraph",
+        content:
+          "But progress happens when the body has enough recovery to adapt.",
+      },
+      {
+        type: "paragraph",
+        content:
+          "Yoga can support recovery without feeling completely sedentary. On days when your body feels fatigued but still wants movement, slower flows, mobility work, and restorative practices can help improve circulation, reduce stiffness, and reset mentally without adding excessive stress.",
+      },
+      {
+        type: "paragraph",
+        content: "This is especially valuable for people balancing:",
+      },
+      {
+        type: "list",
+        items: [
+          "lifting",
+          "running",
+          "desk jobs",
+          "long commutes",
+          "high stress",
+          "inconsistent sleep",
+        ],
+      },
+      {
+        type: "paragraph",
+        content:
+          "Movement does not always need to be maximal effort to be productive.",
+      },
+      {
+        type: "heading",
+        content: "Choosing the Right Type of Yoga",
+      },
+      {
+        type: "paragraph",
+        content:
+          "Not all yoga supports strength training equally.",
+      },
+      {
+        type: "paragraph",
+        content:
+          "If you are lifting intensely four to five days per week, adding multiple extremely heated or physically exhausting yoga classes may leave you feeling depleted rather than recovered.",
+      },
+      {
+        type: "paragraph",
+        content:
+          "Instead, think about choosing yoga intentionally based on what your body needs.",
+      },
+      {
+        type: "paragraph",
+        content: "Great complements to strength training:",
+      },
+      {
+        type: "list",
+        items: [
+          "mobility-focused vinyasa",
+          "slower hatha flows",
+          "recovery-based yoga",
+          "breathwork classes",
+          "shorter mobility sessions",
+          "yoga on rest days or after upper-body sessions",
+        ],
+      },
+      {
+        type: "paragraph",
+        content: "Potentially fatiguing combinations:",
+      },
+      {
+        type: "list",
+        items: [
+          "intense lifting + intense heated power yoga every day",
+          "adding yoga purely as extra calorie burn",
+          "pushing flexibility aggressively while already fatigued",
+        ],
+      },
+      {
+        type: "paragraph",
+        content:
+          "The goal is not to constantly “do more.” The goal is to support longevity and consistency.",
+      },
+      {
+        type: "heading",
+        content: "Building a Sustainable Movement Practice",
+      },
+      {
+        type: "paragraph",
+        content:
+          "One of the most valuable things yoga offers strength-focused people is awareness.",
+      },
+      {
+        type: "paragraph",
+        content: "Awareness of:",
+      },
+      {
+        type: "list",
+        items: [
+          "posture",
+          "compensation patterns",
+          "breathing",
+          "recovery needs",
+          "mental fatigue",
+          "how the body actually feels day to day",
+        ],
+      },
+      {
+        type: "paragraph",
+        content: "That awareness makes training smarter.",
+      },
+      {
+        type: "paragraph",
+        content:
+          "The strongest movement routines are usually not the most extreme. They are the most sustainable.",
+      },
+      {
+        type: "paragraph",
+        content:
+          "Strength training builds the engine. Yoga helps maintain the system around it.",
+      },
+      {
+        type: "paragraph",
+        content:
+          "Together, they create a way of moving that feels powerful, grounded, and sustainable enough to continue for years — not just for a single season of training.",
+      },
+    ],
+  },
+];
+
+export function getPostBySlug(slug) {
+  return posts.find((post) => post.slug === slug);
+}
+
+export function getFeaturedPost() {
+  return posts.find((post) => post.featured) || posts[0];
+}
+
+export function getRecentPosts(limit = posts.length) {
+  return [...posts]
+    .sort((a, b) => new Date(b.date) - new Date(a.date))
+    .slice(0, limit);
+}
+
+export function getRelatedPosts(currentSlug, limit = 2) {
+  return posts.filter((post) => post.slug !== currentSlug).slice(0, limit);
+}

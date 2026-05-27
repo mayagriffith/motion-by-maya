@@ -1,0 +1,224 @@
+@import "tailwindcss";
+
+/* Minimal global polish (Tailwind handles the rest). */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+}
+
+@layer base {
+  :root {
+    --mbm-bg: 250 247 243; /* warm ivory */
+    --mbm-ink: 20 20 18; /* soft black */
+    --mbm-muted: 92 92 88; /* warm gray */
+    --mbm-line: 226 220 212; /* sand line */
+  }
+
+  body {
+    @apply bg-[rgb(var(--mbm-bg))] text-[rgb(var(--mbm-ink))] antialiased;
+    font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: "Cormorant Garamond", ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+    letter-spacing: -0.02em;
+  }
+}
+
+@layer components {
+  /* ── Home page ── */
+
+  .home-eyebrow {
+    @apply inline-flex items-center gap-3 text-xs font-medium uppercase tracking-[0.28em] text-black/50;
+  }
+
+  .home-eyebrow-line {
+    @apply h-px w-8 bg-black/20;
+  }
+
+  .home-hero {
+    border-bottom: 1px solid rgb(var(--mbm-line));
+  }
+
+  .home-hero-glow {
+    @apply absolute rounded-full blur-3xl;
+  }
+
+  .home-hero-glow--left {
+    @apply -left-32 -top-32 h-96 w-96;
+    background: radial-gradient(circle, rgba(210, 195, 175, 0.35) 0%, transparent 70%);
+  }
+
+  .home-hero-glow--right {
+    @apply -right-20 top-20 h-80 w-80;
+    background: radial-gradient(circle, rgba(180, 170, 155, 0.2) 0%, transparent 70%);
+  }
+
+  .home-hero-grid {
+    @apply absolute inset-0 opacity-[0.035];
+    background-image:
+      linear-gradient(rgb(var(--mbm-ink)) 1px, transparent 1px),
+      linear-gradient(90deg, rgb(var(--mbm-ink)) 1px, transparent 1px);
+    background-size: 48px 48px;
+    mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, black 20%, transparent 100%);
+  }
+
+  .home-highlight-icon {
+    @apply flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-white/60 text-black/60 ring-1 ring-[rgb(var(--mbm-line))];
+  }
+
+  .home-card {
+    @apply transition-all duration-300 ease-out;
+  }
+
+  .home-card:hover {
+    transform: translateY(-3px);
+    background-color: rgba(255, 255, 255, 0.65);
+    box-shadow: 0 16px 40px -20px rgba(20, 20, 18, 0.12);
+  }
+
+  .home-avatar {
+    @apply flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-black/5 text-xs font-medium text-black/60 ring-1 ring-black/10;
+  }
+
+  .home-cta {
+    background: rgb(var(--mbm-ink));
+  }
+
+  .home-cta-glow {
+    @apply absolute -right-16 -top-16 h-64 w-64 rounded-full blur-3xl;
+    background: radial-gradient(circle, rgba(250, 247, 243, 0.08) 0%, transparent 70%);
+  }
+
+  /* ── Hero photo ── */
+
+  .hero-photo {
+    filter: saturate(0.82) contrast(1.03) brightness(1.02);
+    image-rendering: auto;
+  }
+
+  .hero-photo-frame {
+    transition: transform 0.4s ease;
+  }
+
+  .hero-photo-frame:hover {
+    transform: translateY(-4px);
+  }
+
+  .hero-photo-accent {
+    @apply absolute -bottom-4 -right-4 -z-10 h-full w-full rounded-[1.75rem] border border-[rgb(var(--mbm-line))] bg-white/30;
+  }
+
+  .hero-photo-badge {
+    @apply absolute -bottom-5 -left-5 max-w-[11rem] rounded-2xl border border-[rgb(var(--mbm-line))] bg-[rgb(var(--mbm-bg))]/95 px-4 py-3 shadow-[0_12px_30px_-12px_rgba(20,20,18,0.15)] backdrop-blur-sm;
+  }
+
+  .hero-photo-shell {
+    transition: box-shadow 0.4s ease;
+  }
+
+  .hero-photo-frame:hover .hero-photo-shell {
+    box-shadow: 0 32px 70px -24px rgba(20, 20, 18, 0.22);
+  }
+
+  .about-photo-accent {
+    @apply absolute -bottom-4 -left-4 -z-10 h-full w-full rounded-[1.75rem] border border-[rgb(var(--mbm-line))] bg-white/30;
+  }
+
+  .about-photo {
+    filter: saturate(0.92) contrast(1.04) brightness(1.01);
+    object-position: center 42%;
+  }
+
+  .schedule-calendar-frame {
+    @apply overflow-hidden rounded-[1.75rem] border border-[rgb(var(--mbm-line))] bg-white/50 shadow-[0_24px_60px_-24px_rgba(20,20,18,0.14)] ring-1 ring-black/5;
+  }
+
+  .schedule-calendar-frame iframe {
+    @apply block w-full border-0;
+    min-height: 34rem;
+    background: rgb(var(--mbm-bg));
+  }
+
+  .schedule-calendar-frame--agenda iframe {
+    min-height: 38rem;
+  }
+
+  .schedule-calendar-placeholder {
+    min-height: 28rem;
+    display: grid;
+    place-content: center;
+  }
+
+  /* ── Site-wide UX ── */
+
+  .page-transition {
+    opacity: 0;
+    transform: translateY(8px);
+    transition: opacity 0.35s ease, transform 0.35s ease;
+  }
+
+  .page-transition--visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .site-footer {
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.42) 0%, rgba(255, 255, 255, 0.28) 100%);
+  }
+
+  /* ── Accordion ── */
+
+  .accordion-icon {
+    @apply flex h-9 w-9 items-center justify-center rounded-xl bg-white/60 text-black/55 ring-1 ring-[rgb(var(--mbm-line))];
+  }
+
+  .accordion-panel {
+    display: grid;
+    grid-template-rows: 0fr;
+    opacity: 0;
+    transition:
+      grid-template-rows 0.35s ease,
+      opacity 0.25s ease;
+  }
+
+  .accordion-panel--open {
+    grid-template-rows: 1fr;
+    opacity: 1;
+  }
+
+  .accordion-panel-inner {
+    overflow: hidden;
+    min-height: 0;
+  }
+
+  .accordion-panel-content {
+    padding: 0 1.5rem 1.25rem 1.5rem;
+  }
+
+  @media (min-width: 640px) {
+    .accordion-panel-content {
+      padding: 0 1.75rem 1.5rem 4.75rem;
+    }
+  }
+
+  /* ── Journal ── */
+
+  .journal-cover-placeholder {
+    background: linear-gradient(135deg, rgba(210, 195, 175, 0.45) 0%, rgba(250, 247, 243, 0.9) 100%);
+  }
+
+  .journal-article-body p:first-of-type::first-letter {
+    font-family: "Cormorant Garamond", ui-serif, Georgia, serif;
+    font-size: 3.25rem;
+    line-height: 0.85;
+    float: left;
+    margin: 0.08em 0.12em 0 0;
+    color: rgb(var(--mbm-ink));
+  }
+}
