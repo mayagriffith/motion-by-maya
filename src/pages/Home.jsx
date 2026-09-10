@@ -19,7 +19,6 @@ export default function Home() {
       <Highlights />
       <Offerings />
       <FeaturedBlog />
-      <Testimonials />
       <NewsletterSection />
       <BottomCta />
     </>
@@ -49,9 +48,7 @@ function Hero() {
             </h1>
 
             <p className="mt-6 max-w-xl text-base leading-relaxed text-[rgb(var(--mbm-muted))] sm:text-lg">
-              Power and vinyasa-inspired classes that help you feel stronger,
-              calmer, and more grounded — whether you&apos;re coming from the gym,
-              the office, or simply need space to breathe.
+              Vinyasa and power yoga with Maya. Expect a mix of flowing sequences, strength work, and time to slow down. Beginners are welcome.
             </p>
 
             <div className="mt-8 flex flex-wrap items-center gap-3">
@@ -66,7 +63,7 @@ function Hero() {
             <div className="mt-10 flex flex-wrap gap-x-8 gap-y-4 border-t border-[rgb(var(--mbm-line))] pt-8">
               {[
                 { value: "All levels", label: "Beginners welcome" },
-                { value: "NYC + Online", label: "Wherever you are" },
+                { value: "NYC + Online", label: "NYC, North Jersey + online" },
                 { value: "Power & flow", label: "Strength + mobility + recovery" },
               ].map((stat) => (
                 <div key={stat.value}>
@@ -97,10 +94,10 @@ function Hero() {
               </div>
               <div className="hero-photo-badge">
                 <span className="block text-[0.65rem] font-medium uppercase tracking-[0.22em] text-black/45">
-                  Motion method
+                  In class
                 </span>
                 <span className="mt-1 block font-serif text-lg leading-tight">
-                  Breath-led strength
+                  Move, breathe, repeat
                 </span>
               </div>
             </div>
@@ -123,8 +120,8 @@ function Highlights() {
           strokeLinejoin="round"
         />
       ),
-      title: "Mindful movement",
-      desc: "Breath-led sequences with clear, calm cues.",
+      title: "Clear instruction",
+      desc: "Follow each movement with clear cues and demonstrations.",
     },
     {
       icon: (
@@ -136,7 +133,7 @@ function Highlights() {
         />
       ),
       title: "Built for athletes",
-      desc: "Mobility and recovery that complements training.",
+      desc: "Work on mobility and balance alongside your training.",
     },
     {
       icon: (
@@ -149,7 +146,7 @@ function Highlights() {
         />
       ),
       title: "All levels welcome",
-      desc: "Options and progressions for every body.",
+      desc: "Choose a variation or take a break when you need one.",
     },
   ];
 
@@ -183,25 +180,25 @@ function Offerings() {
     {
       num: "01",
       title: "Power & Vinyasa Flow",
-      desc: "Creative, breath-led sequencing that builds strength, mobility, and focus. Expect smooth transitions, intentional pacing, and a practice that feels energizing without becoming overwhelming.",
+      desc: "Flow between poses, practice balance, and build strength. I explain the transitions as we go.",
       tags: ["Strength", "Flow", "Mobility"],
     },
     {
       num: "02",
-      title: "Strong + Soft Movement",
-      desc: "A balanced approach to movement that combines challenge with recovery. Build stability, confidence, and body awareness while still creating space to slow down and reset.",
+      title: "Slower Movement",
+      desc: "Take more time in each pose, explore your range of motion, and finish with rest.",
       tags: ["Balance", "Recovery", "Control"],
     },
     {
       num: "03",
       title: "Yoga for Active Lifestyles",
-      desc: "Designed to complement running, lifting, walking, travel, and long workdays. Classes focus on mobility, posture, core stability, and helping your body feel better both on and off the mat.",
+      desc: "A focus on hips, shoulders, and core stability for people who run, lift, or spend long days sitting.",
       tags: ["Mobility", "Stability", "Recovery"],
     },
     {
       num: "04",
-      title: "Beginner-Friendly by Design",
-      desc: "Clear cues, thoughtful progressions, and welcoming instruction make classes accessible for all levels — no flexibility or prior yoga experience required.",
+      title: "New to Yoga",
+      desc: "Learn the poses with step-by-step instruction and options to adjust them. You don’t need prior yoga experience.",
       tags: ["Accessible", "Supportive", "Intentional"],
     },
   ];
@@ -215,19 +212,14 @@ function Offerings() {
             Offerings
           </div>
           <h2 className="mt-5 text-[clamp(2rem,4vw,3rem)] leading-[1.02]">
-            Yoga that supports the way you move through life.
+            Find a class that suits you.
           </h2>
           <div className="mt-5 space-y-4 text-base leading-relaxed text-[rgb(var(--mbm-muted))] sm:text-lg">
             <p>
-              Breath-led classes that blend strength, mobility, balance, and
-              recovery — designed to leave you feeling grounded, challenged, and
-              more connected to your body.
+              Choose an active flow, a slower class, or a private session.
             </p>
             <p>
-              Whether you&apos;re stepping onto the mat for the first time or
-              balancing yoga alongside running, lifting, or busy city life,
-              classes are built to feel approachable, intentional, and strong
-              without burnout.
+              Each class includes a warmup, guided movement, and time to rest. The pace and focus depend on the format.
             </p>
           </div>
         </div>
@@ -272,87 +264,9 @@ function Offerings() {
   );
 }
 
-function Testimonials() {
-  const items = [
-    {
-      quote:
-        "The vibe is luxe and calm, but the sequencing is smart — my hips feel brand new after every class.",
-      name: "Ava R.",
-      detail: "Runner • NYC",
-      initials: "AR",
-    },
-    {
-      quote:
-        "Clear cues, zero fluff. It's the first practice that supports my lifting instead of fighting it.",
-      name: "Jordan M.",
-      detail: "Strength training",
-      initials: "JM",
-    },
-    {
-      quote:
-        "I came for flexibility and stayed for the nervous system reset. This is my weekly exhale.",
-      name: "Sofia L.",
-      detail: "Desk life • Mobility",
-      initials: "SL",
-    },
-  ];
-
-  return (
-    <section
-      id="testimonials"
-      className="border-b border-[rgb(var(--mbm-line))] bg-[linear-gradient(180deg,rgba(255,255,255,0.35)_0%,rgba(255,255,255,0.12)_100%)]"
-    >
-      <Container className="py-16 sm:py-20">
-        <div className="flex flex-wrap items-end justify-between gap-6">
-          <div>
-            <div className="home-eyebrow">
-              <span className="home-eyebrow-line" aria-hidden="true" />
-              Testimonials
-            </div>
-            <h2 className="mt-5 text-[clamp(2rem,4vw,3rem)] leading-[1.02]">
-              What students are saying.
-            </h2>
-            <p className="mt-3 max-w-prose text-[rgb(var(--mbm-muted))]">
-              From first-timers to seasoned athletes — a welcoming, grounded
-              space to move and breathe.
-            </p>
-          </div>
-          <Button as={NavLink} to="/contact" variant="ghost">
-            Work together
-          </Button>
-        </div>
-
-        <div className="mt-12 grid gap-5 lg:grid-cols-3">
-          {items.map((t) => (
-            <figure
-              key={t.name}
-              className="home-card group flex flex-col rounded-[1.75rem] border border-[rgb(var(--mbm-line))] bg-[rgb(var(--mbm-bg))]/80 p-6 sm:p-7"
-            >
-              <span className="font-serif text-5xl leading-none text-black/10">
-                &ldquo;
-              </span>
-              <blockquote className="mt-2 flex-1 text-sm leading-relaxed text-black/80 sm:text-[0.95rem]">
-                {t.quote}
-              </blockquote>
-              <figcaption className="mt-6 flex items-center gap-3 border-t border-[rgb(var(--mbm-line))] pt-5">
-                <span className="home-avatar">{t.initials}</span>
-                <div>
-                  <div className="text-sm font-medium">{t.name}</div>
-                  <div className="text-xs text-[rgb(var(--mbm-muted))]">
-                    {t.detail}
-                  </div>
-                </div>
-              </figcaption>
-            </figure>
-          ))}
-        </div>
-      </Container>
-    </section>
-  );
-}
-
 function FeaturedBlog() {
   const featured = getFeaturedPost();
+  if (!featured) return null;
 
   return (
     <section className="border-b border-[rgb(var(--mbm-line))] bg-white/20">
@@ -364,10 +278,10 @@ function FeaturedBlog() {
               Blog
             </div>
             <h2 className="mt-5 text-[clamp(2rem,4vw,3rem)] leading-[1.02]">
-              From the mat, thoughtfully written.
+              Latest from the blog.
             </h2>
           </div>
-          <Button as={Link} to="/blog/yoga-complements-strength-training" variant="ghost">
+          <Button as={Link} to={`/blog/${featured.slug}`} variant="ghost">
             Read the article
           </Button>
         </div>
@@ -406,11 +320,10 @@ function BottomCta() {
                 id="home-cta-heading"
                 className="text-[clamp(2rem,4vw,3rem)] leading-[1.02] text-white"
               >
-                Ready to feel stronger and more grounded?
+                Want to join a class?
               </h2>
               <p className="mt-4 max-w-lg text-sm leading-relaxed text-white/80 sm:text-base">
-                Whether you&apos;re new to yoga or coming from the gym, office,
-                or a run — reach out to find the right class for you.
+                Check the schedule or contact me about a private session. I can also help you choose a class.
               </p>
               <p className="mt-3 text-sm text-white/60">
                 New here?{" "}

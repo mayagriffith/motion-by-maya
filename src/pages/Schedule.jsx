@@ -18,7 +18,7 @@ const VIEWS = [
 ];
 
 export default function Schedule() {
-  const [view, setView] = useState("MONTH");
+  const [view, setView] = useState("AGENDA");
   const calendarReady = hasCalendar();
   const embedUrl = getCalendarEmbedUrl(view);
   const openUrl = getCalendarOpenUrl();
@@ -43,8 +43,7 @@ export default function Schedule() {
             Class calendar.
           </h1>
           <p className="mt-5 text-base leading-relaxed text-[rgb(var(--mbm-muted))] sm:text-lg">
-            See what&apos;s coming up, subscribe to stay in the loop, and reach
-            out if you&apos;d like to join a class or book a private session.
+            Check upcoming classes and open an event for details. Contact me to ask about joining a class or arranging a private session.
           </p>
         </div>
 
@@ -52,7 +51,7 @@ export default function Schedule() {
           <aside className="lg:col-span-4">
             <div className="schedule-sidebar lg:sticky lg:top-24">
               <div className="rounded-[1.75rem] border border-[rgb(var(--mbm-line))] bg-white/45 p-6 sm:p-7">
-                <h2 className="text-2xl leading-tight">Stay in sync</h2>
+                <h2 className="text-2xl leading-tight">Save the class calendar</h2>
                 <p className="mt-3 text-sm leading-relaxed text-[rgb(var(--mbm-muted))]">
                   Add the calendar to your phone or Google Calendar and new
                   classes will show up automatically — no need to check back
@@ -76,7 +75,7 @@ export default function Schedule() {
                       variant="ghost"
                       className="w-full"
                     >
-                      Download .ics feed
+                      Download calendar (.ics)
                     </Button>
                     <Button
                       as="a"
@@ -91,8 +90,7 @@ export default function Schedule() {
                   </div>
                 ) : (
                   <p className="mt-5 text-sm text-[rgb(var(--mbm-muted))]">
-                    The live calendar is being connected. In the meantime, reach
-                    out and Maya can share upcoming dates with you directly.
+                    Contact me for upcoming class dates.
                   </p>
                 )}
               </div>
@@ -137,6 +135,7 @@ export default function Schedule() {
                         key={option.id}
                         type="button"
                         onClick={() => setView(option.id)}
+                        aria-pressed={view === option.id}
                         className={clsx(
                           "rounded-full px-4 py-2 text-sm font-medium transition",
                           view === option.id
@@ -173,9 +172,7 @@ export default function Schedule() {
                   Schedule coming soon
                 </p>
                 <p className="mx-auto mt-4 max-w-md text-sm leading-relaxed text-[rgb(var(--mbm-muted))]">
-                  The class calendar will appear here once it&apos;s connected.
-                  Send a note if you&apos;d like to know what&apos;s on the
-                  horizon.
+                  Contact me for class dates, locations, and availability.
                 </p>
                 <div className="mt-6 flex flex-wrap justify-center gap-3">
                   <Button as={NavLink} to="/contact">

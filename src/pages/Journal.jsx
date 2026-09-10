@@ -12,7 +12,7 @@ export default function Journal() {
     <>
       <PageMeta
         title="Blog"
-        description="Notes on yoga, strength training, mobility, recovery, and building a sustainable movement practice."
+        description="Posts from Maya about yoga, teaching, and current projects."
         path="/blog"
         keywords="yoga for strength training, mobility, recovery and movement, beginner yoga"
       />
@@ -25,15 +25,15 @@ export default function Journal() {
               Blog
             </div>
             <h1 className="mt-6 text-[clamp(2.75rem,6vw,4.5rem)] leading-[0.92] tracking-tight">
-              Notes on movement, recovery, and real life.
+              Yoga, teaching, and what I’m working on.
             </h1>
             <p className="mt-5 text-base leading-relaxed text-[rgb(var(--mbm-muted))] sm:text-lg">
-              Thoughtful writing on yoga, strength training, mobility, and
-              building a practice that supports the way you actually live.
+              Class notes, practical ideas, and updates from Maya.
             </p>
           </header>
 
           <div className="mt-12">
+            {posts.length === 0 && <p className="text-[rgb(var(--mbm-muted))]">New posts are on the way. In the meantime, you can explore classes or get in touch.</p>}
             {posts.map((post) => (
               <JournalCard key={post.slug} post={post} featured />
             ))}

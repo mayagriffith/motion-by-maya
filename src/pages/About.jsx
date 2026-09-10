@@ -66,25 +66,16 @@ function AboutHero() {
 
             <div className="mt-6 space-y-5 text-base leading-relaxed text-[rgb(var(--mbm-muted))] sm:text-lg">
               <p>
-                Hi, I&apos;m Maya — a 200-hour certified yoga teacher. I teach
-                modern vinyasa and power-inspired classes that blend strength,
-                mobility, mindfulness, and movement.
+                Hi, I&apos;m Maya, a 200-hour certified yoga teacher. I teach vinyasa, power yoga, and slower classes.
               </p>
               <p>
-                I&apos;m also an athlete, and that shapes how I teach. I want
-                every class to feel grounding and energizing, whether
-                you&apos;re stepping onto the mat for the first time or coming
-                back to deepen your practice.
+                I&apos;m also an athlete. My classes include strength work, balance, and mobility, with options for different experience levels.
               </p>
               <p>
-                For me, yoga is about supporting real life — building strength,
-                moving better, managing stress, and finding a moment to reconnect
-                on even the busiest days.
+                I like a class that gives you something to work on and time to slow down.
               </p>
               <p>
-                I think yoga can be challenging and calm at the same time. My
-                goal is to create a space where you feel supported, present, and
-                confident in your body.
+                I explain each sequence as we go. You can ask questions, adjust a pose, or rest at any point.
               </p>
             </div>
           </div>
@@ -132,18 +123,13 @@ function TrainingSection() {
 
             <div className="mt-10 space-y-5 text-base leading-relaxed text-[rgb(var(--mbm-muted))] sm:text-lg">
               <p>
-                I combine mindful movement, breathwork, strength, and thoughtful
-                sequencing so each practice feels grounding and energizing.
+                Classes begin with a warmup and end with time to rest.
               </p>
               <p>
-                My background in athletics influences how I cue and structure
-                class — I want what we do on the mat to actually help you off
-                it.
+                Between those, we work through poses and sequences at a pace that fits the class.
               </p>
               <p>
-                All levels are welcome. I always offer options for newer
-                students and room to grow if you&apos;ve been practicing for a
-                while.
+                I offer variations so you can adjust the practice to your experience and how you feel that day.
               </p>
             </div>
           </div>

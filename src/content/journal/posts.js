@@ -15,6 +15,7 @@ export const posts = [
     tags: ["Strength", "Yoga", "Training"],
     readingTime: 7,
     featured: true,
+    archived: true,
     seoDescription:
       "How yoga complements strength training — mobility, recovery, breathwork, and sustainable movement for lifters and active lifestyles.",
     body: [
@@ -308,19 +309,19 @@ export const posts = [
 ];
 
 export function getPostBySlug(slug) {
-  return posts.find((post) => post.slug === slug);
+  return posts.find((post) => !post.archived && post.slug === slug);
 }
 
 export function getFeaturedPost() {
-  return posts.find((post) => post.featured) || posts[0];
+  return getRecentPosts().find((post) => post.featured) || getRecentPosts()[0];
 }
 
 export function getRecentPosts(limit = posts.length) {
-  return [...posts]
+  return posts.filter((post) => !post.archived)
     .sort((a, b) => new Date(b.date) - new Date(a.date))
     .slice(0, limit);
 }
 
 export function getRelatedPosts(currentSlug, limit = 2) {
-  return posts.filter((post) => post.slug !== currentSlug).slice(0, limit);
+  return getRecentPosts().filter((post) => post.slug !== currentSlug).slice(0, limit);
 }

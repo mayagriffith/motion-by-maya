@@ -15,7 +15,7 @@ export default function Footer() {
               Motion <span className="font-normal text-black/60">by</span> Maya
             </div>
             <p className="mt-3 text-sm leading-relaxed text-black/65">
-              Modern yoga rooted in strength, mobility, and mindful movement.
+              Vinyasa, power yoga, and private classes with Maya.
             </p>
             <p className="mt-4 text-sm text-black/55">
               <a className={footerLinkClass} href="mailto:motionbymaya@gmail.com">

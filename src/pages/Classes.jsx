@@ -6,38 +6,38 @@ import PageMeta from "../components/PageMeta.jsx";
 const classes = [
   {
     title: "Modern Vinyasa",
-    desc: "A strong, breath-led flow combining mobility, balance, strength, and mindful movement. Expect creative sequencing, clear guidance, and a grounded but energizing pace.",
+    desc: "Move between poses with your breath. This class combines standing sequences, balance work, and time to stretch and rest.",
     length: "45–90 min",
     tags: ["Vinyasa", "Strength", "Mobility"],
   },
   {
     title: "Power Flow",
-    desc: "An athletic, heat-building class focused on endurance, core strength, and full-body movement. Designed to leave you feeling challenged, focused, and reset.",
+    desc: "A more demanding flow with longer sequences and core work. Take a slower variation or a break whenever you need one.",
     length: "45–60 min",
     tags: ["Power Yoga", "Strength", "Sweat"],
   },
   {
     title: "Hatha Yoga",
-    desc: "A slower-paced practice with longer holds, alignment-focused movement, and intentional breathwork. Perfect for building stability, awareness, and flexibility.",
+    desc: "Spend more time in each pose, with a focus on alignment and breathing. A slower pace gives you time to learn and make adjustments.",
     length: "45–60 min",
     tags: ["Hatha", "Mobility", "Balance"],
   },
   {
     title: "Yoga for Athletes",
-    desc: "Mobility and recovery for runners, lifters, and all athletes in between. Designed to support performance, reduce tightness, and help your body recover from training.",
+    desc: "Work on hip and shoulder mobility, balance, and core stability alongside your running, lifting, or other training.",
     length: "45–60 min",
     tags: ["Running", "Recovery", "Mobility"],
   },
 
   {
     title: "Breathe + Restore",
-    desc: "Gentle movement, breathwork, and grounding practices designed to help regulate the nervous system and create space to slow down.",
+    desc: "Gentle movement, breathing exercises, and longer rests. Choose this class when you want a quieter practice.",
     length: "30–45 min",
     tags: ["Breathwork", "Restore", "Relaxation"],
   },
   {
     title: "Private 1:1 Sessions",
-    desc: "Personalized sessions tailored to your goals, experience level, and lifestyle. Great for beginners, athletes, injury recovery support, or building confidence in your practice.",
+    desc: "A session planned around your goals and experience. Learn the basics, work on specific poses, or practice at your own pace.",
     length: "60 min",
     tags: ["Private", "Personalized", "Supportive"],
   },
@@ -48,7 +48,7 @@ export default function Classes() {
     <>
       <PageMeta
         title="Classes"
-        description="Modern vinyasa, power flow, hatha, yoga for runners, mobility reset, and private sessions — intentional movement for real life."
+        description="Explore vinyasa, power flow, hatha, yoga for athletes, gentle classes, and private yoga sessions with Maya."
         path="/classes"
         keywords="power yoga, vinyasa, yoga for runners, mobility, beginner yoga, private yoga NYC"
       />
@@ -64,12 +64,10 @@ export default function Classes() {
               Choose your practice.
             </h1>
             <p className="mt-5 text-xl leading-relaxed text-black/80 sm:text-2xl">
-              Intentional movement for real life.
+              Active flows, slower classes, and private sessions.
             </p>
             <p className="mt-4 text-base leading-relaxed text-[rgb(var(--mbm-muted))] sm:text-lg">
-              Classes designed to support strength, mobility, recovery, and
-              nervous system balance — whether you&apos;re lifting, running,
-              working long hours, or simply trying to feel better in your body.
+              Compare the formats below, then check the schedule for available classes. If you&apos;re unsure where to start, ask me.
             </p>
           </div>
           <div className="flex flex-wrap gap-3">
@@ -77,7 +75,7 @@ export default function Classes() {
               View schedule
             </Button>
             <Button as={NavLink} to="/contact" variant="ghost">
-              Book a session
+              Ask about a session
             </Button>
           </div>
         </div>
@@ -94,6 +92,7 @@ export default function Classes() {
               </p>
               <div className="mt-5 space-y-3 border-t border-[rgb(var(--mbm-line))] pt-4">
                 <div className="text-xs font-medium text-black/55">{c.length}</div>
+                <NavLink className="inline-block text-sm underline underline-offset-4" to={`/contact?class=${encodeURIComponent(c.title)}`}>Ask about {c.title}</NavLink>
                 <div className="flex flex-wrap gap-1.5">
                   {c.tags.map((t) => (
                     <span

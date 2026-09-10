@@ -48,8 +48,7 @@ export default function NewsletterSignup({
       >
         <p className="font-serif text-2xl leading-tight">You&apos;re on the list.</p>
         <p className="mt-2 text-sm leading-relaxed text-[rgb(var(--mbm-muted))]">
-          Thanks for joining — movement, classes, and updates will land in your
-          inbox occasionally.
+          Thanks for signing up for class updates and new posts.
         </p>
         {!isCompact && (
           <button
@@ -57,7 +56,7 @@ export default function NewsletterSignup({
             onClick={() => setStatus("idle")}
             className="mt-4 text-sm text-black/60 underline hover:text-black"
           >
-            Subscribe someone else
+            Back to signup
           </button>
         )}
       </div>
@@ -76,8 +75,7 @@ export default function NewsletterSignup({
             Join the Motion List
           </h2>
           <p className="mt-4 text-base leading-relaxed text-[rgb(var(--mbm-muted))] sm:text-lg">
-            Movement, classes, and updates delivered occasionally — no spam,
-            just thoughtful notes from the mat.
+            Get occasional emails about upcoming classes and new blog posts.
           </p>
         </div>
       )}
@@ -86,7 +84,7 @@ export default function NewsletterSignup({
         <div>
           <p className="text-sm font-medium">Join the Motion List</p>
           <p className="mt-1 text-sm text-[rgb(var(--mbm-muted))]">
-            Classes, movement tips, and updates — occasionally.
+            Occasional class updates and new posts.
           </p>
         </div>
       )}
@@ -147,7 +145,7 @@ export default function NewsletterSignup({
 
       {!hasNewsletterProvider() && status !== "error" && (
         <p className="mt-3 text-xs text-[rgb(var(--mbm-muted))]">
-          Newsletter integration coming soon.
+          Email updates aren’t available yet. Please contact Maya for class news.
         </p>
       )}
     </div>

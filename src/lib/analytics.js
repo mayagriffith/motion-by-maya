@@ -8,8 +8,9 @@ export function initAnalytics() {
   initialized = true;
 
   window.dataLayer = window.dataLayer || [];
-  window.gtag = function gtag(...args) {
-    window.dataLayer.push(args);
+  window.gtag = function gtag() {
+    // gtag commands use an Arguments object, as in Google's installation snippet.
+    window.dataLayer.push(arguments);
   };
   window.gtag("js", new Date());
   window.gtag("config", MEASUREMENT_ID, {

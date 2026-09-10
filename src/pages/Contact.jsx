@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useSearchParams } from "react-router-dom";
 import Container from "../components/Container.jsx";
 import Button from "../components/Button.jsx";
 import PageMeta from "../components/PageMeta.jsx";
@@ -24,6 +25,8 @@ const inputClassName =
   "w-full rounded-2xl bg-[rgb(var(--mbm-bg))]/70 px-4 py-3 text-sm ring-1 ring-[rgb(var(--mbm-line))] transition focus:outline-none focus:ring-2 focus:ring-black/20";
 
 export default function Contact() {
+  const [searchParams] = useSearchParams();
+  const selectedClass = searchParams.get("class") || "";
   const [status, setStatus] = useState("idle");
   const [errorMessage, setErrorMessage] = useState("");
 
@@ -33,7 +36,7 @@ export default function Contact() {
     if (!FORMSPREE_ID) {
       setStatus("error");
       setErrorMessage(
-        "The contact form is not configured yet. Please email motionbymaya@gmail.com directly."
+        "Please email motionbymaya@gmail.com to get in touch."
       );
       return;
     }
@@ -105,8 +108,7 @@ export default function Contact() {
               Let&apos;s move.
             </h1>
             <p className="mt-5 text-[rgb(var(--mbm-muted))] sm:text-lg">
-              Tell me what you&apos;re working on — stress, strength, mobility,
-              running, recovery — and I&apos;ll recommend the best next step.
+              Ask about a class, a private session, or working together. Include your availability and whether you prefer online or in person.
             </p>
 
             <div className="mt-8 rounded-3xl border border-[rgb(var(--mbm-line))] bg-white/30 p-6">
@@ -122,7 +124,7 @@ export default function Contact() {
                   <span className="text-black/70">Instagram:</span>{" "}
                   <a
                     className="hover:text-black"
-                    href="https://instagram.com"
+                    href="https://instagram.com/motionbymaya"
                     target="_blank"
                     rel="noreferrer"
                   >
@@ -133,7 +135,7 @@ export default function Contact() {
                   <span className="text-black/70">TikTok:</span>{" "}
                   <a
                     className="hover:text-black"
-                    href="https://tiktok.com"
+                    href="https://tiktok.com/@motionbymaya"
                     target="_blank"
                     rel="noreferrer"
                   >
@@ -148,8 +150,7 @@ export default function Contact() {
             <div className="rounded-3xl border border-[rgb(var(--mbm-line))] bg-white/40 p-7 sm:p-8">
               <h2 className="text-3xl sm:text-4xl">Send a note</h2>
               <p className="mt-2 text-sm text-[rgb(var(--mbm-muted))] sm:text-base">
-                Send a message and it&apos;ll land in my inbox. I&apos;ll get
-                back to you as soon as I can.
+                Send your question below. I&apos;ll reply by email.
               </p>
 
               {status === "success" ? (
@@ -196,7 +197,7 @@ export default function Contact() {
                       name="inquiry"
                       required
                       disabled={status === "submitting"}
-                      defaultValue=""
+                      defaultValue={selectedClass === "Private 1:1 Sessions" ? "private-1-1" : selectedClass ? "class-help" : ""}
                       className={`${inputClassName} appearance-none bg-[url('data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%2216%22 height=%2216%22 viewBox=%220 0 24 24%22 fill=%22none%22 stroke=%22%235c5c58%22 stroke-width=%222%22 stroke-linecap=%22round%22%3E%3Cpath d=%22M6 9l6 6 6-6%22/%3E%3C/svg%3E')] bg-[length:16px] bg-[right_1rem_center] bg-no-repeat pr-10 text-black/80 invalid:text-black/45`}
                     >
                       <option value="" disabled>
@@ -217,6 +218,7 @@ export default function Contact() {
                     <textarea
                       id="message"
                       name="message"
+                      defaultValue={selectedClass ? `I’m interested in ${selectedClass}. Please send me availability and pricing.` : ""}
                       rows={6}
                       required
                       disabled={status === "submitting"}

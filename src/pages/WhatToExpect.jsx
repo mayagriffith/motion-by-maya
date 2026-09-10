@@ -8,7 +8,7 @@ const faqItems = [
   {
     question: "Am I flexible enough?",
     answer:
-      "Almost certainly yes — flexibility is not a prerequisite. Classes are designed with options and progressions so you can meet your body where it is today. Most students are working on mobility, not showing off range they already have.",
+      "You don’t need to be flexible to start. I offer variations so you can work within a comfortable range.",
     icon: (
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
         <path d="M12 3v18M8 7l4-4 4 4M8 17l4 4 4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
@@ -18,7 +18,7 @@ const faqItems = [
   {
     question: "What do I wear?",
     answer:
-      "Wear something you can move comfortably in — leggings or shorts, a fitted top, and layers if you tend to run warm or cool. Nothing fancy required. Most people practice barefoot.",
+      "Wear comfortable clothes you can move in. Most people practice barefoot. Bring a layer for the rest at the end.",
     icon: (
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
         <path d="M6 4h12v16H6zM9 8h6M9 12h6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
@@ -28,7 +28,7 @@ const faqItems = [
   {
     question: "What if I am self-conscious?",
     answer:
-      "It's normal to feel that way before your first class. The room is focused on breath and movement — not performance. Clear cues, beginner-friendly options, and a calm pace help everyone feel like they belong.",
+      "It’s normal to feel unsure in your first class. I explain the movements and offer variations. You can ask questions or take a break at any time.",
     icon: (
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
         <path d="M12 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM5 20c0-3.3 3.1-6 7-6s7 2.7 7 6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
@@ -38,7 +38,7 @@ const faqItems = [
   {
     question: "Is it heated?",
     answer:
-      "Classes are not hot yoga. Expect a comfortable room temperature — enough to move freely without overheating. You'll build warmth through movement, not the thermostat.",
+      "These are not hot yoga classes. Check the event details for information about the venue.",
     icon: (
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
         <path d="M12 3c2 3 4 5 4 8a4 4 0 1 1-8 0c0-3 2-5 4-8z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
@@ -48,7 +48,7 @@ const faqItems = [
   {
     question: "Do I need a mat?",
     answer:
-      "If you have one, bring it. If not, reach out before class — mats are often available for in-person sessions, and for online classes you'll just need a bit of floor space.",
+      "Bring a mat if you have one. If you need to borrow one, ask before class. For online classes, set up your mat with enough space to move your arms and legs.",
     icon: (
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
         <rect x="4" y="8" width="16" height="8" rx="2" stroke="currentColor" strokeWidth="1.5" />
@@ -58,7 +58,7 @@ const faqItems = [
   {
     question: "What if I've never done yoga before?",
     answer:
-      "You're in the right place. Classes include clear language, slower moments to find alignment, and modifications so you're never left guessing. No prior experience needed — just curiosity and willingness to try.",
+      "You can start here. Let me know it’s your first class so I can help you get set up and explain unfamiliar poses.",
     icon: (
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
         <path d="M4 12h16M12 4v16" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
@@ -85,12 +85,10 @@ export default function WhatToExpect() {
               What to Expect
             </div>
             <h1 className="mt-6 text-[clamp(2.75rem,6vw,4.5rem)] leading-[0.92] tracking-tight">
-              Your first class, explained calmly.
+              Before your first class.
             </h1>
             <p className="mt-5 text-base leading-relaxed text-[rgb(var(--mbm-muted))] sm:text-lg">
-              If you&apos;re new to yoga — or returning after a long break — this
-              page is for you. No jargon, no pressure, just a clear picture of
-              what class actually feels like.
+              Here&apos;s what to bring, how class works, and how to adjust the practice.
             </p>
           </header>
 
@@ -104,10 +102,7 @@ export default function WhatToExpect() {
                 <div className="rounded-[1.75rem] border border-[rgb(var(--mbm-line))] bg-white/45 p-6 sm:p-7">
                   <h2 className="text-2xl leading-tight">Class pacing</h2>
                   <p className="mt-3 text-sm leading-relaxed text-[rgb(var(--mbm-muted))] sm:text-base">
-                    Classes move with intention — not rush. Expect a mobility-focused
-                    warmup, breath-led flow or strength work in the middle, and
-                    time to slow down at the end. You&apos;ll always know what
-                    you&apos;re doing and why.
+                    We start with a warmup, move into the main poses or sequences, and finish with rest. Power Flow is more active; Hatha and Breathe + Restore move more slowly.
                   </p>
                 </div>
 
@@ -124,18 +119,17 @@ export default function WhatToExpect() {
                     </li>
                     <li className="flex gap-3">
                       <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-black/35" />
-                      Permission to rest whenever you need it
+                      Rest whenever you need it
                     </li>
                   </ul>
                 </div>
 
                 <div className="mt-4 rounded-[1.75rem] border border-[rgb(var(--mbm-line))] bg-[rgb(var(--mbm-ink))] p-6 text-[rgb(var(--mbm-bg))] sm:p-7">
                   <p className="font-serif text-2xl leading-tight">
-                    All levels are welcome — truly.
+                    Beginners are welcome.
                   </p>
                   <p className="mt-3 text-sm leading-relaxed text-white/75">
-                    You don&apos;t need to arrive flexible, experienced, or
-                    &ldquo;good at yoga.&rdquo; You just need to show up.
+                    If you&apos;re unsure which class to try, contact me and I&apos;ll help you choose.
                   </p>
                   <div className="mt-5 flex flex-wrap gap-3">
                     <Button as={Link} to="/schedule" variant="inverse-ghost">
