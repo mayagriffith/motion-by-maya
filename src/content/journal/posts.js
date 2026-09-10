@@ -6,6 +6,25 @@
  */
 export const posts = [
   {
+    slug: "meet-cue",
+    title: "Meet Cue: my yoga class planning app",
+    excerpt: "I built Cue for yoga teachers to plan sequences, keep their notes together, and follow a class as they teach.",
+    date: "2026-09-09",
+    tags: ["Cue", "Teaching", "Class planning"],
+    readingTime: 1,
+    featured: true,
+    body: [
+      { type: "paragraph", content: "Alongside Motion by Maya, I’m building Cue, an app for yoga and movement teachers. It brings the class plan, teaching notes, and timing into one place." },
+      { type: "heading", content: "Plan a sequence" },
+      { type: "paragraph", content: "Choose poses, arrange them in order, and add your own cues and breath counts. Save a class, duplicate it, and adjust it for the next group. You can also export a PDF if you prefer a printed plan." },
+      { type: "heading", content: "Use it while you teach" },
+      { type: "paragraph", content: "Teaching mode puts the pose, notes, and timer on screen. After class, you can record what worked and what you want to change before teaching it again." },
+      { type: "paragraph", content: "There’s also optional AI assistance for drafting or adapting a sequence. You review and edit the plan before using it." },
+      { type: "paragraph", content: "Cue works in a browser, so you can try it without installing anything. If you teach, take a look and let me know what would make it more useful for your classes." },
+    ],
+    externalLink: { href: "https://cueyoga.com", label: "Explore Cue" },
+  },
+  {
     slug: "yoga-complements-strength-training",
     title: "How Yoga Complements Strength Training",
     excerpt:

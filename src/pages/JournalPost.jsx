@@ -121,6 +121,11 @@ export default function JournalPost() {
           <ArticleBody blocks={post.body} />
 
           <div className="mt-12 flex flex-wrap gap-3 border-t border-[rgb(var(--mbm-line))] pt-8">
+            {post.externalLink && (
+              <Button as="a" href={post.externalLink.href}>
+                {post.externalLink.label}
+              </Button>
+            )}
             <Button as={Link} to="/classes">
               Explore classes
             </Button>
