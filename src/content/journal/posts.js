@@ -7,20 +7,92 @@
 export const posts = [
   {
     slug: "meet-cue",
-    title: "Meet Cue: my yoga class planning app",
-    excerpt: "I built Cue for yoga teachers to plan sequences, keep their notes together, and follow a class as they teach.",
+    title: "Meet Cue: the class planning app I built for yoga teachers",
+    excerpt:
+      "Every teacher I know plans classes across notes apps, screenshots, and memory — then teaches off a phone that keeps going dark. Cue is my answer: plan, teach, and reflect on every class from one calm screen.",
+    coverImage: "/images/blog/cue/cue-cover.jpg",
     date: "2026-09-09",
     tags: ["Cue", "Teaching", "Class planning"],
-    readingTime: 1,
+    readingTime: 4,
     featured: true,
+    seoDescription:
+      "Cue is a yoga class planning app built by a teacher, for teachers — a visual sequence builder, a calm teaching mode with cues and timing, post-class reflections, and optional AI assistance. Free to try on web, iPhone, and Android.",
     body: [
-      { type: "paragraph", content: "Alongside Motion by Maya, I’m building Cue, an app for yoga and movement teachers. It brings the class plan, teaching notes, and timing into one place." },
-      { type: "heading", content: "Plan a sequence" },
-      { type: "paragraph", content: "Choose poses, arrange them in order, and add your own cues and breath counts. Save a class, duplicate it, and adjust it for the next group. You can also export a PDF if you prefer a printed plan." },
-      { type: "heading", content: "Use it while you teach" },
-      { type: "paragraph", content: "Teaching mode puts the pose, notes, and timer on screen. After class, you can record what worked and what you want to change before teaching it again." },
-      { type: "paragraph", content: "There’s also optional AI assistance for drafting or adapting a sequence. You review and edit the plan before using it." },
-      { type: "paragraph", content: "Cue works in a browser, so you can try it without installing anything. If you teach, take a look and let me know what would make it more useful for your classes." },
+      {
+        type: "paragraph",
+        content:
+          "If you teach yoga, you probably know the feeling. Your best sequence lives half in a notes app, half in a screenshot from three months ago, and half in your memory. You rebuild the same class from scratch every week. And when you finally get to the front of the room, you're squinting at a phone that keeps going dark mid-flow.",
+      },
+      {
+        type: "paragraph",
+        content:
+          "I kept running into all of it, so I built the tool I wanted to exist. It's called Cue, and it puts the whole life of a class — planning it, teaching it, and remembering what worked — in one place.",
+      },
+      { type: "heading", content: "Plan a class in minutes, not an evening" },
+      {
+        type: "paragraph",
+        content:
+          "Cue's sequence builder is visual. You drag poses into place, reorder and duplicate them, and flip a pose to the other side in a tap. Every pose can carry your own cues, breath counts, and timing, and you can view the whole class as a grid of poses or a detailed list.",
+      },
+      {
+        type: "paragraph",
+        content:
+          "Behind the builder is a library of 150+ illustrated poses with clean icons, alignment cues, and breath counts — plus room to add your own poses and notes. Once a class is saved, it's yours to reuse: duplicate last month's flow, adjust it for a new group, and you're done planning before your tea goes cold.",
+      },
+      {
+        type: "imageRow",
+        images: [
+          {
+            src: "/images/blog/cue/cue-builder-grid.png",
+            alt: "Cue's sequence builder in grid view, showing an 11-pose Sun Salutation A",
+            caption: "The builder in grid view — the whole flow at a glance.",
+          },
+          {
+            src: "/images/blog/cue/cue-builder-list.png",
+            alt: "Cue's sequence builder in list view, with cues, breath counts, and per-side tracking",
+            caption: "List view, with cues and breath counts on every pose.",
+          },
+          {
+            src: "/images/blog/cue/cue-teaching-mode.png",
+            alt: "Cue's teaching mode: a calm full-screen view with the pose, a countdown timer, and the cue",
+            caption: "Teaching mode — pose, timer, cue, and what's up next.",
+          },
+        ],
+      },
+      { type: "heading", content: "Teach from one calm screen" },
+      {
+        type: "paragraph",
+        content:
+          "Teaching mode is the part I'm proudest of. It's a quiet, glanceable screen that shows the current pose, your cue, the breath count, and a timer — with what's coming up next right below. The screen stays awake for the whole class, so there's no tapping your phone back to life between poses.",
+      },
+      {
+        type: "paragraph",
+        content:
+          "You can even connect your Spotify playlist, so the music is ready before the first breath and you're not fumbling at the front of the room.",
+      },
+      { type: "heading", content: "Remember what actually worked" },
+      {
+        type: "paragraph",
+        content:
+          "The classes we teach are full of small discoveries — a transition that landed, a pose that needed more setup — and most of them evaporate by the next morning. After each class, Cue prompts a 30-second reflection. Over time your library becomes a record of what works, so every class starts a step ahead of the last one.",
+      },
+      { type: "heading", content: "AI, when you want a starting point" },
+      {
+        type: "paragraph",
+        content:
+          "Cue also has built-in AI that can draft a full, editable class from a few details — or take a class you already have and shorten it to 45 minutes, swap out wrist-heavy poses, or adapt it for runners. Everything it drafts is a starting point you review and shape. You stay the teacher; it just gets you there faster.",
+      },
+      { type: "heading", content: "Try it before your next class" },
+      {
+        type: "paragraph",
+        content:
+          "Cue runs in any browser and on iPhone and Android, and your library syncs across all of them — so you can plan on a laptop and teach from your phone. Any class exports to a clean PDF if you like a printed plan on the mat.",
+      },
+      {
+        type: "paragraph",
+        content:
+          "It's free to start: no card, two saved classes, and three AI generations a month for as long as you like. If you teach — yoga, or movement of any kind — I'd love for you to try it. And if something confuses you, tell me. That's how it gets better.",
+      },
     ],
     externalLink: { href: "https://cueyoga.com", label: "Explore Cue" },
   },
