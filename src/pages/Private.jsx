@@ -317,15 +317,7 @@ function HowItWorks() {
             Three steps, no guesswork.
           </h2>
         </div>
-        <img
-          src="/images/blog/covers/first-private-session.jpg"
-          alt="Line drawings of easy seat, cat-cow, low lunge and tree pose"
-          className="mt-10 aspect-[21/9] w-full rounded-[1.75rem] border border-[rgb(var(--mbm-line))] object-cover"
-          loading="lazy"
-          width={2100}
-          height={900}
-        />
-        <ol className="mt-4 grid gap-4 md:grid-cols-3">
+        <ol className="mt-12 grid gap-4 md:grid-cols-3">
           {steps.map((s, i) => (
             <li
               key={s.title}
@@ -442,11 +434,34 @@ function WhereITeach() {
           <div className="lg:col-span-4">
             <Eyebrow>Where I teach</Eyebrow>
             <h2 className="mt-5 text-[clamp(2rem,4vw,3rem)] leading-[1.02]">
-              I come to you.
+              I come to you, or we meet{" "}
+              <span className="italic text-[rgb(var(--mbm-accent))]">on Zoom.</span>
             </h2>
+            <p className="mt-5 text-base leading-relaxed text-[rgb(var(--mbm-muted))]">
+              Same session, same price, your choice.
+            </p>
           </div>
           <div className="lg:col-span-8">
-            <div className="grid gap-8 sm:grid-cols-2">
+            <div className="grid gap-4 sm:grid-cols-2">
+              <div className="rounded-[1.5rem] bg-white/60 p-6 ring-1 ring-[rgb(var(--mbm-line))]">
+                <div className="text-xs font-semibold uppercase tracking-[0.2em] text-[rgb(var(--mbm-accent))]">
+                  In person
+                </div>
+                <p className="mt-2 text-xl leading-snug">
+                  At your home, in Brooklyn or Manhattan. I bring the mats and props.
+                </p>
+              </div>
+              <div className="rounded-[1.5rem] bg-[rgb(var(--mbm-ink))] p-6 text-white">
+                <div className="text-xs font-semibold uppercase tracking-[0.2em] text-white/60">
+                  On Zoom
+                </div>
+                <p className="mt-2 text-xl leading-snug">
+                  From anywhere. All you need is a little floor space and a laptop or phone.
+                </p>
+              </div>
+            </div>
+            <p className="mt-10 text-sm font-medium">In-person neighborhoods</p>
+            <div className="mt-4 grid gap-8 sm:grid-cols-2">
               <div>
                 <h3 className="text-2xl leading-tight">Brooklyn</h3>
                 <p className="mt-1 text-sm text-[rgb(var(--mbm-muted))]">In-home sessions</p>
