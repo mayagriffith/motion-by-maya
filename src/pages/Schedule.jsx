@@ -11,7 +11,7 @@ import {
   getCalendarSubscribeUrl,
   hasCalendar,
 } from "../lib/calendar.js";
-import { GROUP_CLASSES_IN_SEASON, ZOOM_CLASS } from "../config/site.js";
+import { ZOOM_CLASS } from "../config/site.js";
 
 const VIEWS = [
   { id: "MONTH", label: "Month" },
@@ -127,30 +127,20 @@ export default function Schedule() {
           </aside>
 
           <div className="lg:col-span-8">
-            {!GROUP_CLASSES_IN_SEASON ? (
-              <div className="rounded-[1.75rem] border border-[rgb(var(--mbm-line))] bg-white/45 p-10 text-center sm:p-14">
-                <p className="text-xs font-medium uppercase tracking-[0.22em] text-black/45">
-                  Every week on Zoom
-                </p>
-                <p className="mt-3 font-serif text-3xl leading-tight">
-                  Thursday Night Flow
-                </p>
-                <p className="mx-auto mt-4 max-w-md text-sm leading-relaxed text-[rgb(var(--mbm-muted))] sm:text-base">
-                  {ZOOM_CLASS.day}, {ZOOM_CLASS.time}. A gentle 40-minute
-                  class, all levels, donation-based. Studio group classes are
-                  between seasons; subscribe to the calendar to hear when
-                  they&apos;re back.
-                </p>
-                <div className="mt-6 flex flex-wrap justify-center gap-3">
-                  <Button as={NavLink} to="/zoom">
-                    Sign up for Thursdays
-                  </Button>
-                  <Button as={NavLink} to="/private" variant="ghost">
-                    Private sessions
-                  </Button>
-                </div>
-              </div>
-            ) : calendarReady ? (
+            <NavLink
+              to="/zoom"
+              className="mb-6 flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-[rgb(var(--mbm-line))] bg-white/45 px-5 py-4 text-sm transition hover:bg-white/70"
+            >
+              <span>
+                <span className="font-medium">Every Thursday on Zoom:</span>{" "}
+                <span className="text-[rgb(var(--mbm-muted))]">
+                  Thursday Night Flow, {ZOOM_CLASS.time}. Donation-based.
+                </span>
+              </span>
+              <span className="underline underline-offset-4">Sign up</span>
+            </NavLink>
+
+            {calendarReady ? (
               <>
                 <div className="flex flex-wrap items-center justify-between gap-4">
                   <div className="schedule-view-toggle inline-flex rounded-full border border-[rgb(var(--mbm-line))] bg-white/40 p-1">

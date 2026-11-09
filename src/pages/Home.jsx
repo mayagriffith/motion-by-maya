@@ -52,21 +52,18 @@ function Hero() {
             </p>
 
             <div className="mt-8 flex flex-wrap items-center gap-3">
-              <Button as={NavLink} to="/classes">
-                Explore classes
-              </Button>
-              <Button as={NavLink} to="/private" variant="ghost">
+              <Button as={NavLink} to="/private">
                 Book a 1:1 session
               </Button>
-              <Button as="a" href="#offerings" variant="ghost">
-                See offerings
+              <Button as={NavLink} to="/classes" variant="ghost">
+                Explore classes
               </Button>
             </div>
 
             <div className="mt-10 flex flex-wrap gap-x-8 gap-y-4 border-t border-[rgb(var(--mbm-line))] pt-8">
               {[
                 { value: "All levels", label: "Beginners welcome" },
-                { value: "NYC + Online", label: "NYC, North Jersey + online" },
+                { value: "NYC + Online", label: "NYC + online" },
                 { value: "Power & flow", label: "Strength + mobility + recovery" },
               ].map((stat) => (
                 <div key={stat.value}>
@@ -346,7 +343,7 @@ function BottomCta() {
                 </Button>
               </div>
               <p className="mt-4 text-xs text-white/60">
-                Online + NYC / North Jersey (as available).
+                NYC + online.
               </p>
             </div>
           </div>

@@ -10,12 +10,6 @@ export const INSURED = false;
 // While empty, /private#book shows the "Request a session" form instead.
 export const CAL_COM_LINK = "";
 
-// Set to true when group classes are on the calendar again. While false,
-// /schedule shows a "between seasons" note pointing to private sessions
-// instead of an empty calendar. (The Google Calendar embed can't tell us
-// whether it has upcoming events without an API key, so this is manual.)
-export const GROUP_CLASSES_IN_SEASON = false;
-
 // Thursday Night Flow on Zoom (donation-based, see /zoom).
 export const ZOOM_CLASS = {
   day: "Thursdays",

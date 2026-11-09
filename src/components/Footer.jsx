@@ -95,7 +95,7 @@ export default function Footer() {
 
         <div className="mt-10 flex flex-wrap items-center justify-between gap-3 border-t border-[rgb(var(--mbm-line))] pt-6 text-xs text-black/50">
           <p>© {new Date().getFullYear()} Motion by Maya</p>
-          <p>Brooklyn &amp; Manhattan · in-home, studio or online</p>
+          <p>NYC + online</p>
         </div>
       </Container>
     </footer>

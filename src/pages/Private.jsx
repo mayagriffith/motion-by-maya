@@ -150,8 +150,8 @@ function PrivateHero() {
               <span className="italic text-black/75">in your living room.</span>
             </h1>
             <p className="mt-6 max-w-xl text-base leading-relaxed text-[rgb(var(--mbm-muted))] sm:text-lg">
-              One-on-one sessions in Brooklyn and Manhattan: in your home, at
-              your building&apos;s gym, or online. Built around your body, your
+              One-on-one sessions in Brooklyn and Manhattan, in your home or
+              online. Built around your body, your
               schedule, and what you actually want to work on.
             </p>
             <div className="mt-8 flex flex-wrap items-center gap-3">
@@ -172,7 +172,7 @@ function PrivateHero() {
               <dl className="mt-5 grid gap-5">
                 {[
                   { term: "Session", value: "60 minutes, one-on-one" },
-                  { term: "Where", value: "Your home, your building, or online" },
+                  { term: "Where", value: "Your home or online" },
                   { term: "From", value: "$130 a session in a 10-pack" },
                   { term: "First step", value: "A free 15-minute call" },
                 ].map((item) => (
@@ -378,12 +378,6 @@ function WhereITeach() {
             </div>
             <div className="mt-10 space-y-4 text-base leading-relaxed text-[rgb(var(--mbm-muted))] sm:text-lg">
               <p>Not on the list? Ask. I&apos;m often able to make it work.</p>
-              <p>
-                <span className="font-medium text-[rgb(var(--mbm-ink))]">Building residents:</span>{" "}
-                I regularly teach in residential amenity spaces. If your
-                building has a gym or wellness room, that&apos;s a great
-                option. Ask your front desk or just tell me the building.
-              </p>
             </div>
           </div>
         </div>

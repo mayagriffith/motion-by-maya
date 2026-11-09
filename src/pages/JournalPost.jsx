@@ -178,18 +178,16 @@ export default function JournalPost() {
             </div>
           </header>
 
-          <div className="journal-article-cover mt-10 overflow-hidden rounded-[1.75rem] border border-[rgb(var(--mbm-line))]">
-            {post.coverImage ? (
+          {post.coverImage && (
+            <div className="journal-article-cover mt-10 overflow-hidden rounded-[1.75rem] border border-[rgb(var(--mbm-line))]">
               <img
                 src={post.coverImage}
                 alt=""
                 className="aspect-[21/9] w-full object-cover"
                 loading="lazy"
               />
-            ) : (
-              <div className="journal-cover-placeholder aspect-[21/9] w-full" />
-            )}
-          </div>
+            </div>
+          )}
 
           <ArticleBody blocks={post.body} />
 

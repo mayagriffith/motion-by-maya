@@ -36,6 +36,13 @@ const classes = [
     tags: ["Breathwork", "Restore", "Relaxation"],
   },
   {
+    title: "Thursday Night Flow (Zoom)",
+    desc: "A gentle 40-minute class live on Zoom every Thursday at 7pm Eastern. All levels, donation-based.",
+    length: "40 min · weekly",
+    tags: ["Online", "Gentle", "Donation-based"],
+    link: { to: "/zoom", label: "Sign up for Thursdays" },
+  },
+  {
     title: "Private 1:1 Sessions",
     desc: "A session planned around your goals and experience. Learn the basics, work on specific poses, or practice at your own pace.",
     length: "60 min",
@@ -65,7 +72,7 @@ export default function Classes() {
               Choose your practice.
             </h1>
             <p className="mt-5 text-xl leading-relaxed text-black/80 sm:text-2xl">
-              Group classes, slower formats, and private 1:1 sessions.
+              Group classes, a weekly Zoom class, and private 1:1 sessions.
             </p>
             <p className="mt-4 text-base leading-relaxed text-[rgb(var(--mbm-muted))] sm:text-lg">
               Privates have their own page.{" "}
