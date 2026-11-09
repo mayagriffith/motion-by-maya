@@ -12,7 +12,7 @@ const FORMSPREE_ID = import.meta.env.VITE_FORMSPREE_FORM_ID;
 const INQUIRY_TYPES = [
   { value: "private-1-1", label: "Private 1:1 session" },
   { value: "group-class", label: "Group class / booking" },
-  { value: "corporate-event", label: "Corporate or private event" },
+  { value: "corporate-event", label: "Corporate, birthday or bachelorette event" },
   { value: "collaboration", label: "Collaboration or partnership" },
   { value: "brand-content", label: "Brand or content opportunity" },
   { value: "workshop-retreat", label: "Workshop or retreat" },
@@ -29,7 +29,7 @@ export default function Contact() {
   const [searchParams] = useSearchParams();
   const selectedClass = searchParams.get("class") || "";
   const [inquiry, setInquiry] = useState(
-    selectedClass === "Private 1:1 Sessions" ? "private-1-1" : selectedClass ? "class-help" : ""
+    selectedClass === "Private 1:1 Sessions" ? "private-1-1" : selectedClass === "Events & Parties" ? "corporate-event" : selectedClass ? "class-help" : ""
   );
   const [status, setStatus] = useState("idle");
   const [errorMessage, setErrorMessage] = useState("");

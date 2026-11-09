@@ -9,13 +9,13 @@ import {
 } from "../lib/calendar.js";
 
 const VIEWS = [
-  { id: "AGENDA", label: "Upcoming" },
   { id: "MONTH", label: "Month" },
+  { id: "AGENDA", label: "Upcoming" },
 ];
 
 /** The public Google Calendar embed, with a view toggle and subscribe links. */
 export default function ClassCalendar() {
-  const [view, setView] = useState("AGENDA");
+  const [view, setView] = useState("MONTH");
 
   if (!hasCalendar()) {
     return (

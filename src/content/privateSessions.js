@@ -29,7 +29,7 @@ export const neighborhoodOptions = [
   ...brooklynNeighborhoods.map((n) => `${n} (Brooklyn)`),
   ...manhattanNeighborhoods.map((n) => `${n} (Manhattan)`),
   "Somewhere else",
-  "Online only",
+  "Zoom only",
 ];
 
 // TODO(Maya): confirm pricing.
@@ -73,7 +73,7 @@ export const packages = [
 ];
 
 export const PRIVATE_META_DESCRIPTION =
-  "Private 1:1 yoga in Brooklyn & Manhattan with Maya Griffith, RYT-200. In-home or online sessions for beginners, runners, lifters, and busy people who want a practice that works. From $130 a session.";
+  "Private 1:1 yoga in Brooklyn & Manhattan with Maya Griffith, RYT-200. In-home or Zoom sessions for beginners, runners, lifters, and busy people who want a practice that works. From $130 a session.";
 
 /** schema.org LocalBusiness for /private. Shared by the page and the prerender script. */
 export function buildPrivateJsonLd(siteUrl) {

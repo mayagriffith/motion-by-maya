@@ -7,6 +7,19 @@ import { ZOOM_CLASS } from "../config/site.js";
 
 const classes = [
   {
+    title: "Private 1:1 Sessions",
+    desc: "A session planned around your goals, in your home or on Zoom.",
+    length: "60 min",
+    link: { to: "/private", label: "See packages & book" },
+    featured: true,
+  },
+  {
+    title: "Events & Parties",
+    desc: "Corporate yoga, birthday parties, bachelorette parties and other groups. In person or on Zoom.",
+    length: "Any group size",
+    link: { to: "/contact?class=Events%20%26%20Parties", label: "Plan an event" },
+  },
+  {
     title: "Modern Vinyasa",
     desc: "Move between poses with your breath. Standing sequences, balance work, and time to stretch and rest.",
     length: "45–90 min",
@@ -31,12 +44,6 @@ const classes = [
     desc: "Gentle movement, breathing exercises, and longer rests for a quieter practice.",
     length: "30–45 min",
   },
-  {
-    title: "Private 1:1 Sessions",
-    desc: "A session planned around your goals, in your home or online.",
-    length: "60 min",
-    link: { to: "/private", label: "See packages & book" },
-  },
 ];
 
 export default function Classes() {
@@ -60,7 +67,7 @@ export default function Classes() {
               Choose your <span className="italic text-[rgb(var(--mbm-accent))]">practice.</span>
             </h1>
             <p className="mt-5 text-lg leading-relaxed text-[rgb(var(--mbm-muted))] sm:text-xl">
-              A weekly Zoom class, group classes, and private 1:1 sessions.
+              A weekly Zoom class, private 1:1 sessions in person or on Zoom, and events.
             </p>
           </div>
 
@@ -91,15 +98,39 @@ export default function Classes() {
             {classes.map((c) => (
               <article
                 key={c.title}
-                className="home-card flex flex-col rounded-[1.75rem] border border-[rgb(var(--mbm-line))] bg-white/45 p-6 sm:p-7"
+                className={
+                  c.featured
+                    ? "flex flex-col rounded-[1.75rem] bg-[rgb(var(--mbm-accent))] p-6 text-white shadow-[0_24px_60px_-24px_rgba(160,81,47,0.6)] transition-transform duration-300 hover:-translate-y-1 sm:p-7"
+                    : "home-card flex flex-col rounded-[1.75rem] border border-[rgb(var(--mbm-line))] bg-white/45 p-6 sm:p-7"
+                }
               >
-                <h2 className="text-2xl leading-tight">{c.title}</h2>
-                <p className="mt-3 flex-1 text-sm leading-relaxed text-[rgb(var(--mbm-muted))]">
+                <h2 className={c.featured ? "text-2xl leading-tight text-white" : "text-2xl leading-tight"}>
+                  {c.title}
+                </h2>
+                <p
+                  className={
+                    c.featured
+                      ? "mt-3 flex-1 text-sm leading-relaxed text-white/85"
+                      : "mt-3 flex-1 text-sm leading-relaxed text-[rgb(var(--mbm-muted))]"
+                  }
+                >
                   {c.desc}
                 </p>
-                <div className="mt-5 flex items-center justify-between gap-3 border-t border-[rgb(var(--mbm-line))] pt-4">
-                  <span className="text-xs font-medium text-black/55">{c.length}</span>
-                  {c.link ? (
+                <div
+                  className={
+                    c.featured
+                      ? "mt-5 flex items-center justify-between gap-3 border-t border-white/25 pt-4"
+                      : "mt-5 flex items-center justify-between gap-3 border-t border-[rgb(var(--mbm-line))] pt-4"
+                  }
+                >
+                  <span className={c.featured ? "text-xs font-medium text-white/75" : "text-xs font-medium text-black/55"}>
+                    {c.length}
+                  </span>
+                  {c.featured ? (
+                    <Button as={NavLink} to={c.link.to} variant="inverse" className="px-4 py-2">
+                      {c.link.label}
+                    </Button>
+                  ) : c.link ? (
                     <NavLink className="text-sm font-medium underline underline-offset-4" to={c.link.to}>
                       {c.link.label}
                     </NavLink>

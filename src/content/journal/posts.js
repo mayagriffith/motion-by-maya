@@ -12,6 +12,7 @@ export const posts = [
     title: "Introducing Gentle Thursday Flow",
     excerpt:
       "A weekly, donation-based yoga class on Zoom. Thursdays, 8:00 to 8:40pm Eastern, starting November 12.",
+    coverImage: "/images/blog/covers/gentle-thursday-flow.jpg",
     date: "2026-11-08",
     tags: ["Zoom", "Weekly class", "All levels"],
     readingTime: 1,
@@ -57,6 +58,7 @@ export const posts = [
     title: "What to expect in a first private session",
     excerpt:
       "How a first private yoga session with me works, from the intro call to what you take home.",
+    coverImage: "/images/blog/covers/first-private-session.jpg",
     date: "2026-11-08",
     tags: ["Private sessions", "Beginners"],
     readingTime: 2,

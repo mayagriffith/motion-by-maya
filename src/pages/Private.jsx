@@ -78,7 +78,7 @@ const faqItems = [
       "Yes, within my training. I'll ask about anything relevant up front, and if something's outside my scope I'll say so and point you to the right person.",
   },
   {
-    question: "Online: does it actually work?",
+    question: "Zoom: does it actually work?",
     answer:
       "It does, for most people. I use a two-camera setup so I can see alignment, and it's great for travel weeks.",
   },
@@ -90,6 +90,11 @@ const faqItems = [
         },
       ]
     : []),
+  {
+    question: "Do you teach groups and events?",
+    answer:
+      "Yes: corporate classes, birthday parties, bachelorette parties and other groups, in person or on Zoom. Send me the details through the contact page.",
+  },
   {
     question: "Can I gift a package?",
     answer: "Yes. Email me and I'll send a gift note.",
@@ -151,7 +156,7 @@ function PrivateHero() {
             </h1>
             <p className="mt-6 max-w-xl text-base leading-relaxed text-[rgb(var(--mbm-muted))] sm:text-lg">
               One-on-one sessions in Brooklyn and Manhattan, in your home or
-              online. Built around your body, your
+              on Zoom. Built around your body, your
               schedule, and what you actually want to work on.
             </p>
             <div className="mt-8 flex flex-wrap items-center gap-3">
@@ -172,7 +177,7 @@ function PrivateHero() {
               <dl className="mt-5 grid gap-5">
                 {[
                   { term: "Session", value: "60 minutes, one-on-one" },
-                  { term: "Where", value: "Your home or online" },
+                  { term: "Where", value: "Your home or Zoom" },
                   { term: "From", value: "$130 a session in a 10-pack" },
                   { term: "First step", value: "A free 15-minute call" },
                 ].map((item) => (
@@ -264,7 +269,7 @@ function Packages({ onChoose }) {
             Pick how you want to start.
           </h2>
           <p className="mt-5 text-base leading-relaxed text-[rgb(var(--mbm-muted))] sm:text-lg">
-            All sessions are 60 minutes. In-home and online are the same rate.
+            All sessions are 60 minutes. In-home and Zoom are the same rate.
             Packages are good for 6 months. Prices include travel within the
             neighborhoods listed below.
           </p>
@@ -334,7 +339,7 @@ function Packages({ onChoose }) {
         </div>
 
         <p className="mt-6 text-sm italic text-[rgb(var(--mbm-muted))]">
-          Duos (two people, one session) +$50. Online sessions available
+          Duos (two people, one session) +$50. Zoom sessions available
           anywhere. 24-hour cancellation policy. Payment details come with your booking confirmation.
         </p>
       </Container>
@@ -635,7 +640,7 @@ function RequestForm({ selectedPackage, onPackageChange }) {
         <fieldset className="grid gap-2">
           <legend className="mb-2 text-sm font-medium">Where</legend>
           <div className="flex flex-wrap gap-2">
-            {["In-home", "Online"].map((option, i) => (
+            {["In-home", "Zoom"].map((option, i) => (
               <label
                 key={option}
                 className="flex cursor-pointer items-center gap-2 rounded-full bg-[rgb(var(--mbm-bg))]/70 px-4 py-2.5 text-sm ring-1 ring-[rgb(var(--mbm-line))] has-[:checked]:bg-black has-[:checked]:text-[rgb(var(--mbm-bg))] has-[:focus-visible]:ring-2 has-[:focus-visible]:ring-black/40"
