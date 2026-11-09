@@ -17,7 +17,8 @@ export default function AnnouncementBar() {
   const { pathname } = useLocation();
   const [hidden, setHidden] = useState(readHidden);
 
-  if (hidden || pathname === "/zoom") return null;
+  // Netlify serves prerendered pages with a trailing slash ("/zoom/").
+  if (hidden || pathname.replace(/\/+$/, "") === "/zoom") return null;
 
   function dismiss() {
     setHidden(true);
