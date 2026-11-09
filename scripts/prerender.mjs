@@ -41,7 +41,7 @@ const routes = [
     path: "/zoom",
     title: `Thursday Night Flow on Zoom | ${SITE_NAME}`,
     description:
-      "A gentle one-hour yoga flow on Zoom every Thursday at 8pm Eastern with Maya Griffith, RYT-200. All levels, no experience needed. Donation-based, so pay what feels right.",
+      "A gentle 40-minute yoga flow on Zoom every Thursday at 8pm Eastern with Maya Griffith, RYT-200. All levels, no experience needed. Donation-based, so pay what feels right.",
     keywords:
       "online yoga class, zoom yoga, donation based yoga, gentle yoga online, evening yoga class",
   },

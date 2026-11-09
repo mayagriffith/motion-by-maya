@@ -37,8 +37,8 @@ const classes = [
   },
   {
     title: "Thursday Night Flow (Zoom)",
-    desc: "A gentle one-hour class live on Zoom every Thursday at 8pm Eastern. All levels, donation-based.",
-    length: "60 min · weekly",
+    desc: "A gentle 40-minute class live on Zoom every Thursday at 8pm Eastern. All levels, donation-based.",
+    length: "40 min · weekly",
     tags: ["Online", "Gentle", "Donation-based"],
     link: { to: "/zoom", label: "Sign up for Thursdays" },
   },

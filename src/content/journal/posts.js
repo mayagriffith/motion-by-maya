@@ -11,24 +11,24 @@ export const posts = [
     slug: "introducing-thursday-night-flow",
     title: "Introducing Thursday Night Flow",
     excerpt:
-      "A weekly, donation-based yoga class on Zoom. Thursdays, 8 to 9pm Eastern, starting November 12.",
+      "A weekly, donation-based yoga class on Zoom. Thursdays, 8:00 to 8:40pm Eastern, starting November 12.",
     date: "2026-11-08",
     tags: ["Zoom", "Weekly class", "All levels"],
     readingTime: 1,
     featured: false,
     seoDescription:
-      "Thursday Night Flow is a weekly, donation-based yoga class on Zoom with Maya Griffith, RYT-200. Thursdays 8 to 9pm Eastern, all levels, starting November 12.",
+      "Thursday Night Flow is a weekly, donation-based yoga class on Zoom with Maya Griffith, RYT-200. Thursdays 8:00 to 8:40pm Eastern, all levels, starting November 12.",
     body: [
       {
         type: "paragraph",
         content:
-          "Starting Thursday, November 12, I'm teaching a weekly class on Zoom. It's called Thursday Night Flow, and it runs every Thursday from 8:00 to 9:00pm Eastern.",
+          "Starting Thursday, November 12, I'm teaching a weekly class on Zoom. It's called Thursday Night Flow, and it runs every Thursday from 8:00 to 8:40pm Eastern.",
       },
       { type: "heading", content: "What it is" },
       {
         type: "list",
         items: [
-          "A gentle, all-levels flow: easy movement, stretching, some breathwork, and a real rest at the end.",
+          "A gentle, all-levels 40-minute flow: easy movement, stretching, some breathwork, and a real rest at the end.",
           "No experience needed. Every pose has an easier option.",
           "Donation-based. Pay what feels right (suggested $10), or come for free.",
         ],

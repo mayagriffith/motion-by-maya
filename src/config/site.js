@@ -13,7 +13,7 @@ export const CAL_COM_LINK = "";
 // Thursday Night Flow on Zoom (donation-based, see /zoom).
 export const ZOOM_CLASS = {
   day: "Thursdays",
-  time: "8:00 to 9:00pm Eastern",
+  time: "8:00 to 8:40pm Eastern",
   firstClass: "Thursday, November 12",
   suggestedDonation: "$10",
 };

@@ -10,7 +10,7 @@ const EMAIL = "motionbymaya@gmail.com";
 const FORMSPREE_ID = import.meta.env.VITE_FORMSPREE_FORM_ID;
 
 const ZOOM_META_DESCRIPTION =
-  "A gentle one-hour yoga flow on Zoom every Thursday at 8pm Eastern with Maya Griffith, RYT-200. All levels, no experience needed. Donation-based, so pay what feels right.";
+  "A gentle 40-minute yoga flow on Zoom every Thursday at 8pm Eastern with Maya Griffith, RYT-200. All levels, no experience needed. Donation-based, so pay what feels right.";
 
 const inputClassName =
   "w-full rounded-2xl bg-[rgb(var(--mbm-bg))]/70 px-4 py-3 text-sm ring-1 ring-[rgb(var(--mbm-line))] transition focus:outline-none focus:ring-2 focus:ring-black/20";
@@ -50,7 +50,7 @@ export default function Zoom() {
                 <span className="italic text-[rgb(var(--mbm-accent))]">Flow.</span>
               </h1>
               <p className="mt-6 max-w-xl text-base leading-relaxed text-[rgb(var(--mbm-muted))] sm:text-lg">
-                A gentle one-hour class, all levels. Pay what feels right, and
+                A gentle 40-minute class, all levels. Pay what feels right, and
                 I&apos;ll email you the Zoom link.
               </p>
               <div className="mt-8 flex flex-wrap items-center gap-3">
