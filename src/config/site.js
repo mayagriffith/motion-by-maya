@@ -31,7 +31,7 @@ export const DONATION_LINKS = [];
 // The recurring Zoom meeting's join link (with the passcode built in).
 // While set, people see it right after they sign up. While empty, the
 // page says "I'll email you the link" and you send it yourself.
-export const ZOOM_JOIN_URL = "";
+export const ZOOM_JOIN_URL = "https://us05web.zoom.us/j/81772984945?pwd=ZYQf81lkMbnuQKocs79uqgRYG1Hh2a.1";
 
 export const SITE_URL = import.meta.env?.VITE_SITE_URL || "https://motionbymaya.com";
 export const INSTAGRAM_URL = "https://instagram.com/motionbymaya";
