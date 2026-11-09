@@ -36,4 +36,4 @@ three are set; sign-ups are still saved):
 - `MAIL_FROM`: e.g. `Maya Griffith <hello@motionbymaya.com>`; motionbymaya.com
   must be verified in Resend (DNS records go in Netlify DNS)
 - `UNSUBSCRIBE_SECRET`: any long random string
-- `SKIP_DATES` (optional): comma-separated `YYYY-MM-DD` Thursdays with no class
+- `SKIP_DATES` (optional): extra Thursdays with no class, on top of `skipDates` in `src/config/site.js`

@@ -83,7 +83,10 @@ const toMinutes = (hhmm) => {
 export function dueReminder(now = newYorkNow()) {
   if (now.weekday !== "Thu") return null;
   if (now.isoDate < ZOOM_CLASS.firstDate) return null;
-  const skip = (process.env.SKIP_DATES || "").split(",").map((d) => d.trim());
+  const skip = [
+    ...ZOOM_CLASS.skipDates,
+    ...(process.env.SKIP_DATES || "").split(",").map((d) => d.trim()),
+  ];
   if (skip.includes(now.isoDate)) return null;
 
   const start = toMinutes(ZOOM_CLASS.start);
@@ -224,6 +227,9 @@ export function icsInvite() {
     `DTSTART;TZID=America/New_York:${day}T${t(ZOOM_CLASS.start)}`,
     `DTEND;TZID=America/New_York:${day}T${t(ZOOM_CLASS.end)}`,
     "RRULE:FREQ=WEEKLY;BYDAY=TH",
+    ...ZOOM_CLASS.skipDates.map(
+      (d) => `EXDATE;TZID=America/New_York:${d.replaceAll("-", "")}T${t(ZOOM_CLASS.start)}`
+    ),
     "SUMMARY:Gentle Thursday Flow (Zoom yoga with Maya)",
     `DESCRIPTION:${esc(desc)}`,
     `LOCATION:${esc(ZOOM_JOIN_URL)}`,

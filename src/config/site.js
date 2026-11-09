@@ -26,6 +26,8 @@ export const ZOOM_CLASS = {
   firstDate: "2026-11-12",
   start: "20:00",
   end: "20:40",
+  // Thursdays with no class (no reminders, left out of calendar invites).
+  skipDates: ["2026-11-26", "2026-12-24"],
 };
 
 // Ways to donate after the Thursday class. Add one entry per method, e.g.

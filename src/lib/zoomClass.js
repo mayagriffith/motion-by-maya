@@ -22,7 +22,12 @@ export function googleCalendarUrl() {
     text: TITLE,
     dates: `${day()}T${hms(ZOOM_CLASS.start)}/${day()}T${hms(ZOOM_CLASS.end)}`,
     ctz: "America/New_York",
-    recur: "RRULE:FREQ=WEEKLY;BYDAY=TH",
+    recur: [
+      "RRULE:FREQ=WEEKLY;BYDAY=TH",
+      ...ZOOM_CLASS.skipDates.map(
+        (d) => `EXDATE;TZID=America/New_York:${d.replaceAll("-", "")}T${hms(ZOOM_CLASS.start)}`
+      ),
+    ].join("\n"),
     details: details(),
     location: ZOOM_JOIN_URL || "Zoom",
   });
@@ -61,6 +66,9 @@ export function icsDataUrl() {
     `DTSTART;TZID=America/New_York:${day()}T${hms(ZOOM_CLASS.start)}`,
     `DTEND;TZID=America/New_York:${day()}T${hms(ZOOM_CLASS.end)}`,
     "RRULE:FREQ=WEEKLY;BYDAY=TH",
+    ...ZOOM_CLASS.skipDates.map(
+      (d) => `EXDATE;TZID=America/New_York:${d.replaceAll("-", "")}T${hms(ZOOM_CLASS.start)}`
+    ),
     `SUMMARY:${esc(TITLE)}`,
     `DESCRIPTION:${esc(details())}`,
     `LOCATION:${esc(ZOOM_JOIN_URL || "Zoom")}`,
