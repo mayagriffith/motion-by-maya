@@ -335,7 +335,7 @@ function Packages({ onChoose }) {
 
         <p className="mt-6 text-sm italic text-[rgb(var(--mbm-muted))]">
           Duos (two people, one session) +$50. Online sessions available
-          anywhere. 24-hour cancellation policy. Payment by card at booking.
+          anywhere. 24-hour cancellation policy. Payment details come with your booking confirmation.
         </p>
       </Container>
     </section>
