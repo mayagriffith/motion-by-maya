@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import Container from "./Container.jsx";
 import NewsletterSignup from "./NewsletterSignup.jsx";
+import { INSURED } from "../config/site.js";
 
 const footerLinkClass =
   "w-fit text-black/70 transition hover:text-black hover:underline underline-offset-4";
@@ -15,7 +16,10 @@ export default function Footer() {
               Motion <span className="font-normal text-black/60">by</span> Maya
             </div>
             <p className="mt-3 text-sm leading-relaxed text-black/65">
-              Vinyasa, power yoga, and private classes with Maya.
+              Private 1:1 sessions, vinyasa, and power yoga with Maya.
+            </p>
+            <p className="mt-3 text-xs tracking-wide text-black/50">
+              {INSURED ? "RYT-200 · Fully insured · Brooklyn, NY" : "RYT-200 · Brooklyn, NY"}
             </p>
             <p className="mt-4 text-sm text-black/55">
               <a className={footerLinkClass} href="mailto:motionbymaya@gmail.com">
@@ -32,6 +36,9 @@ export default function Footer() {
               </Link>
               <Link className={footerLinkClass} to="/classes">
                 Classes
+              </Link>
+              <Link className={footerLinkClass} to="/private">
+                Private Sessions
               </Link>
               <Link className={footerLinkClass} to="/schedule">
                 Schedule
@@ -85,7 +92,7 @@ export default function Footer() {
 
         <div className="mt-10 flex flex-wrap items-center justify-between gap-3 border-t border-[rgb(var(--mbm-line))] pt-6 text-xs text-black/50">
           <p>© {new Date().getFullYear()} Motion by Maya</p>
-          <p>Online + NYC / North Jersey</p>
+          <p>Brooklyn &amp; Manhattan · in-home, studio or online</p>
         </div>
       </Container>
     </footer>

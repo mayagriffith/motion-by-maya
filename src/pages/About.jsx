@@ -2,6 +2,7 @@ import { NavLink } from "react-router-dom";
 import Container from "../components/Container.jsx";
 import Button from "../components/Button.jsx";
 import PageMeta from "../components/PageMeta.jsx";
+import { INSURED } from "../config/site.js";
 
 const focusAreas = [
   "Vinyasa Yoga",
@@ -10,6 +11,18 @@ const focusAreas = [
   "Mobility & Recovery",
   "Hatha Yoga",
   "Slow Flow + Breathwork",
+  "Private 1:1",
+];
+
+const credentials = [
+  {
+    title: "200-Hour Yoga Teacher Training (RYT-200), Ulu Yoga",
+    detail: "Trauma-informed teaching, functional anatomy, Vinyasa & Hatha sequencing, breathwork",
+  },
+  ...(INSURED
+    ? [{ title: "Professional & general liability insured", detail: null }]
+    : []),
+  { title: "University of Vermont", detail: null },
 ];
 
 export default function About() {
@@ -17,7 +30,7 @@ export default function About() {
     <>
       <PageMeta
         title="About Maya"
-        description="Meet Maya — 200-hour certified yoga teacher offering modern vinyasa and power-inspired classes for athletes, beginners, and active lifestyles."
+        description="Meet Maya Griffith, RYT-200 (Ulu Yoga), a Brooklyn yoga teacher offering private 1:1 sessions and vinyasa, power, and breath-led classes for athletes, beginners, and busy people."
         path="/about"
       />
       <AboutHero />
@@ -67,17 +80,55 @@ function AboutHero() {
 
             <div className="mt-6 space-y-5 text-base leading-relaxed text-[rgb(var(--mbm-muted))] sm:text-lg">
               <p>
-                Hi, I&apos;m Maya, a 200-hour certified yoga teacher. I teach vinyasa, power yoga, and slower classes.
+                Hi, I&apos;m Maya. I&apos;m a 200-hour certified yoga teacher
+                (Ulu Yoga, RYT-200), based in Brooklyn, and I teach vinyasa,
+                power yoga, and slower, breath-led classes: in studios, in
+                offices, and increasingly in people&apos;s living rooms.
               </p>
               <p>
-                I&apos;m also an athlete. My classes include strength work, balance, and mobility, with options for different experience levels.
+                I&apos;m also an athlete. I run, I lift, I&apos;ve danced
+                ballet, and I know what it&apos;s like to have a body that&apos;s
+                strong in some ways and stuck in others. That&apos;s why my
+                classes always include strength, balance and mobility work, and
+                why I&apos;m good at meeting people who don&apos;t think
+                they&apos;re &ldquo;yoga people.&rdquo;
               </p>
               <p>
-                I like a class that gives you something to work on and time to slow down.
+                I&apos;ve taught corporate teams, private clients, and a
+                volunteer program in a correctional facility in Vermont, where
+                most of my students had never been on a mat. That experience
+                shaped how I teach: clearly, without jargon, and with real
+                options. You can ask a question, adjust a pose, or rest at any
+                point, and I&apos;ll never make you feel like you&apos;re behind.
               </p>
-              <p>
-                I explain each sequence as we go. You can ask questions, adjust a pose, or rest at any point.
-              </p>
+            </div>
+
+            <div className="mt-8 rounded-2xl border border-[rgb(var(--mbm-line))] bg-white/45 p-6">
+              <h2 className="font-sans text-xs font-medium uppercase tracking-[0.22em] text-black/50">
+                Credentials
+              </h2>
+              <ul className="mt-4 grid gap-3">
+                {credentials.map((c) => (
+                  <li key={c.title} className="flex gap-3">
+                    <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-black/35" aria-hidden="true" />
+                    <span>
+                      <span className="block text-base text-[rgb(var(--mbm-ink))]">{c.title}</span>
+                      {c.detail && (
+                        <span className="mt-0.5 block text-sm text-[rgb(var(--mbm-muted))]">{c.detail}</span>
+                      )}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div className="mt-8 flex flex-wrap gap-3">
+              <Button as={NavLink} to="/private">
+                Book a private session
+              </Button>
+              <Button as={NavLink} to="/classes" variant="ghost">
+                Explore classes
+              </Button>
             </div>
           </div>
         </div>
@@ -103,8 +154,7 @@ function TrainingSection() {
 
           <div className="lg:col-span-8">
             <p className="text-base leading-relaxed text-[rgb(var(--mbm-muted))] sm:text-lg">
-              I&apos;m a 200-hour certified teacher, and most of my classes
-              fall into these areas:
+              Most of what I teach falls into these areas:
             </p>
 
             <ul className="mt-8 grid gap-3 sm:grid-cols-2">
@@ -164,7 +214,7 @@ function CueSection() {
                 timing, and capture what worked in a quick note after class.
               </p>
               <p>
-                It grew out of my own teaching — and it&apos;s free to try in
+                It grew out of my own teaching, and it&apos;s free to try in
                 any browser, or on iPhone and Android.
               </p>
             </div>
@@ -193,16 +243,16 @@ function AboutCta() {
               Want to practice together?
             </h2>
             <p className="mt-3 max-w-prose text-[rgb(var(--mbm-muted))]">
-              Take a look at my classes, or reach out if you&apos;re not sure
-              where to start.
+              Start with a private session, or come to a group class and see
+              how I teach.
             </p>
           </div>
           <div className="flex flex-wrap gap-3">
-            <Button as={NavLink} to="/classes">
-              Explore classes
+            <Button as={NavLink} to="/private">
+              Book a private session
             </Button>
-            <Button as={NavLink} to="/contact" variant="ghost">
-              Get in touch
+            <Button as={NavLink} to="/classes" variant="ghost">
+              Explore classes
             </Button>
           </div>
         </div>

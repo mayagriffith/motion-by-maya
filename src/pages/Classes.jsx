@@ -40,6 +40,7 @@ const classes = [
     desc: "A session planned around your goals and experience. Learn the basics, work on specific poses, or practice at your own pace.",
     length: "60 min",
     tags: ["Private", "Personalized", "Supportive"],
+    link: { to: "/private", label: "See packages & book" },
   },
 ];
 
@@ -50,7 +51,7 @@ export default function Classes() {
         title="Classes"
         description="Explore vinyasa, power flow, hatha, yoga for athletes, gentle classes, and private yoga sessions with Maya."
         path="/classes"
-        keywords="power yoga, vinyasa, yoga for runners, mobility, beginner yoga, private yoga NYC"
+        keywords="power yoga, vinyasa, yoga for runners, mobility, beginner yoga, private yoga brooklyn, private yoga NYC"
       />
       <section className="border-b border-[rgb(var(--mbm-line))]">
       <Container className="py-14 sm:py-20">
@@ -64,18 +65,21 @@ export default function Classes() {
               Choose your practice.
             </h1>
             <p className="mt-5 text-xl leading-relaxed text-black/80 sm:text-2xl">
-              Active flows, slower classes, and private sessions.
+              Group classes, slower formats, and private 1:1 sessions.
             </p>
             <p className="mt-4 text-base leading-relaxed text-[rgb(var(--mbm-muted))] sm:text-lg">
-              Compare the formats below, then check the schedule for available classes. If you&apos;re unsure where to start, ask me.
+              Privates have their own page.{" "}
+              <NavLink className="text-black underline underline-offset-4" to="/private">
+                See packages and book →
+              </NavLink>
             </p>
           </div>
           <div className="flex flex-wrap gap-3">
             <Button as={NavLink} to="/schedule">
               View schedule
             </Button>
-            <Button as={NavLink} to="/contact" variant="ghost">
-              Ask about a session
+            <Button as={NavLink} to="/private" variant="ghost">
+              Private sessions
             </Button>
           </div>
         </div>
@@ -92,7 +96,11 @@ export default function Classes() {
               </p>
               <div className="mt-5 space-y-3 border-t border-[rgb(var(--mbm-line))] pt-4">
                 <div className="text-xs font-medium text-black/55">{c.length}</div>
-                <NavLink className="inline-block text-sm underline underline-offset-4" to={`/contact?class=${encodeURIComponent(c.title)}`}>Ask about {c.title}</NavLink>
+                {c.link ? (
+                  <NavLink className="inline-block text-sm font-medium underline underline-offset-4" to={c.link.to}>{c.link.label}</NavLink>
+                ) : (
+                  <NavLink className="inline-block text-sm underline underline-offset-4" to={`/contact?class=${encodeURIComponent(c.title)}`}>Ask about {c.title}</NavLink>
+                )}
                 <div className="flex flex-wrap gap-1.5">
                   {c.tags.map((t) => (
                     <span

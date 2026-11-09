@@ -5,15 +5,16 @@ import PageMeta from "../components/PageMeta.jsx";
 import NewsletterSignup from "../components/NewsletterSignup.jsx";
 import JournalCard from "../components/JournalCard.jsx";
 import { getFeaturedPost } from "../content/journal/posts.js";
+import { INSURED } from "../config/site.js";
 
 export default function Home() {
   return (
     <>
       <PageMeta
         title="Modern Yoga for Real Life"
-        description="Power and vinyasa-inspired yoga for runners, lifters, and beginners. Strength, mobility, recovery, and breath-led movement in NYC and online."
+        description="Private 1:1 yoga in your home, at your building, or online, plus small group classes in Brooklyn and Manhattan. Strength, mobility, breath, and recovery for beginners, runners, and lifters."
         path="/"
-        keywords="yoga for runners, mobility, beginner yoga, yoga for strength training, recovery and movement, NYC yoga"
+        keywords="private yoga brooklyn, in-home yoga, yoga for runners, beginner yoga, yoga for strength training, brooklyn yoga teacher"
       />
       <Hero />
       <Highlights />
@@ -39,7 +40,7 @@ function Hero() {
           <div className="lg:col-span-7">
             <div className="home-eyebrow">
               <span className="home-eyebrow-line" aria-hidden="true" />
-              Motion by Maya
+              Motion by Maya · Brooklyn
             </div>
 
             <h1 className="mt-6 text-[clamp(2.75rem,6vw,4.5rem)] leading-[0.92] tracking-tight">
@@ -48,22 +49,22 @@ function Hero() {
             </h1>
 
             <p className="mt-6 max-w-xl text-base leading-relaxed text-[rgb(var(--mbm-muted))] sm:text-lg">
-              Vinyasa and power yoga with Maya. Expect a mix of flowing sequences, strength work, and time to slow down. Beginners are welcome.
+              Private sessions in your home, at your building, or online, plus small group classes in Brooklyn and Manhattan. Strength, mobility, breath, and time to slow down. Beginners welcome, athletes especially.
             </p>
 
             <div className="mt-8 flex flex-wrap items-center gap-3">
-              <Button as={NavLink} to="/classes">
-                Explore classes
+              <Button as={NavLink} to="/private">
+                Book a private session
               </Button>
-              <Button as="a" href="#offerings" variant="ghost">
-                See offerings
+              <Button as={NavLink} to="/classes" variant="ghost">
+                See group classes
               </Button>
             </div>
 
             <div className="mt-10 flex flex-wrap gap-x-8 gap-y-4 border-t border-[rgb(var(--mbm-line))] pt-8">
               {[
                 { value: "All levels", label: "Beginners welcome" },
-                { value: "NYC + Online", label: "NYC, North Jersey + online" },
+                { value: "Brooklyn & Manhattan", label: "In-home, studio or online" },
                 { value: "Power & flow", label: "Strength + mobility + recovery" },
               ].map((stat) => (
                 <div key={stat.value}>
@@ -120,8 +121,8 @@ function Highlights() {
           strokeLinejoin="round"
         />
       ),
-      title: "Clear instruction",
-      desc: "Follow each movement with clear cues and demonstrations.",
+      title: "Private 1:1",
+      desc: "In your home or online · from $130 a session.",
     },
     {
       icon: (
@@ -132,8 +133,8 @@ function Highlights() {
           strokeLinecap="round"
         />
       ),
-      title: "Built for athletes",
-      desc: "Work on mobility and balance alongside your training.",
+      title: INSURED ? "RYT-200, insured" : "RYT-200 certified",
+      desc: "Ulu Yoga trained · Brooklyn-based.",
     },
     {
       icon: (
@@ -145,8 +146,8 @@ function Highlights() {
           strokeLinejoin="round"
         />
       ),
-      title: "All levels welcome",
-      desc: "Choose a variation or take a break when you need one.",
+      title: "For real bodies",
+      desc: "Runners, lifters, beginners, desk people.",
     },
   ];
 
@@ -224,7 +225,34 @@ function Offerings() {
           </div>
         </div>
 
-        <div className="mt-12 grid gap-4 sm:grid-cols-2">
+        <Link
+          to="/private"
+          className="group mt-12 block rounded-[1.75rem] bg-[rgb(var(--mbm-ink))] p-7 text-white shadow-[0_24px_60px_-20px_rgba(20,20,18,0.35)] transition-transform duration-300 hover:-translate-y-1 sm:p-9"
+        >
+          <div className="grid items-end gap-6 md:grid-cols-12">
+            <div className="md:col-span-8">
+              <span className="text-[0.7rem] font-medium uppercase tracking-[0.22em] text-white/55">
+                Private 1:1
+              </span>
+              <h3 className="mt-3 text-3xl leading-tight sm:text-4xl">
+                Yoga that fits your life, in your living room.
+              </h3>
+              <p className="mt-3 max-w-xl text-sm leading-relaxed text-white/75 sm:text-base">
+                One-on-one sessions in Brooklyn and Manhattan, at home, in your
+                building, or online. Planned around your body and your week.
+              </p>
+            </div>
+            <div className="md:col-span-4 md:text-right">
+              <div className="font-serif text-2xl">From $130 a session</div>
+              <span className="mt-3 inline-flex items-center gap-2 text-sm underline underline-offset-4 group-hover:text-white">
+                See packages &amp; book
+                <span aria-hidden="true">→</span>
+              </span>
+            </div>
+          </div>
+        </Link>
+
+        <div className="mt-4 grid gap-4 sm:grid-cols-2">
           {offerings.map((o) => (
             <article
               key={o.title}
@@ -255,8 +283,8 @@ function Offerings() {
           <Button as={NavLink} to="/classes">
             View class formats
           </Button>
-          <Button as={NavLink} to="/contact" variant="ghost">
-            Ask about 1:1
+          <Button as={NavLink} to="/private" variant="ghost">
+            Private sessions
           </Button>
         </div>
       </Container>
@@ -320,10 +348,10 @@ function BottomCta() {
                 id="home-cta-heading"
                 className="text-[clamp(2rem,4vw,3rem)] leading-[1.02] text-white"
               >
-                Want to join a class?
+                Ready when you are.
               </h2>
               <p className="mt-4 max-w-lg text-sm leading-relaxed text-white/80 sm:text-base">
-                Check the schedule or contact me about a private session. I can also help you choose a class.
+                Book a private session, or come to a group class and see how I teach. Either way, you&apos;ll leave with something to work on and a little more room to breathe.
               </p>
               <p className="mt-3 text-sm text-white/60">
                 New here?{" "}
@@ -335,15 +363,15 @@ function BottomCta() {
             </div>
             <div className="lg:col-span-5 lg:justify-self-end">
               <div className="flex flex-wrap gap-3">
-                <Button as={NavLink} to="/contact" variant="inverse">
-                  Contact Maya
+                <Button as={NavLink} to="/private" variant="inverse">
+                  Book a private session
                 </Button>
                 <Button as={NavLink} to="/classes" variant="inverse-ghost">
                   Browse classes
                 </Button>
               </div>
               <p className="mt-4 text-xs text-white/60">
-                Online + NYC / North Jersey (as available).
+                Brooklyn &amp; Manhattan · in-home, studio or online
               </p>
             </div>
           </div>

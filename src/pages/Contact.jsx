@@ -1,9 +1,10 @@
 import { useState } from "react";
-import { useSearchParams } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 import Container from "../components/Container.jsx";
 import Button from "../components/Button.jsx";
 import PageMeta from "../components/PageMeta.jsx";
 import { trackEvent } from "../lib/analytics.js";
+import { neighborhoodOptions } from "../content/privateSessions.js";
 
 const EMAIL = "motionbymaya@gmail.com";
 const FORMSPREE_ID = import.meta.env.VITE_FORMSPREE_FORM_ID;
@@ -27,6 +28,9 @@ const inputClassName =
 export default function Contact() {
   const [searchParams] = useSearchParams();
   const selectedClass = searchParams.get("class") || "";
+  const [inquiry, setInquiry] = useState(
+    selectedClass === "Private 1:1 Sessions" ? "private-1-1" : selectedClass ? "class-help" : ""
+  );
   const [status, setStatus] = useState("idle");
   const [errorMessage, setErrorMessage] = useState("");
 
@@ -47,6 +51,7 @@ export default function Contact() {
     const email = formData.get("email").toString().trim();
     const inquiryValue = formData.get("inquiry").toString();
     const message = formData.get("message").toString().trim();
+    const neighborhood = formData.get("neighborhood")?.toString() || undefined;
     const inquiryLabel =
       INQUIRY_TYPES.find((type) => type.value === inquiryValue)?.label ??
       inquiryValue;
@@ -65,6 +70,7 @@ export default function Contact() {
           name,
           email,
           inquiry: inquiryLabel,
+          neighborhood,
           message,
           _subject: `[${inquiryLabel}] New inquiry from ${name}`,
           _replyto: email,
@@ -80,6 +86,7 @@ export default function Contact() {
       setStatus("success");
       trackEvent("generate_lead", { form_name: "contact", inquiry: inquiryLabel });
       form.reset();
+      setInquiry("");
     } catch (err) {
       setStatus("error");
       setErrorMessage(
@@ -148,6 +155,12 @@ export default function Contact() {
 
           <div className="lg:col-span-7">
             <div className="rounded-3xl border border-[rgb(var(--mbm-line))] bg-white/40 p-7 sm:p-8">
+              <p className="mb-6 rounded-2xl bg-[rgb(var(--mbm-bg))]/70 px-4 py-3 text-sm ring-1 ring-[rgb(var(--mbm-line))]">
+                Looking to book a private? Skip the form.{" "}
+                <Link className="font-medium underline underline-offset-4" to="/private">
+                  See packages and book
+                </Link>
+              </p>
               <h2 className="text-3xl sm:text-4xl">Send a note</h2>
               <p className="mt-2 text-sm text-[rgb(var(--mbm-muted))] sm:text-base">
                 Send your question below. I&apos;ll reply by email.
@@ -197,7 +210,8 @@ export default function Contact() {
                       name="inquiry"
                       required
                       disabled={status === "submitting"}
-                      defaultValue={selectedClass === "Private 1:1 Sessions" ? "private-1-1" : selectedClass ? "class-help" : ""}
+                      value={inquiry}
+                      onChange={(e) => setInquiry(e.target.value)}
                       className={`${inputClassName} appearance-none bg-[url('data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%2216%22 height=%2216%22 viewBox=%220 0 24 24%22 fill=%22none%22 stroke=%22%235c5c58%22 stroke-width=%222%22 stroke-linecap=%22round%22%3E%3Cpath d=%22M6 9l6 6 6-6%22/%3E%3C/svg%3E')] bg-[length:16px] bg-[right_1rem_center] bg-no-repeat pr-10 text-black/80 invalid:text-black/45`}
                     >
                       <option value="" disabled>
@@ -210,6 +224,28 @@ export default function Contact() {
                       ))}
                     </select>
                   </div>
+
+                  {inquiry === "private-1-1" && (
+                    <div className="grid gap-2">
+                      <label className="text-sm font-medium" htmlFor="neighborhood">
+                        Preferred neighborhood
+                      </label>
+                      <select
+                        id="neighborhood"
+                        name="neighborhood"
+                        defaultValue=""
+                        disabled={status === "submitting"}
+                        className={`${inputClassName} appearance-none bg-[url('data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%2216%22 height=%2216%22 viewBox=%220 0 24 24%22 fill=%22none%22 stroke=%22%235c5c58%22 stroke-width=%222%22 stroke-linecap=%22round%22%3E%3Cpath d=%22M6 9l6 6 6-6%22/%3E%3C/svg%3E')] bg-[length:16px] bg-[right_1rem_center] bg-no-repeat pr-10 text-black/80`}
+                      >
+                        <option value="">Select one</option>
+                        {neighborhoodOptions.map((n) => (
+                          <option key={n} value={n}>
+                            {n}
+                          </option>
+                        ))}
+                      </select>
+                    </div>
+                  )}
 
                   <div className="grid gap-2">
                     <label className="text-sm font-medium" htmlFor="message">

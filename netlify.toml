@@ -1,3 +1,10 @@
 [build]
   command = "npm run build"
   publish = "dist"
+
+# /book is also in public/_redirects (which Netlify reads first, so the rule
+# there is the one that actually fires, ahead of the SPA fallback).
+[[redirects]]
+  from = "/book"
+  to = "/private#book"
+  status = 301

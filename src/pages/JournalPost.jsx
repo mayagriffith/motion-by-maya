@@ -94,8 +94,29 @@ function ArticleBody({ blocks }) {
           );
         }
 
+        if (block.type === "cta") {
+          return (
+            <div
+              key={`cta-${index}`}
+              className="!mt-10 rounded-[1.5rem] border border-[rgb(var(--mbm-line))] bg-white/45 p-6 sm:p-7"
+            >
+              <p className="text-[rgb(var(--mbm-ink))]">{block.content}</p>
+              <Button as={Link} to={block.href} className="mt-5">
+                {block.label}
+              </Button>
+            </div>
+          );
+        }
+
         return (
-          <p key={`${block.content.slice(0, 32)}-${index}`}>{block.content}</p>
+          <p key={`${block.content.slice(0, 32)}-${index}`}>
+            {block.lead && (
+              <strong className="font-semibold text-[rgb(var(--mbm-ink))]">
+                {block.lead}{" "}
+              </strong>
+            )}
+            {block.content}
+          </p>
         );
       })}
     </div>
@@ -178,11 +199,11 @@ export default function JournalPost() {
                 {post.externalLink.label}
               </Button>
             )}
-            <Button as={Link} to="/classes">
-              Explore classes
+            <Button as={Link} to="/private">
+              Book a private session
             </Button>
-            <Button as={Link} to="/contact" variant="ghost">
-              Get in touch
+            <Button as={Link} to="/classes" variant="ghost">
+              Explore classes
             </Button>
           </div>
         </Container>

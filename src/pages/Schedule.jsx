@@ -11,6 +11,7 @@ import {
   getCalendarSubscribeUrl,
   hasCalendar,
 } from "../lib/calendar.js";
+import { GROUP_CLASSES_IN_SEASON } from "../config/site.js";
 
 const VIEWS = [
   { id: "MONTH", label: "Month" },
@@ -29,7 +30,7 @@ export default function Schedule() {
     <>
       <PageMeta
         title="Class Schedule"
-        description="View upcoming Motion by Maya yoga classes — online and in NYC / North Jersey. Subscribe to stay updated."
+        description="Upcoming Motion by Maya group yoga classes in Brooklyn, Manhattan, and online. Subscribe to the calendar, or book a private session any week."
         path="/schedule"
       />
       <section className="border-b border-[rgb(var(--mbm-line))]">
@@ -43,7 +44,7 @@ export default function Schedule() {
             Class calendar.
           </h1>
           <p className="mt-5 text-base leading-relaxed text-[rgb(var(--mbm-muted))] sm:text-lg">
-            Check upcoming classes and open an event for details. Contact me to ask about joining a class or arranging a private session.
+            Check upcoming group classes and open an event for details. Private sessions are booked separately, any week.
           </p>
         </div>
 
@@ -117,8 +118,8 @@ export default function Schedule() {
                 </ul>
 
                 <div className="mt-5">
-                  <Button as={NavLink} to="/contact" variant="ghost" className="w-full">
-                    Questions or booking
+                  <Button as={NavLink} to="/private" variant="ghost" className="w-full">
+                    Book a private session
                   </Button>
                 </div>
               </div>
@@ -126,7 +127,26 @@ export default function Schedule() {
           </aside>
 
           <div className="lg:col-span-8">
-            {calendarReady ? (
+            {!GROUP_CLASSES_IN_SEASON ? (
+              <div className="rounded-[1.75rem] border border-[rgb(var(--mbm-line))] bg-white/45 p-10 text-center sm:p-14">
+                <p className="font-serif text-3xl leading-tight">
+                  Group classes are between seasons.
+                </p>
+                <p className="mx-auto mt-4 max-w-md text-sm leading-relaxed text-[rgb(var(--mbm-muted))] sm:text-base">
+                  Private sessions are available every week, in your home, at
+                  your building, or online. Subscribe to the calendar to hear
+                  when group classes are back.
+                </p>
+                <div className="mt-6 flex flex-wrap justify-center gap-3">
+                  <Button as={NavLink} to="/private">
+                    Book a private session →
+                  </Button>
+                  <Button as={NavLink} to="/classes" variant="ghost">
+                    View class formats
+                  </Button>
+                </div>
+              </div>
+            ) : calendarReady ? (
               <>
                 <div className="flex flex-wrap items-center justify-between gap-4">
                   <div className="schedule-view-toggle inline-flex rounded-full border border-[rgb(var(--mbm-line))] bg-white/40 p-1">

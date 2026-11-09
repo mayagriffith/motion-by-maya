@@ -2,9 +2,73 @@
  * Blog posts
  *
  * To add a new article, copy the existing entry and update its fields.
- * Body blocks support: paragraph, heading, list
+ * Body blocks support: paragraph (optional bold `lead`), heading, list,
+ * image, imageRow, cta ({ content, href, label })
+ * Set featured: true on the one post the homepage should feature.
  */
 export const posts = [
+  {
+    slug: "what-a-first-private-session-looks-like",
+    title: "What a first private yoga session with me actually looks like",
+    excerpt:
+      "No chanting, no pretzel poses, no judgment. Here's the honest hour-by-hour of a first session, so you know exactly what you're booking.",
+    coverImage: "/images/hero.png",
+    date: "2026-11-08",
+    tags: ["Private sessions", "Beginners", "Brooklyn"],
+    readingTime: 4,
+    featured: true,
+    seoDescription:
+      "What happens in a first private yoga session in Brooklyn or Manhattan with Maya Griffith, RYT-200: the intro call, the first ten minutes, the practice, and what you take home.",
+    body: [
+      {
+        type: "paragraph",
+        content:
+          "People ask me what a private session is \"like\" and I think what they're really asking is: will this be awkward? Fair question. Here's exactly what happens.",
+      },
+      {
+        type: "paragraph",
+        lead: "Before I arrive.",
+        content:
+          "We've had a 15-minute call. I know roughly what you're hoping for. Maybe your back hurts from sitting, maybe you run and your hips feel like concrete, maybe you've just always wanted to try yoga and a class full of strangers sounded like a lot. I've also asked about injuries and anything you want me to know. You don't need to prep anything. Clear a space about the size of two mats. I bring the mats.",
+      },
+      {
+        type: "paragraph",
+        lead: "The first ten minutes.",
+        content:
+          "We don't start with poses. We start with you standing, sitting, breathing, and me watching how you move. I'm not judging, I'm looking. Where do you hold tension? How do you breathe when you're not thinking about it? This tells me more than any questionnaire.",
+      },
+      {
+        type: "paragraph",
+        lead: "The middle forty.",
+        content:
+          "This is where we move. For a first session I keep it simple on purpose: a handful of shapes, done well, with me explaining why each one and what you should feel. If you're a runner, we're probably spending time on hips and calves. If you sit all day, it's chest, upper back and the breath you've forgotten how to take. If you're brand new, we're building the five or six positions that everything else comes from. I'll adjust things constantly: a block here, a shorter hold there. You are never doing a pose just because it's \"the pose.\"",
+      },
+      {
+        type: "paragraph",
+        lead: "The last ten.",
+        content:
+          "We slow down. A couple of minutes of real rest, then we talk about what you noticed. Then I tell you what I'd do next time, and I send you two or three things to do on your own. Short, specific, no 45-minute homework.",
+      },
+      {
+        type: "paragraph",
+        lead: "What it's not.",
+        content:
+          "It's not a workout class crammed into your living room. It's not me performing poses at you. It's not spiritual unless you want it to be. It's an hour of attention on how your body actually works, from someone who's trained to see it.",
+      },
+      {
+        type: "paragraph",
+        lead: "Who it's for.",
+        content:
+          "Beginners who want a private way in. Athletes who want yoga that respects their training. Anyone whose schedule makes a 6pm studio class a fantasy. And anyone who's been told to \"do yoga\" by a doctor or PT and has no idea where to start.",
+      },
+      {
+        type: "cta",
+        content: "If that sounds like what you need, here's how to book. The first step is a call, and it's free.",
+        href: "/private",
+        label: "See packages and book",
+      },
+    ],
+  },
   {
     slug: "meet-cue",
     title: "Meet Cue: the class planning app I built for yoga teachers",
@@ -14,7 +78,7 @@ export const posts = [
     date: "2026-09-09",
     tags: ["Cue", "Teaching", "Class planning"],
     readingTime: 4,
-    featured: true,
+    featured: false,
     seoDescription:
       "Cue is a yoga class planning app built by a teacher, for teachers — a visual sequence builder, a calm teaching mode with cues and timing, post-class reflections, and optional AI assistance. Free to try on web, iPhone, and Android.",
     body: [

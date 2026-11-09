@@ -3,6 +3,7 @@ import { useEffect } from "react";
 const SITE_NAME = "Motion by Maya";
 const SITE_URL = import.meta.env.VITE_SITE_URL || "https://motionbymaya.com";
 const DEFAULT_IMAGE = `${SITE_URL}/images/hero.png`;
+const JSON_LD_ID = "page-json-ld";
 
 function upsertMeta(attr, key, content) {
   if (!content) return;
@@ -22,9 +23,11 @@ export default function PageMeta({
   image = DEFAULT_IMAGE,
   type = "website",
   keywords,
+  jsonLd,
 }) {
   const fullTitle = title.includes(SITE_NAME) ? title : `${title} | ${SITE_NAME}`;
   const url = `${SITE_URL}${path}`;
+  const jsonLdString = jsonLd ? JSON.stringify(jsonLd) : "";
 
   useEffect(() => {
     document.title = fullTitle;
@@ -49,6 +52,19 @@ export default function PageMeta({
     }
     canonical.setAttribute("href", url);
   }, [fullTitle, description, url, image, type, keywords]);
+
+  useEffect(() => {
+    // The prerendered HTML may already carry this page's JSON-LD (or another
+    // page's, after client-side navigation). Always start clean.
+    document.getElementById(JSON_LD_ID)?.remove();
+    if (!jsonLdString) return undefined;
+    const script = document.createElement("script");
+    script.type = "application/ld+json";
+    script.id = JSON_LD_ID;
+    script.textContent = jsonLdString;
+    document.head.appendChild(script);
+    return () => script.remove();
+  }, [jsonLdString]);
 
   return null;
 }

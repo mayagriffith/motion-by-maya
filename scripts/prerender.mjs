@@ -10,6 +10,10 @@ import { readFileSync, writeFileSync, mkdirSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { posts } from "../src/content/journal/posts.js";
+import {
+  PRIVATE_META_DESCRIPTION,
+  buildPrivateJsonLd,
+} from "../src/content/privateSessions.js";
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 const SITE_URL = process.env.VITE_SITE_URL || "https://motionbymaya.com";
@@ -21,15 +25,23 @@ const routes = [
     path: "/",
     title: "Motion by Maya | Modern Yoga for Real Life",
     description:
-      "Power and vinyasa-inspired yoga for runners, lifters, and beginners. Strength, mobility, recovery, and breath-led movement in NYC and online.",
+      "Private 1:1 yoga in your home, at your building, or online, plus small group classes in Brooklyn and Manhattan. Strength, mobility, breath, and recovery for beginners, runners, and lifters.",
     keywords:
-      "yoga for runners, mobility, beginner yoga, yoga for strength training, recovery and movement, NYC yoga",
+      "private yoga brooklyn, in-home yoga, yoga for runners, beginner yoga, yoga for strength training, brooklyn yoga teacher",
+  },
+  {
+    path: "/private",
+    title: `Private Yoga Sessions in Brooklyn & Manhattan | ${SITE_NAME}`,
+    description: PRIVATE_META_DESCRIPTION,
+    keywords:
+      "private yoga instructor brooklyn, in-home yoga park slope, private yoga brooklyn heights, private yoga nyc, yoga for runners brooklyn",
+    jsonLd: buildPrivateJsonLd(SITE_URL),
   },
   {
     path: "/about",
     title: `About Maya | ${SITE_NAME}`,
     description:
-      "Meet Maya — 200-hour certified yoga teacher offering modern vinyasa and power-inspired classes for athletes, beginners, and active lifestyles.",
+      "Meet Maya Griffith, RYT-200 (Ulu Yoga), a Brooklyn yoga teacher offering private 1:1 sessions and vinyasa, power, and breath-led classes for athletes, beginners, and busy people.",
   },
   {
     path: "/classes",
@@ -37,13 +49,13 @@ const routes = [
     description:
       "Explore vinyasa, power flow, hatha, yoga for athletes, gentle classes, and private yoga sessions with Maya.",
     keywords:
-      "power yoga, vinyasa, yoga for runners, mobility, beginner yoga, private yoga NYC",
+      "power yoga, vinyasa, yoga for runners, mobility, beginner yoga, private yoga brooklyn, private yoga NYC",
   },
   {
     path: "/schedule",
     title: `Class Schedule | ${SITE_NAME}`,
     description:
-      "View upcoming Motion by Maya yoga classes — online and in NYC / North Jersey. Subscribe to stay updated.",
+      "Upcoming Motion by Maya group yoga classes in Brooklyn, Manhattan, and online. Subscribe to the calendar, or book a private session any week.",
   },
   {
     path: "/what-to-expect",
@@ -103,6 +115,7 @@ function headBlock(route) {
     `<link rel="canonical" href="${url}" />`,
     `<meta property="og:type" content="${route.type || "website"}" />`,
     `<meta property="og:site_name" content="${SITE_NAME}" />`,
+    `<meta property="og:locale" content="en_US" />`,
     `<meta property="og:title" content="${title}" />`,
     `<meta property="og:description" content="${description}" />`,
     `<meta property="og:url" content="${url}" />`,
@@ -112,6 +125,11 @@ function headBlock(route) {
     `<meta name="twitter:description" content="${description}" />`,
     `<meta name="twitter:image" content="${image}" />`,
   );
+  if (route.jsonLd) {
+    // Escape "<" so the JSON can never close the script tag early.
+    const json = JSON.stringify(route.jsonLd).replace(/</g, "\\u003c");
+    lines.push(`<script type="application/ld+json" id="page-json-ld">${json}</script>`);
+  }
   return lines.join("\n    ");
 }
 

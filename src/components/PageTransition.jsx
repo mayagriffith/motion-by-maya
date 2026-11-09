@@ -1,24 +1,12 @@
-import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
-import clsx from "clsx";
 
+// Keying on the pathname remounts the wrapper on navigation, which replays
+// the CSS fade-in without any state or effects.
 export default function PageTransition({ children }) {
   const location = useLocation();
-  const [visible, setVisible] = useState(false);
-
-  useEffect(() => {
-    setVisible(false);
-    const frame = requestAnimationFrame(() => setVisible(true));
-    return () => cancelAnimationFrame(frame);
-  }, [location.pathname]);
 
   return (
-    <div
-      className={clsx(
-        "page-transition",
-        visible && "page-transition--visible"
-      )}
-    >
+    <div key={location.pathname} className="page-transition">
       {children}
     </div>
   );
