@@ -29,11 +29,12 @@ everyone at 10am ET and 30 minutes before class. `thursday-unsubscribe.mjs`
 handles the "Stop these emails" link. Class details come from
 `src/config/site.js`.
 
-Needs these Netlify environment variables (emails are skipped until all
-three are set; sign-ups are still saved):
+Needs one Netlify environment variable (emails are skipped until it is set;
+sign-ups are still saved):
 
-- `RESEND_API_KEY`: Resend API key with sending access
-- `MAIL_FROM`: e.g. `Maya Griffith <hello@motionbymaya.com>`; motionbymaya.com
-  must be verified in Resend (DNS records go in Netlify DNS)
-- `UNSUBSCRIBE_SECRET`: any long random string
-- `SKIP_DATES` (optional): extra Thursdays with no class, on top of `skipDates` in `src/config/site.js`
+- `RESEND_API_KEY`: a Resend API key with sending access, from the Resend
+  account where motionbymaya.com is verified (DNS records go in Netlify DNS)
+
+Optional: `MAIL_FROM` (defaults to `Maya Griffith <hello@motionbymaya.com>`),
+`UNSUBSCRIBE_SECRET`, and `SKIP_DATES` (extra Thursdays with no class, on top
+of `skipDates` in `src/config/site.js`).

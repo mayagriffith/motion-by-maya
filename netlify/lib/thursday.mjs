@@ -4,10 +4,12 @@
  * site and the emails can never disagree.
  *
  * Env (Netlify → Site configuration → Environment variables):
- *   RESEND_API_KEY      Resend API key with sending access
- *   MAIL_FROM           e.g. "Maya Griffith <hello@motionbymaya.com>" (domain verified in Resend)
- *   UNSUBSCRIBE_SECRET  any long random string (signs unsubscribe links)
- *   SKIP_DATES          optional, comma-separated YYYY-MM-DD Thursdays with no class
+ *   RESEND_API_KEY      required. A Resend API key with sending access; it
+ *                       also signs the unsubscribe links.
+ *   MAIL_FROM           optional, defaults to DEFAULT_FROM below (the domain
+ *                       must be verified in Resend)
+ *   UNSUBSCRIBE_SECRET  optional, overrides the key used to sign unsubscribe links
+ *   SKIP_DATES          optional, extra Thursdays with no class (YYYY-MM-DD, comma-separated)
  */
 import { createHmac, timingSafeEqual } from "node:crypto";
 import { getStore } from "@netlify/blobs";
@@ -19,6 +21,9 @@ import {
 } from "../../src/config/site.js";
 
 export const REPLY_TO = "motionbymaya@gmail.com";
+const DEFAULT_FROM = "Maya Griffith <hello@motionbymaya.com>";
+const mailFrom = () => process.env.MAIL_FROM || DEFAULT_FROM;
+const signingSecret = () => process.env.UNSUBSCRIBE_SECRET || process.env.RESEND_API_KEY || "";
 export const signups = () => getStore("thursday-flow-signups");
 export const sendLog = () => getStore("thursday-flow-sends");
 
@@ -31,8 +36,7 @@ export function isValidEmail(email) {
 }
 
 function signature(email) {
-  const secret = process.env.UNSUBSCRIBE_SECRET || "";
-  return createHmac("sha256", secret).update(email).digest("hex").slice(0, 32);
+  return createHmac("sha256", signingSecret()).update(email).digest("hex").slice(0, 32);
 }
 
 export function unsubscribeUrl(email) {
@@ -252,12 +256,12 @@ export function icsInvite() {
 // ── Sending ───────────────────────────────────────────────────────────
 
 export function mailConfigured() {
-  return Boolean(process.env.RESEND_API_KEY && process.env.MAIL_FROM && process.env.UNSUBSCRIBE_SECRET);
+  return Boolean(process.env.RESEND_API_KEY);
 }
 
 function toResend({ to, subject, html, text, attachments }, email) {
   return {
-    from: process.env.MAIL_FROM,
+    from: mailFrom(),
     to: [to],
     reply_to: REPLY_TO,
     subject,
