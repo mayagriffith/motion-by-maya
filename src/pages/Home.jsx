@@ -5,6 +5,8 @@ import PageMeta from "../components/PageMeta.jsx";
 import NewsletterSignup from "../components/NewsletterSignup.jsx";
 import JournalCard from "../components/JournalCard.jsx";
 import { getFeaturedPost } from "../content/journal/posts.js";
+import { ZOOM_CLASS } from "../config/site.js";
+import AddToCalendar from "../components/AddToCalendar.jsx";
 
 export default function Home() {
   return (
@@ -176,76 +178,73 @@ function Highlights() {
 }
 
 function Offerings() {
-  const offerings = [
-    {
-      num: "01",
-      title: "Power & Vinyasa Flow",
-      desc: "Flow between poses, practice balance, and build strength. I explain the transitions as we go.",
-      tags: ["Strength", "Flow", "Mobility"],
-    },
-    {
-      num: "02",
-      title: "Slower Movement",
-      desc: "Take more time in each pose, explore your range of motion, and finish with rest.",
-      tags: ["Balance", "Recovery", "Control"],
-    },
-    {
-      num: "03",
-      title: "Yoga for Active Lifestyles",
-      desc: "A focus on hips, shoulders, and core stability for people who run, lift, or spend long days sitting.",
-      tags: ["Mobility", "Stability", "Recovery"],
-    },
-    {
-      num: "04",
-      title: "New to Yoga",
-      desc: "Learn the poses with step-by-step instruction and options to adjust them. You don’t need prior yoga experience.",
-      tags: ["Accessible", "Supportive", "Intentional"],
-    },
-  ];
-
   return (
-    <section id="offerings" className="border-b border-[rgb(var(--mbm-line))]">
+    <section id="offerings" className="scroll-mt-20 border-b border-[rgb(var(--mbm-line))]">
       <Container className="py-16 sm:py-20">
-        <div className="max-w-3xl">
-          <div className="home-eyebrow">
-            <span className="home-eyebrow-line" aria-hidden="true" />
-            Offerings
-          </div>
-          <h2 className="mt-5 text-[clamp(2rem,4vw,3rem)] leading-[1.02]">
-            Find a class that suits you.
-          </h2>
-          <div className="mt-5 space-y-4 text-base leading-relaxed text-[rgb(var(--mbm-muted))] sm:text-lg">
-            <p>
-              Choose an active flow, a slower class, or a private session.
+        <div className="home-eyebrow">
+          <span className="home-eyebrow-line" aria-hidden="true" />
+          Offerings
+        </div>
+        <h2 className="mt-5 text-[clamp(2rem,4vw,3rem)] leading-[1.02]">
+          Three ways to practice with me.
+        </h2>
+
+        <div className="mt-10 grid gap-4 lg:grid-cols-3">
+          <article className="home-cta flex flex-col rounded-[1.75rem] p-7 text-white sm:p-8">
+            <span className="text-[0.7rem] font-semibold uppercase tracking-[0.22em] text-white/60">
+              Weekly on Zoom
+            </span>
+            <h3 className="mt-3 text-3xl leading-tight text-white">Gentle Thursday Flow</h3>
+            <p className="mt-3 flex-1 text-sm leading-relaxed text-white/75">
+              {ZOOM_CLASS.day}, {ZOOM_CLASS.time}. 40 minutes, all levels,
+              donation-based.
             </p>
-          </div>
+            <div className="mt-6 grid gap-2">
+              <Button as={NavLink} to="/zoom" variant="inverse">
+                Sign up
+              </Button>
+              <AddToCalendar tone="dark" />
+            </div>
+          </article>
+
+          <article className="flex flex-col rounded-[1.75rem] bg-[rgb(var(--mbm-accent))] p-7 text-white sm:p-8">
+            <span className="text-[0.7rem] font-semibold uppercase tracking-[0.22em] text-white/70">
+              One-on-one
+            </span>
+            <h3 className="mt-3 text-3xl leading-tight text-white">Private sessions</h3>
+            <p className="mt-3 flex-1 text-sm leading-relaxed text-white/85">
+              Planned around your body and your week, in your home or on Zoom.
+              From $130 a session.
+            </p>
+            <div className="mt-6 grid">
+              <Button as={NavLink} to="/private" variant="inverse">
+                See packages &amp; book
+              </Button>
+            </div>
+          </article>
+
+          <article className="flex flex-col rounded-[1.75rem] border border-[rgb(var(--mbm-line))] bg-white/60 p-7 sm:p-8">
+            <span className="text-[0.7rem] font-semibold uppercase tracking-[0.22em] text-[rgb(var(--mbm-accent))]">
+              Groups
+            </span>
+            <h3 className="mt-3 text-3xl leading-tight">Events &amp; parties</h3>
+            <p className="mt-3 flex-1 text-sm leading-relaxed text-[rgb(var(--mbm-muted))]">
+              Corporate yoga, birthday parties, bachelorette parties and other
+              groups. In person or on Zoom.
+            </p>
+            <div className="mt-6 grid">
+              <Button as={NavLink} to="/contact?class=Events%20%26%20Parties">
+                Plan an event
+              </Button>
+            </div>
+          </article>
         </div>
 
-        <div className="mt-12 grid gap-4 sm:grid-cols-2">
-          {offerings.map((o) => (
-            <article
-              key={o.title}
-              className="home-card group flex flex-col rounded-[1.75rem] border border-[rgb(var(--mbm-line))] bg-white/45 p-6 sm:p-7"
-            >
-              <span className="home-card-num font-serif text-3xl leading-none text-[rgb(var(--mbm-accent))]/45 transition-colors group-hover:text-[rgb(var(--mbm-accent))]">
-                {o.num}
-              </span>
-              <h3 className="mt-4 text-2xl leading-tight">{o.title}</h3>
-              <p className="mt-3 flex-1 text-sm leading-relaxed text-[rgb(var(--mbm-muted))]">
-                {o.desc}
-              </p>
-            </article>
-          ))}
-        </div>
-
-        <div className="mt-8 flex flex-wrap items-center gap-3">
-          <Button as={NavLink} to="/classes">
-            View class formats
-          </Button>
-          <Button as={NavLink} to="/contact" variant="ghost">
-            Ask about 1:1
-          </Button>
-        </div>
+        <p className="mt-8 text-sm">
+          <NavLink className="underline underline-offset-4" to="/classes">
+            See all class types and the calendar →
+          </NavLink>
+        </p>
       </Container>
     </section>
   );

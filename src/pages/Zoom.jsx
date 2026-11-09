@@ -4,7 +4,8 @@ import Container from "../components/Container.jsx";
 import Button from "../components/Button.jsx";
 import PageMeta from "../components/PageMeta.jsx";
 import { trackEvent } from "../lib/analytics.js";
-import { DONATION_LABEL, DONATION_URL, ZOOM_CLASS, ZOOM_JOIN_URL } from "../config/site.js";
+import { DONATION_LINKS, ZOOM_CLASS, ZOOM_JOIN_URL } from "../config/site.js";
+import AddToCalendar from "../components/AddToCalendar.jsx";
 
 const EMAIL = "motionbymaya@gmail.com";
 const FORMSPREE_ID = import.meta.env.VITE_FORMSPREE_FORM_ID;
@@ -20,29 +21,6 @@ const details = [
   { term: "First class", value: ZOOM_CLASS.firstClass },
   { term: "Cost", value: `Donation, suggested ${ZOOM_CLASS.suggestedDonation}` },
 ];
-
-/** Google Calendar "add event" link for the weekly class. */
-function addToCalendarUrl() {
-  const day = ZOOM_CLASS.firstDate.replaceAll("-", "");
-  const t = (hhmm) => hhmm.replace(":", "") + "00";
-  const details = [
-    "Gentle Thursday Flow with Maya, 40 minutes on Zoom.",
-    ZOOM_JOIN_URL ? `Join: ${ZOOM_JOIN_URL}` : "Maya emails the Zoom link before class.",
-    DONATION_URL ? `Donations: ${DONATION_URL}` : "",
-  ]
-    .filter(Boolean)
-    .join("\n");
-  const params = new URLSearchParams({
-    action: "TEMPLATE",
-    text: "Gentle Thursday Flow (Zoom yoga)",
-    dates: `${day}T${t(ZOOM_CLASS.start)}/${day}T${t(ZOOM_CLASS.end)}`,
-    ctz: "America/New_York",
-    recur: "RRULE:FREQ=WEEKLY;BYDAY=TH",
-    details,
-    location: ZOOM_JOIN_URL || "Zoom",
-  });
-  return `https://calendar.google.com/calendar/render?${params.toString()}`;
-}
 
 export default function Zoom() {
   return (
@@ -83,6 +61,7 @@ export default function Zoom() {
                   </div>
                 ))}
               </dl>
+              <AddToCalendar className="mt-6" />
             </div>
 
             <div id="signup" className="scroll-mt-24 lg:col-span-6">
@@ -188,27 +167,27 @@ function SignupForm() {
             ? `Here's the Zoom link. It's the same every week, so save it. See you ${ZOOM_CLASS.day} at 8.`
             : `I'll email you the Zoom link before class. See you ${ZOOM_CLASS.day} at 8.`}
         </p>
-        <div className="mt-6 grid gap-3 sm:flex sm:flex-wrap">
-          {ZOOM_JOIN_URL && (
-            <Button as="a" href={ZOOM_JOIN_URL} target="_blank" rel="noreferrer">
-              Join on Zoom
-            </Button>
-          )}
-          <Button
-            as="a"
-            href={addToCalendarUrl()}
-            target="_blank"
-            rel="noreferrer"
-            variant={ZOOM_JOIN_URL ? "ghost" : "primary"}
-          >
-            Add to my calendar
+        {ZOOM_JOIN_URL && (
+          <Button as="a" href={ZOOM_JOIN_URL} target="_blank" rel="noreferrer" className="mt-6">
+            Join on Zoom
           </Button>
-          {DONATION_URL && (
-            <Button as="a" href={DONATION_URL} target="_blank" rel="noreferrer" variant="ghost">
-              {DONATION_LABEL}
-            </Button>
-          )}
-        </div>
+        )}
+        <p className="mt-6 text-sm font-medium">Get a reminder every Thursday:</p>
+        <AddToCalendar className="mt-2" />
+        {DONATION_LINKS.length > 0 && (
+          <>
+            <p className="mt-6 text-sm font-medium">
+              Donation-based, suggested {ZOOM_CLASS.suggestedDonation}:
+            </p>
+            <div className="mt-2 flex flex-wrap gap-2">
+              {DONATION_LINKS.map((d) => (
+                <Button key={d.url} as="a" href={d.url} target="_blank" rel="noreferrer" variant="ghost">
+                  {d.label}
+                </Button>
+              ))}
+            </div>
+          </>
+        )}
         <button
           type="button"
           className="mt-6 text-sm text-[rgb(var(--mbm-muted))] underline underline-offset-4 hover:text-black"

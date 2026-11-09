@@ -22,12 +22,11 @@ export const ZOOM_CLASS = {
   end: "20:40",
 };
 
-// Where donations go, e.g. "https://venmo.com/u/your-handle" or a Stripe
-// Payment Link. While empty, no donate button shows; the page says
-// donation details come by email.
-export const DONATION_URL = "";
-// Shown on the button, e.g. "Venmo @your-handle".
-export const DONATION_LABEL = "Leave a donation";
+// Ways to donate after the Thursday class. Add one entry per method, e.g.
+//   { label: "Venmo @your-handle", url: "https://venmo.com/u/your-handle" },
+//   { label: "Card or Apple Pay", url: "https://buy.stripe.com/..." },
+// While empty, no donate buttons show.
+export const DONATION_LINKS = [];
 
 // The recurring Zoom meeting's join link (with the passcode built in).
 // While set, people see it right after they sign up. While empty, the

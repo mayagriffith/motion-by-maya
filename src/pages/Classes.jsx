@@ -3,6 +3,7 @@ import Container from "../components/Container.jsx";
 import Button from "../components/Button.jsx";
 import PageMeta from "../components/PageMeta.jsx";
 import ClassCalendar from "../components/ClassCalendar.jsx";
+import AddToCalendar from "../components/AddToCalendar.jsx";
 import { ZOOM_CLASS } from "../config/site.js";
 
 const classes = [
@@ -38,11 +39,6 @@ const classes = [
     title: "Yoga for Athletes",
     desc: "Hip and shoulder mobility, balance, and core stability alongside your running or lifting.",
     length: "45–60 min",
-  },
-  {
-    title: "Breathe + Restore",
-    desc: "Gentle movement, breathing exercises, and longer rests for a quieter practice.",
-    length: "30–45 min",
   },
 ];
 
@@ -86,10 +82,11 @@ export default function Classes() {
                   First class {ZOOM_CLASS.firstClass}.
                 </p>
               </div>
-              <div className="md:col-span-4 md:text-right">
+              <div className="flex flex-col gap-3 md:col-span-4 md:items-end">
                 <Button as={NavLink} to="/zoom" variant="inverse">
-                  Save my spot
+                  Sign up
                 </Button>
+                <AddToCalendar tone="dark" className="md:justify-end" />
               </div>
             </div>
           </div>
