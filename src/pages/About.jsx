@@ -2,7 +2,7 @@ import { NavLink } from "react-router-dom";
 import Container from "../components/Container.jsx";
 import Button from "../components/Button.jsx";
 import PageMeta from "../components/PageMeta.jsx";
-import { INSURED } from "../config/site.js";
+import { CREDENTIAL, INSURED, YOGA_ALLIANCE_REGISTERED } from "../config/site.js";
 
 const focusAreas = [
   "Vinyasa Yoga",
@@ -16,7 +16,7 @@ const focusAreas = [
 
 const credentials = [
   {
-    title: "200-Hour Yoga Teacher Training (RYT-200), Ulu Yoga",
+    title: `200-Hour Yoga Teacher Training${YOGA_ALLIANCE_REGISTERED ? " (RYT-200)" : ""}, Ulu Yoga`,
     detail: "Trauma-informed teaching, functional anatomy, Vinyasa & Hatha sequencing, breathwork",
   },
   ...(INSURED
@@ -30,7 +30,7 @@ export default function About() {
     <>
       <PageMeta
         title="About Maya"
-        description="Meet Maya Griffith, RYT-200 (Ulu Yoga), a Brooklyn yoga teacher offering private 1:1 sessions and vinyasa, power, and breath-led classes for athletes, beginners, and busy people."
+        description={`Meet Maya Griffith, ${CREDENTIAL} (Ulu Yoga), a Brooklyn yoga teacher offering private 1:1 sessions and vinyasa, power, and breath-led classes for athletes, beginners, and busy people.`}
         path="/about"
       />
       <AboutHero />
@@ -81,7 +81,7 @@ function AboutHero() {
             <div className="mt-6 space-y-5 text-base leading-relaxed text-[rgb(var(--mbm-muted))] sm:text-lg">
               <p>
                 Hi, I&apos;m Maya. I&apos;m a 200-hour certified yoga teacher
-                (Ulu Yoga, RYT-200), based in Brooklyn, and I teach vinyasa,
+                (Ulu Yoga{YOGA_ALLIANCE_REGISTERED ? ", RYT-200" : ""}), based in Brooklyn, and I teach vinyasa,
                 power yoga, and slower, breath-led classes: in studios, in
                 offices, and increasingly in people&apos;s living rooms.
               </p>

@@ -2,6 +2,12 @@
  * Site-wide switches. Flip these as things become true.
  */
 
+// Yoga Alliance registration. "RYT-200" may only be used once registered;
+// until then the site says "200-hour certified". Flip to true when the
+// registration is approved.
+export const YOGA_ALLIANCE_REGISTERED = false;
+export const CREDENTIAL = YOGA_ALLIANCE_REGISTERED ? "RYT-200" : "200-hour certified";
+
 // Liability insurance. Every "insured" claim on the site is gated on this.
 // Flip to true once the policy is active.
 export const INSURED = false;
@@ -26,7 +32,9 @@ export const ZOOM_CLASS = {
 //   { label: "Venmo @your-handle", url: "https://venmo.com/u/your-handle" },
 //   { label: "Card or Apple Pay", url: "https://buy.stripe.com/..." },
 // While empty, no donate buttons show.
-export const DONATION_LINKS = [];
+export const DONATION_LINKS = [
+  { label: "Venmo @ememanuelle", url: "https://venmo.com/u/ememanuelle" },
+];
 
 // The recurring Zoom meeting's join link (with the passcode built in).
 // While set, people see it right after they sign up. While empty, the

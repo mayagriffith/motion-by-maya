@@ -10,6 +10,7 @@ import { readFileSync, writeFileSync, mkdirSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { posts } from "../src/content/journal/posts.js";
+import { CREDENTIAL } from "../src/config/site.js";
 import {
   PRIVATE_META_DESCRIPTION,
   buildPrivateJsonLd,
@@ -41,7 +42,7 @@ const routes = [
     path: "/zoom",
     title: `Gentle Thursday Flow on Zoom | ${SITE_NAME}`,
     description:
-      "A gentle 40-minute yoga flow on Zoom every Thursday at 8pm Eastern with Maya Griffith, RYT-200. All levels, no experience needed. Donation-based, so pay what feels right.",
+      `A gentle 40-minute yoga flow on Zoom every Thursday at 8pm Eastern with Maya Griffith, ${CREDENTIAL}. All levels, no experience needed. Donation-based, so pay what feels right.`,
     keywords:
       "online yoga class, zoom yoga, donation based yoga, gentle yoga online, evening yoga class",
   },
@@ -49,7 +50,7 @@ const routes = [
     path: "/about",
     title: `About Maya | ${SITE_NAME}`,
     description:
-      "Meet Maya Griffith, RYT-200 (Ulu Yoga), a Brooklyn yoga teacher offering private 1:1 sessions and vinyasa, power, and breath-led classes for athletes, beginners, and busy people.",
+      `Meet Maya Griffith, ${CREDENTIAL} (Ulu Yoga), a Brooklyn yoga teacher offering private 1:1 sessions and vinyasa, power, and breath-led classes for athletes, beginners, and busy people.`,
   },
   {
     path: "/classes",

@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import Container from "./Container.jsx";
 import NewsletterSignup from "./NewsletterSignup.jsx";
-import { INSURED } from "../config/site.js";
+import { CREDENTIAL, INSURED } from "../config/site.js";
 
 const footerLinkClass =
   "w-fit text-black/70 transition hover:text-black hover:underline underline-offset-4";
@@ -19,7 +19,7 @@ export default function Footer() {
               Private 1:1 sessions, vinyasa, and power yoga with Maya.
             </p>
             <p className="mt-3 text-xs tracking-wide text-black/50">
-              {INSURED ? "RYT-200 · Fully insured · Brooklyn, NY" : "RYT-200 · Brooklyn, NY"}
+              {INSURED ? `${CREDENTIAL} · Fully insured · Brooklyn, NY` : `${CREDENTIAL} · Brooklyn, NY`}
             </p>
             <p className="mt-4 text-sm text-black/55">
               <a className={footerLinkClass} href="mailto:motionbymaya@gmail.com">

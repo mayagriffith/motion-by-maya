@@ -18,7 +18,7 @@ export const posts = [
     readingTime: 1,
     featured: false,
     seoDescription:
-      "Gentle Thursday Flow is a weekly, donation-based yoga class on Zoom with Maya Griffith, RYT-200. Thursdays 8:00 to 8:40pm Eastern, all levels, starting November 12.",
+      "Gentle Thursday Flow is a weekly, donation-based yoga class on Zoom with Maya Griffith, 200-hour certified (Ulu Yoga). Thursdays 8:00 to 8:40pm Eastern, all levels, starting November 12.",
     body: [
       {
         type: "paragraph",
