@@ -16,7 +16,7 @@ export const posts = [
     date: "2026-11-08",
     tags: ["Private sessions", "Beginners", "Brooklyn"],
     readingTime: 4,
-    featured: true,
+    featured: false,
     seoDescription:
       "What happens in a first private yoga session in Brooklyn or Manhattan with Maya Griffith, RYT-200: the intro call, the first ten minutes, the practice, and what you take home.",
     body: [
@@ -78,7 +78,7 @@ export const posts = [
     date: "2026-09-09",
     tags: ["Cue", "Teaching", "Class planning"],
     readingTime: 4,
-    featured: false,
+    featured: true,
     seoDescription:
       "Cue is a yoga class planning app built by a teacher, for teachers — a visual sequence builder, a calm teaching mode with cues and timing, post-class reflections, and optional AI assistance. Free to try on web, iPhone, and Android.",
     body: [

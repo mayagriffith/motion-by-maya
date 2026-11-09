@@ -25,9 +25,9 @@ const routes = [
     path: "/",
     title: "Motion by Maya | Modern Yoga for Real Life",
     description:
-      "Private 1:1 yoga in your home, at your building, or online, plus small group classes in Brooklyn and Manhattan. Strength, mobility, breath, and recovery for beginners, runners, and lifters.",
+      "Power and vinyasa-inspired yoga for runners, lifters, and beginners. Strength, mobility, recovery, and breath-led movement in NYC and online.",
     keywords:
-      "private yoga brooklyn, in-home yoga, yoga for runners, beginner yoga, yoga for strength training, brooklyn yoga teacher",
+      "yoga for runners, mobility, beginner yoga, yoga for strength training, recovery and movement, NYC yoga",
   },
   {
     path: "/private",
@@ -36,6 +36,14 @@ const routes = [
     keywords:
       "private yoga instructor brooklyn, in-home yoga park slope, private yoga brooklyn heights, private yoga nyc, yoga for runners brooklyn",
     jsonLd: buildPrivateJsonLd(SITE_URL),
+  },
+  {
+    path: "/zoom",
+    title: `Thursday Night Flow on Zoom | ${SITE_NAME}`,
+    description:
+      "A gentle 40-minute yoga flow on Zoom every Thursday at 7pm Eastern with Maya Griffith, RYT-200. All levels, no experience needed. Donation-based, so pay what feels right.",
+    keywords:
+      "online yoga class, zoom yoga, donation based yoga, gentle yoga online, evening yoga class",
   },
   {
     path: "/about",

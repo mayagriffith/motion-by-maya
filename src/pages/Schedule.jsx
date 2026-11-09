@@ -11,7 +11,7 @@ import {
   getCalendarSubscribeUrl,
   hasCalendar,
 } from "../lib/calendar.js";
-import { GROUP_CLASSES_IN_SEASON } from "../config/site.js";
+import { GROUP_CLASSES_IN_SEASON, ZOOM_CLASS } from "../config/site.js";
 
 const VIEWS = [
   { id: "MONTH", label: "Month" },
@@ -129,20 +129,24 @@ export default function Schedule() {
           <div className="lg:col-span-8">
             {!GROUP_CLASSES_IN_SEASON ? (
               <div className="rounded-[1.75rem] border border-[rgb(var(--mbm-line))] bg-white/45 p-10 text-center sm:p-14">
-                <p className="font-serif text-3xl leading-tight">
-                  Group classes are between seasons.
+                <p className="text-xs font-medium uppercase tracking-[0.22em] text-black/45">
+                  Every week on Zoom
+                </p>
+                <p className="mt-3 font-serif text-3xl leading-tight">
+                  Thursday Night Flow
                 </p>
                 <p className="mx-auto mt-4 max-w-md text-sm leading-relaxed text-[rgb(var(--mbm-muted))] sm:text-base">
-                  Private sessions are available every week, in your home, at
-                  your building, or online. Subscribe to the calendar to hear
-                  when group classes are back.
+                  {ZOOM_CLASS.day}, {ZOOM_CLASS.time}. A gentle 40-minute
+                  class, all levels, donation-based. Studio group classes are
+                  between seasons; subscribe to the calendar to hear when
+                  they&apos;re back.
                 </p>
                 <div className="mt-6 flex flex-wrap justify-center gap-3">
-                  <Button as={NavLink} to="/private">
-                    Book a private session →
+                  <Button as={NavLink} to="/zoom">
+                    Sign up for Thursdays
                   </Button>
-                  <Button as={NavLink} to="/classes" variant="ghost">
-                    View class formats
+                  <Button as={NavLink} to="/private" variant="ghost">
+                    Private sessions
                   </Button>
                 </div>
               </div>
