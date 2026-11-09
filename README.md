@@ -25,7 +25,7 @@ npm run lint     # eslint
 Sign-ups on `/zoom` go to `netlify/functions/thursday-signup.mjs`, which saves
 them in Netlify Blobs and emails the Zoom link with a calendar invite.
 `thursday-reminders.mjs` runs every 15 minutes and, on Thursdays, emails
-everyone at 10am ET and 30 minutes before class. `thursday-unsubscribe.mjs`
+everyone at 10am ET and 30 minutes before class, and at 10am emails Maya the list of who signed up (even if nobody). `thursday-unsubscribe.mjs`
 handles the "Stop these emails" link. Class details come from
 `src/config/site.js`.
 

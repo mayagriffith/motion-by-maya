@@ -193,6 +193,22 @@ Stop these emails: ${unsubscribeUrl(email)}`;
   return { subject, html, text };
 }
 
+/** Morning-of note to Maya: who's signed up for tonight. */
+export function rosterEmail(people, isoDate) {
+  const rows = people
+    .map((p) => `<li>${escapeHtml(p.name)} &lt;${escapeHtml(p.email)}&gt;${p.heardFrom ? ` · ${escapeHtml(p.heardFrom)}` : ""}</li>`)
+    .join("");
+  const count = people.length;
+  const subject = `Tonight's Gentle Thursday Flow: ${count} signed up`;
+  const html = `<div style="font-family:-apple-system,Segoe UI,Helvetica,Arial,sans-serif;color:#141412;max-width:520px">
+<h2 style="font-family:Georgia,serif;font-weight:400">${count} ${count === 1 ? "person is" : "people are"} signed up for tonight (${isoDate}).</h2>
+${count ? `<ol style="line-height:1.7">${rows}</ol>` : "<p>No one has signed up yet.</p>"}
+<p style="color:#8a8a85;font-size:13px">Everyone on this list gets reminders at 10am and 30 minutes before class.</p>
+<p>${button(ZOOM_JOIN_URL, "Start the Zoom")}</p></div>`;
+  const text = `${count} signed up for tonight (${isoDate}).\n\n${people.map((p) => `- ${p.name} <${p.email}>`).join("\n") || "No one has signed up yet."}\n\nZoom: ${ZOOM_JOIN_URL}`;
+  return { subject, html, text };
+}
+
 /** .ics invite: weekly on Thursdays, with reminders 1 day and 30 minutes before. */
 export function icsInvite() {
   const day = ZOOM_CLASS.firstDate.replaceAll("-", "");
@@ -286,6 +302,17 @@ async function resend(path, body) {
   });
   if (!res.ok) throw new Error(`Resend ${res.status}: ${await res.text()}`);
   return res.json();
+}
+
+/** Plain email to Maya (no unsubscribe link needed). */
+export function sendToMaya({ subject, html, text }) {
+  return resend("/emails", {
+    from: mailFrom(),
+    to: [REPLY_TO],
+    subject,
+    html,
+    text,
+  });
 }
 
 export function sendOne(message, email) {
