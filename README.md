@@ -1,16 +1,21 @@
-# React + Vite
+# Motion by Maya
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+The website for [motionbymaya.com](https://motionbymaya.com) — modern vinyasa and power-inspired yoga taught by Maya, with class info, a live schedule, a blog, and a newsletter signup. Built with React, Vite, Tailwind CSS, and React Router; deployed to Netlify.
 
-Currently, two official plugins are available:
+## Development
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+```bash
+npm install
+npm run dev      # local dev server at http://localhost:5173
+npm run build    # production build into dist/ (then prerenders per-page meta tags)
+npm run lint     # eslint
+```
 
-## React Compiler
+## How things are wired
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- **Content**: blog posts live in `src/content/journal/posts.js`; page copy lives in the components under `src/pages/`.
+- **Forms**: the contact form and newsletter signup post to Formspree (form IDs in `.env`, see `.env.example`).
+- **Schedule**: pulls from a public Google Calendar (`VITE_GOOGLE_CALENDAR_ID`).
+- **Analytics**: Google Analytics 4 (`VITE_GA_MEASUREMENT_ID`).
+- **SEO / sharing**: `scripts/prerender.mjs` runs after each build and writes a static HTML file per route with that page's title, description, and Open Graph tags, so social share cards work for every page of the SPA.
+- **Deploys**: Netlify, published from this machine with `netlify deploy --prod` (builds `dist/` per `netlify.toml`).

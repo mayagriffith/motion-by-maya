@@ -22,6 +22,7 @@ export default function About() {
       />
       <AboutHero />
       <TrainingSection />
+      <CueSection />
       <AboutCta />
     </>
   );
@@ -131,6 +132,49 @@ function TrainingSection() {
               <p>
                 I offer variations so you can adjust the practice to your experience and how you feel that day.
               </p>
+            </div>
+          </div>
+        </div>
+      </Container>
+    </section>
+  );
+}
+
+function CueSection() {
+  return (
+    <section className="border-b border-[rgb(var(--mbm-line))]">
+      <Container className="py-16 sm:py-20">
+        <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
+          <div className="lg:col-span-4 lg:pt-2">
+            <div className="home-eyebrow">
+              <span className="home-eyebrow-line" aria-hidden="true" />
+              Beyond the Mat
+            </div>
+            <h2 className="mt-5 text-[clamp(2rem,4vw,3rem)] leading-[1.02]">
+              I also build Cue.
+            </h2>
+          </div>
+
+          <div className="lg:col-span-8">
+            <div className="space-y-5 text-base leading-relaxed text-[rgb(var(--mbm-muted))] sm:text-lg">
+              <p>
+                Cue is a class planning app I&apos;m building for yoga and
+                movement teachers. You plan a sequence in a visual builder,
+                teach from one calm screen with cues, breath counts, and
+                timing, and capture what worked in a quick note after class.
+              </p>
+              <p>
+                It grew out of my own teaching — and it&apos;s free to try in
+                any browser, or on iPhone and Android.
+              </p>
+            </div>
+            <div className="mt-8 flex flex-wrap gap-3">
+              <Button as="a" href="https://cueyoga.com">
+                Explore Cue
+              </Button>
+              <Button as={NavLink} to="/blog/meet-cue" variant="ghost">
+                Read the story behind it
+              </Button>
             </div>
           </div>
         </div>

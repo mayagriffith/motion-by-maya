@@ -27,6 +27,57 @@ function ArticleBody({ blocks }) {
           );
         }
 
+        if (block.type === "imageRow") {
+          const cols =
+            block.images.length === 1
+              ? "sm:grid-cols-1 sm:max-w-sm"
+              : block.images.length === 2
+                ? "sm:grid-cols-2"
+                : "sm:grid-cols-3";
+          return (
+            <div
+              key={`imagerow-${index}`}
+              className={`!mt-10 !mb-10 grid gap-6 ${cols}`}
+            >
+              {block.images.map((image) => (
+                <figure key={image.src}>
+                  <img
+                    src={image.src}
+                    alt={image.alt}
+                    className="w-full rounded-[1.25rem] border border-[rgb(var(--mbm-line))]"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  {image.caption && (
+                    <figcaption className="mt-3 text-center text-sm text-[rgb(var(--mbm-muted))]">
+                      {image.caption}
+                    </figcaption>
+                  )}
+                </figure>
+              ))}
+            </div>
+          );
+        }
+
+        if (block.type === "image") {
+          return (
+            <figure key={`image-${index}`} className="!mt-10 !mb-10">
+              <img
+                src={block.src}
+                alt={block.alt}
+                className="w-full rounded-[1.5rem] border border-[rgb(var(--mbm-line))]"
+                loading="lazy"
+                decoding="async"
+              />
+              {block.caption && (
+                <figcaption className="mt-3 text-center text-sm text-[rgb(var(--mbm-muted))]">
+                  {block.caption}
+                </figcaption>
+              )}
+            </figure>
+          );
+        }
+
         if (block.type === "list") {
           return (
             <ul
@@ -65,6 +116,7 @@ export default function JournalPost() {
         title={post.title}
         description={post.seoDescription || post.excerpt}
         path={`/blog/${post.slug}`}
+        image={post.coverImage ? `https://motionbymaya.com${post.coverImage}` : undefined}
         type="article"
         keywords={post.tags.join(", ")}
       />
