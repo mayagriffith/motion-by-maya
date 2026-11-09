@@ -4,7 +4,7 @@ import Container from "../components/Container.jsx";
 import Button from "../components/Button.jsx";
 import PageMeta from "../components/PageMeta.jsx";
 import { trackEvent } from "../lib/analytics.js";
-import { DONATION_URL, ZOOM_CLASS } from "../config/site.js";
+import { DONATION_LABEL, DONATION_URL, ZOOM_CLASS, ZOOM_JOIN_URL } from "../config/site.js";
 
 const EMAIL = "motionbymaya@gmail.com";
 const FORMSPREE_ID = import.meta.env.VITE_FORMSPREE_FORM_ID;
@@ -18,9 +18,31 @@ const inputClassName =
 const details = [
   { term: "When", value: `${ZOOM_CLASS.day}, ${ZOOM_CLASS.time}` },
   { term: "First class", value: ZOOM_CLASS.firstClass },
-  { term: "Where", value: "Zoom, from your living room" },
   { term: "Cost", value: `Donation, suggested ${ZOOM_CLASS.suggestedDonation}` },
 ];
+
+/** Google Calendar "add event" link for the weekly class. */
+function addToCalendarUrl() {
+  const day = ZOOM_CLASS.firstDate.replaceAll("-", "");
+  const t = (hhmm) => hhmm.replace(":", "") + "00";
+  const details = [
+    "Gentle Thursday Flow with Maya, 40 minutes on Zoom.",
+    ZOOM_JOIN_URL ? `Join: ${ZOOM_JOIN_URL}` : "Maya emails the Zoom link before class.",
+    DONATION_URL ? `Donations: ${DONATION_URL}` : "",
+  ]
+    .filter(Boolean)
+    .join("\n");
+  const params = new URLSearchParams({
+    action: "TEMPLATE",
+    text: "Gentle Thursday Flow (Zoom yoga)",
+    dates: `${day}T${t(ZOOM_CLASS.start)}/${day}T${t(ZOOM_CLASS.end)}`,
+    ctz: "America/New_York",
+    recur: "RRULE:FREQ=WEEKLY;BYDAY=TH",
+    details,
+    location: ZOOM_JOIN_URL || "Zoom",
+  });
+  return `https://calendar.google.com/calendar/render?${params.toString()}`;
+}
 
 export default function Zoom() {
   return (
@@ -38,9 +60,9 @@ export default function Zoom() {
           <div className="home-hero-grid" />
         </div>
 
-        <Container className="py-14 sm:py-20 lg:py-24">
+        <Container className="py-12 sm:py-16 lg:py-20">
           <div className="grid items-start gap-10 lg:grid-cols-12 lg:gap-12">
-            <div className="lg:col-span-7">
+            <div className="lg:col-span-6">
               <div className="home-eyebrow">
                 <span className="home-eyebrow-line" aria-hidden="true" />
                 Weekly on Zoom
@@ -50,35 +72,21 @@ export default function Zoom() {
                 <span className="italic text-[rgb(var(--mbm-accent))]">Flow.</span>
               </h1>
               <p className="mt-6 max-w-xl text-base leading-relaxed text-[rgb(var(--mbm-muted))] sm:text-lg">
-                A gentle 40-minute class, all levels. Pay what feels right, and
-                I&apos;ll email you the Zoom link.
+                A gentle 40-minute class, all levels, from your living room.
+                Sign up and you&apos;ll get the Zoom link.
               </p>
-              <div className="mt-8 flex flex-wrap items-center gap-3">
-                <Button as="a" href="#signup">
-                  Save my spot
-                </Button>
-                {DONATION_URL && (
-                  <Button as="a" href={DONATION_URL} target="_blank" rel="noreferrer" variant="ghost">
-                    Leave a donation
-                  </Button>
-                )}
-              </div>
+              <dl className="mt-8 grid gap-3 border-t border-[rgb(var(--mbm-line))] pt-6">
+                {details.map((item) => (
+                  <div key={item.term} className="flex gap-4">
+                    <dt className="w-24 shrink-0 text-sm text-[rgb(var(--mbm-muted))]">{item.term}</dt>
+                    <dd className="text-sm font-medium">{item.value}</dd>
+                  </div>
+                ))}
+              </dl>
             </div>
 
-            <div className="lg:col-span-5">
-              <div className="rounded-[1.75rem] border border-[rgb(var(--mbm-line))] bg-white/50 p-7 shadow-[0_24px_60px_-20px_rgba(20,20,18,0.12)] sm:p-8">
-                <dl className="grid gap-5">
-                  {details.map((item) => (
-                    <div
-                      key={item.term}
-                      className="flex items-baseline justify-between gap-6 border-b border-[rgb(var(--mbm-line))] pb-4 last:border-0 last:pb-0"
-                    >
-                      <dt className="text-sm text-[rgb(var(--mbm-muted))]">{item.term}</dt>
-                      <dd className="text-right font-serif text-xl leading-tight">{item.value}</dd>
-                    </div>
-                  ))}
-                </dl>
-              </div>
+            <div id="signup" className="scroll-mt-24 lg:col-span-6">
+              <SignupForm />
             </div>
           </div>
         </Container>
@@ -110,35 +118,12 @@ export default function Zoom() {
               </article>
             ))}
           </div>
-        </Container>
-      </section>
-
-      <section id="signup" className="scroll-mt-20">
-        <Container className="py-16 sm:py-20">
-          <div className="grid gap-10 lg:grid-cols-12">
-            <div className="lg:col-span-5">
-              <div className="home-eyebrow">
-                <span className="home-eyebrow-line" aria-hidden="true" />
-                Sign up
-              </div>
-              <h2 className="mt-5 text-[clamp(2rem,4vw,3rem)] leading-[1.02]">
-                Get the Zoom link.
-              </h2>
-              <p className="mt-5 text-base leading-relaxed text-[rgb(var(--mbm-muted))] sm:text-lg">
-                Sign up once and I&apos;ll send the link before each class.
-                {DONATION_URL ? "" : " Donation details come in the same email."}
-              </p>
-              <p className="mt-6 text-sm text-[rgb(var(--mbm-muted))]">
-                Want one-on-one instead?{" "}
-                <NavLink className="underline underline-offset-4 hover:text-black" to="/private">
-                  Private sessions
-                </NavLink>
-              </p>
-            </div>
-            <div className="lg:col-span-7">
-              <SignupForm />
-            </div>
-          </div>
+          <p className="mt-8 text-sm text-[rgb(var(--mbm-muted))]">
+            Want one-on-one instead?{" "}
+            <NavLink className="underline underline-offset-4 hover:text-black" to="/private">
+              Private sessions
+            </NavLink>
+          </p>
         </Container>
       </section>
     </>
@@ -174,7 +159,6 @@ function SignupForm() {
           name,
           email,
           heard_from: data.heard_from,
-          notes: data.notes,
           _subject: `[Thursday Zoom sign-up] ${name}`,
           _replyto: email,
         }),
@@ -197,14 +181,41 @@ function SignupForm() {
 
   if (status === "success") {
     return (
-      <div className="rounded-3xl border border-[rgb(var(--mbm-line))] bg-white/40 p-7 sm:p-8" role="status">
-        <p className="font-serif text-3xl leading-tight">You&apos;re on the list.</p>
+      <div className="rounded-3xl border border-[rgb(var(--mbm-line))] bg-white/60 p-7 shadow-[0_24px_60px_-20px_rgba(20,20,18,0.12)] sm:p-8" role="status">
+        <p className="font-serif text-3xl leading-tight">You&apos;re in.</p>
         <p className="mt-3 text-base leading-relaxed text-[rgb(var(--mbm-muted))]">
-          I&apos;ll email you the Zoom link before Thursday. See you on the mat.
+          {ZOOM_JOIN_URL
+            ? `Here's the Zoom link. It's the same every week, so save it. See you ${ZOOM_CLASS.day} at 8.`
+            : `I'll email you the Zoom link before class. See you ${ZOOM_CLASS.day} at 8.`}
         </p>
-        <Button type="button" variant="ghost" className="mt-6" onClick={() => setStatus("idle")}>
+        <div className="mt-6 grid gap-3 sm:flex sm:flex-wrap">
+          {ZOOM_JOIN_URL && (
+            <Button as="a" href={ZOOM_JOIN_URL} target="_blank" rel="noreferrer">
+              Join on Zoom
+            </Button>
+          )}
+          <Button
+            as="a"
+            href={addToCalendarUrl()}
+            target="_blank"
+            rel="noreferrer"
+            variant={ZOOM_JOIN_URL ? "ghost" : "primary"}
+          >
+            Add to my calendar
+          </Button>
+          {DONATION_URL && (
+            <Button as="a" href={DONATION_URL} target="_blank" rel="noreferrer" variant="ghost">
+              {DONATION_LABEL}
+            </Button>
+          )}
+        </div>
+        <button
+          type="button"
+          className="mt-6 text-sm text-[rgb(var(--mbm-muted))] underline underline-offset-4 hover:text-black"
+          onClick={() => setStatus("idle")}
+        >
           Sign up someone else
-        </Button>
+        </button>
       </div>
     );
   }
@@ -212,9 +223,13 @@ function SignupForm() {
   return (
     <form
       name="thursday-zoom-signup"
-      className="grid gap-4 rounded-3xl border border-[rgb(var(--mbm-line))] bg-white/40 p-7 sm:p-8"
+      className="grid gap-4 rounded-3xl border border-[rgb(var(--mbm-line))] bg-white/60 p-7 shadow-[0_24px_60px_-20px_rgba(20,20,18,0.12)] sm:p-8"
       onSubmit={handleSubmit}
     >
+      <div>
+        <h2 className="text-3xl leading-tight">Save your spot</h2>
+        <p className="mt-1 text-sm text-[rgb(var(--mbm-muted))]">Takes 10 seconds. Free to sign up.</p>
+      </div>
       <div className="grid gap-4 sm:grid-cols-2">
         <Field label="Name" name="name" autoComplete="name" placeholder="Your name" required disabled={disabled} />
         <Field label="Email" name="email" type="email" autoComplete="email" placeholder="you@example.com" required disabled={disabled} />
@@ -237,19 +252,6 @@ function SignupForm() {
           <option>Other</option>
         </select>
       </div>
-      <div className="grid gap-2">
-        <label className="text-sm font-medium" htmlFor="notes">
-          Anything I should know?
-        </label>
-        <textarea
-          id="notes"
-          name="notes"
-          rows={3}
-          disabled={disabled}
-          placeholder="Optional: injuries, experience, what you're hoping for."
-          className={`${inputClassName} resize-none`}
-        />
-      </div>
       {status === "error" && (
         <p className="text-sm text-red-700" role="alert">
           {errorMessage}
@@ -257,7 +259,7 @@ function SignupForm() {
       )}
       <div className="pt-2">
         <Button type="submit" disabled={disabled} className="w-full sm:w-auto">
-          {disabled ? "Sending…" : "Send me the link"}
+          {disabled ? "Sending…" : "Sign me up"}
         </Button>
       </div>
     </form>
