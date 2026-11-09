@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import clsx from "clsx";
 import Container from "../components/Container.jsx";
 import Button from "../components/Button.jsx";
@@ -114,6 +114,7 @@ export default function Private() {
         jsonLd={buildPrivateJsonLd(SITE_URL)}
       />
       <PrivateHero />
+      <SectionNav />
       <WhoItsFor />
       <HowItWorks />
       <Packages onChoose={setSelectedPackage} />
@@ -124,7 +125,73 @@ export default function Private() {
         selectedPackage={selectedPackage}
         onPackageChange={setSelectedPackage}
       />
+      <MobileBookButton />
     </>
+  );
+}
+
+const sections = [
+  { id: "who", label: "Who it's for" },
+  { id: "how", label: "How it works" },
+  { id: "packages", label: "Packages" },
+  { id: "where", label: "Where" },
+  { id: "faq", label: "FAQ" },
+];
+
+/** Sticky row of section links, so it's clear what to read and in what order. */
+function SectionNav() {
+  return (
+    <nav
+      aria-label="On this page"
+      className="sticky top-16 z-40 border-b border-[rgb(var(--mbm-line))] bg-[rgb(var(--mbm-bg))]/90 backdrop-blur"
+    >
+      <Container>
+        <div className="flex items-center gap-2 overflow-x-auto py-3 text-sm [scrollbar-width:none]">
+          {sections.map((sec, i) => (
+            <a
+              key={sec.id}
+              href={`#${sec.id}`}
+              className="shrink-0 rounded-full px-3 py-1.5 text-[rgb(var(--mbm-muted))] transition hover:bg-black/5 hover:text-black"
+            >
+              <span className="mr-1.5 text-[rgb(var(--mbm-accent))]">{i + 1}</span>
+              {sec.label}
+            </a>
+          ))}
+          <a
+            href="#book"
+            className="ml-auto shrink-0 rounded-full bg-[rgb(var(--mbm-accent))] px-4 py-1.5 font-medium text-white transition hover:bg-[rgb(var(--mbm-accent))]/90"
+          >
+            Book →
+          </a>
+        </div>
+      </Container>
+    </nav>
+  );
+}
+
+/** Phones only: a "Book a session" button that stays on screen until the form is in view. */
+function MobileBookButton() {
+  const [bookVisible, setBookVisible] = useState(false);
+
+  useEffect(() => {
+    const target = document.getElementById("book");
+    if (!target || !("IntersectionObserver" in window)) return undefined;
+    const observer = new IntersectionObserver(([entry]) => setBookVisible(entry.isIntersecting), {
+      threshold: 0.1,
+    });
+    observer.observe(target);
+    return () => observer.disconnect();
+  }, []);
+
+  if (bookVisible) return null;
+
+  return (
+    <a
+      href="#book"
+      className="fixed inset-x-4 bottom-4 z-40 rounded-full bg-[rgb(var(--mbm-accent))] py-3.5 text-center text-sm font-medium text-white shadow-[0_12px_30px_-8px_rgba(160,81,47,0.6)] md:hidden"
+    >
+      Book a session
+    </a>
   );
 }
 
@@ -163,35 +230,47 @@ function PrivateHero() {
               <Button as="a" href="#book">
                 Book a session
               </Button>
-              <Button as="a" href="#how" variant="ghost">
-                How it works
+              <Button as="a" href="#packages" variant="ghost">
+                See packages
               </Button>
             </div>
+            <ul className="mt-8 flex flex-wrap gap-2 text-sm">
+              {["60 minutes", "Your home or Zoom", "From $130 a session", "Free 15-min intro call"].map((fact) => (
+                <li
+                  key={fact}
+                  className="rounded-full bg-white/60 px-3 py-1.5 text-black/70 ring-1 ring-[rgb(var(--mbm-line))]"
+                >
+                  {fact}
+                </li>
+              ))}
+            </ul>
           </div>
 
           <div className="lg:col-span-5">
-            <div className="rounded-[1.75rem] border border-[rgb(var(--mbm-line))] bg-white/50 p-7 shadow-[0_24px_60px_-20px_rgba(20,20,18,0.12)] sm:p-8">
-              <div className="text-[0.65rem] font-medium uppercase tracking-[0.22em] text-black/45">
-                At a glance
+            <div className="rounded-[1.75rem] bg-[rgb(var(--mbm-ink))] p-7 text-white shadow-[0_24px_60px_-20px_rgba(20,20,18,0.35)] sm:p-8">
+              <div className="text-[0.7rem] font-semibold uppercase tracking-[0.22em] text-white/60">
+                How to book
               </div>
-              <dl className="mt-5 grid gap-5">
+              <ol className="mt-5 grid gap-4">
                 {[
-                  { term: "Session", value: "60 minutes, one-on-one" },
-                  { term: "Where", value: "Your home or Zoom" },
-                  { term: "From", value: "$130 a session in a 10-pack" },
-                  { term: "First step", value: "A free 15-minute call" },
-                ].map((item) => (
-                  <div
-                    key={item.term}
-                    className="flex items-baseline justify-between gap-6 border-b border-[rgb(var(--mbm-line))] pb-4 last:border-0 last:pb-0"
-                  >
-                    <dt className="text-sm text-[rgb(var(--mbm-muted))]">{item.term}</dt>
-                    <dd className="text-right font-serif text-xl leading-tight">
-                      {item.value}
-                    </dd>
-                  </div>
+                  { title: "Pick a package", desc: "Or choose \"not sure yet\"." },
+                  { title: "Send the request form", desc: "Two minutes, at the bottom of this page." },
+                  { title: "I reply within a day", desc: "We set up a free 15-minute call, then your first session." },
+                ].map((step, i) => (
+                  <li key={step.title} className="flex gap-4">
+                    <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[rgb(var(--mbm-accent))] text-sm font-semibold">
+                      {i + 1}
+                    </span>
+                    <span>
+                      <span className="block font-medium">{step.title}</span>
+                      <span className="block text-sm text-white/65">{step.desc}</span>
+                    </span>
+                  </li>
                 ))}
-              </dl>
+              </ol>
+              <Button as="a" href="#book" variant="inverse" className="mt-7 w-full">
+                Book a session
+              </Button>
             </div>
           </div>
         </div>
@@ -202,7 +281,7 @@ function PrivateHero() {
 
 function WhoItsFor() {
   return (
-    <section className="border-b border-[rgb(var(--mbm-line))]">
+    <section id="who" className="scroll-mt-32 border-b border-[rgb(var(--mbm-line))]">
       <Container className="py-16 sm:py-20">
         <div className="max-w-3xl">
           <Eyebrow>Who this is for</Eyebrow>
@@ -230,7 +309,7 @@ function WhoItsFor() {
 
 function HowItWorks() {
   return (
-    <section id="how" className="scroll-mt-20 border-b border-[rgb(var(--mbm-line))] bg-white/20">
+    <section id="how" className="scroll-mt-32 border-b border-[rgb(var(--mbm-line))] bg-white/20">
       <Container className="py-16 sm:py-20">
         <div className="max-w-3xl">
           <Eyebrow>How it works</Eyebrow>
@@ -238,7 +317,15 @@ function HowItWorks() {
             Three steps, no guesswork.
           </h2>
         </div>
-        <ol className="mt-12 grid gap-4 md:grid-cols-3">
+        <img
+          src="/images/blog/covers/first-private-session.jpg"
+          alt="Line drawings of easy seat, cat-cow, low lunge and tree pose"
+          className="mt-10 aspect-[21/9] w-full rounded-[1.75rem] border border-[rgb(var(--mbm-line))] object-cover"
+          loading="lazy"
+          width={2100}
+          height={900}
+        />
+        <ol className="mt-4 grid gap-4 md:grid-cols-3">
           {steps.map((s, i) => (
             <li
               key={s.title}
@@ -261,7 +348,7 @@ function HowItWorks() {
 
 function Packages({ onChoose }) {
   return (
-    <section id="packages" className="scroll-mt-20 border-b border-[rgb(var(--mbm-line))]">
+    <section id="packages" className="scroll-mt-32 border-b border-[rgb(var(--mbm-line))] bg-[rgb(var(--mbm-accent-soft))]">
       <Container className="py-16 sm:py-20">
         <div className="max-w-3xl">
           <Eyebrow>Packages</Eyebrow>
@@ -349,7 +436,7 @@ function Packages({ onChoose }) {
 
 function WhereITeach() {
   return (
-    <section className="border-b border-[rgb(var(--mbm-line))] bg-white/20">
+    <section id="where" className="scroll-mt-32 border-b border-[rgb(var(--mbm-line))] bg-white/20">
       <Container className="py-16 sm:py-20">
         <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
           <div className="lg:col-span-4">
@@ -438,7 +525,7 @@ function Testimonials() {
 
 function Faq() {
   return (
-    <section className="border-b border-[rgb(var(--mbm-line))]">
+    <section id="faq" className="scroll-mt-32 border-b border-[rgb(var(--mbm-line))]">
       <Container className="py-16 sm:py-20">
         <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
           <div className="lg:col-span-4">
@@ -458,22 +545,25 @@ function Faq() {
 
 function BookSection({ selectedPackage, onPackageChange }) {
   return (
-    <section id="book" className="scroll-mt-20">
+    <section id="book" className="scroll-mt-32 bg-[rgb(var(--mbm-ink))] text-white">
       <Container className="py-16 sm:py-20">
         <div className="grid gap-10 lg:grid-cols-12">
           <div className="lg:col-span-5">
-            <Eyebrow>Book</Eyebrow>
-            <h2 className="mt-5 text-[clamp(2rem,4vw,3rem)] leading-[1.02]">
+            <div className="inline-flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.28em] text-[rgb(var(--mbm-accent-soft))]">
+              <span className="h-px w-8 bg-white/40" aria-hidden="true" />
+              Book
+            </div>
+            <h2 className="mt-5 text-[clamp(2rem,4vw,3rem)] leading-[1.02] text-white">
               Book your first session.
             </h2>
-            <p className="mt-5 text-base leading-relaxed text-[rgb(var(--mbm-muted))] sm:text-lg">
+            <p className="mt-5 text-base leading-relaxed text-white/75 sm:text-lg">
               {CAL_COM_LINK
                 ? "Pick a time below, or request one and I'll reply within a day."
                 : "Tell me a little about you and when you're free, and I'll reply within a day."}
             </p>
-            <p className="mt-6 text-sm text-[rgb(var(--mbm-muted))]">
+            <p className="mt-6 text-sm text-white/65">
               Rather email?{" "}
-              <a className="underline underline-offset-4 hover:text-black" href={`mailto:${EMAIL}`}>
+              <a className="underline underline-offset-4 hover:text-white" href={`mailto:${EMAIL}`}>
                 {EMAIL}
               </a>
             </p>
@@ -570,7 +660,7 @@ function RequestForm({ selectedPackage, onPackageChange }) {
 
   if (status === "success") {
     return (
-      <div className="rounded-3xl border border-[rgb(var(--mbm-line))] bg-white/40 p-7 sm:p-8" role="status">
+      <div className="rounded-3xl bg-[rgb(var(--mbm-bg))] p-7 text-[rgb(var(--mbm-ink))] sm:p-8" role="status">
         <p className="font-serif text-3xl leading-tight">Got it.</p>
         <p className="mt-3 text-base leading-relaxed text-[rgb(var(--mbm-muted))]">
           I&apos;ll reply by email within a day with a couple of times. Talk
@@ -586,7 +676,7 @@ function RequestForm({ selectedPackage, onPackageChange }) {
   return (
     <form
       name="private-request"
-      className="grid gap-4 rounded-3xl border border-[rgb(var(--mbm-line))] bg-white/40 p-7 sm:p-8"
+      className="grid gap-4 rounded-3xl bg-[rgb(var(--mbm-bg))] p-7 text-[rgb(var(--mbm-ink))] sm:p-8"
       onSubmit={handleSubmit}
     >
       <h3 className="text-3xl leading-tight">Request a session</h3>
