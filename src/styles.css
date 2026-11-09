@@ -15,6 +15,8 @@ body {
     --mbm-ink: 20 20 18; /* soft black */
     --mbm-muted: 92 92 88; /* warm gray */
     --mbm-line: 226 220 212; /* sand line */
+    --mbm-accent: 160 81 47; /* terracotta: labels, heading accents (5.3:1 on ivory) */
+    --mbm-accent-soft: 244 233 224; /* tinted section background */
   }
 
   body {
@@ -34,11 +36,11 @@ body {
   /* ── Home page ── */
 
   .home-eyebrow {
-    @apply inline-flex items-center gap-3 text-xs font-medium uppercase tracking-[0.28em] text-black/50;
+    @apply inline-flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.28em] text-[rgb(var(--mbm-accent))];
   }
 
   .home-eyebrow-line {
-    @apply h-px w-8 bg-black/20;
+    @apply h-px w-8 bg-[rgb(var(--mbm-accent))]/50;
   }
 
   .home-hero {
@@ -69,7 +71,7 @@ body {
   }
 
   .home-highlight-icon {
-    @apply flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-white/60 text-black/60 ring-1 ring-[rgb(var(--mbm-line))];
+    @apply flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-white/70 text-[rgb(var(--mbm-accent))] ring-1 ring-[rgb(var(--mbm-line))];
   }
 
   .home-card {

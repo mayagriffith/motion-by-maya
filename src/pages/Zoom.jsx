@@ -47,16 +47,11 @@ export default function Zoom() {
               </div>
               <h1 className="mt-6 text-[clamp(2.75rem,6vw,4.5rem)] leading-[0.92] tracking-tight">
                 Thursday Night{" "}
-                <span className="italic text-black/75">Flow.</span>
+                <span className="italic text-[rgb(var(--mbm-accent))]">Flow.</span>
               </h1>
               <p className="mt-6 max-w-xl text-base leading-relaxed text-[rgb(var(--mbm-muted))] sm:text-lg">
-                A gentle one-hour class to end the work week a day early.
-                Some easy movement, some stretching, a little breathwork, and a
-                real rest at the end. All levels, no experience needed.
-              </p>
-              <p className="mt-4 max-w-xl text-base leading-relaxed text-[rgb(var(--mbm-muted))] sm:text-lg">
-                It&apos;s donation-based: pay what feels right, or nothing at
-                all. Sign up below and I&apos;ll email you the Zoom link.
+                A gentle one-hour class, all levels. Pay what feels right, and
+                I&apos;ll email you the Zoom link.
               </p>
               <div className="mt-8 flex flex-wrap items-center gap-3">
                 <Button as="a" href="#signup">

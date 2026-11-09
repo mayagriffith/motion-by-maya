@@ -44,7 +44,7 @@ function Hero() {
 
             <h1 className="mt-6 text-[clamp(2.75rem,6vw,4.5rem)] leading-[0.92] tracking-tight">
               Modern yoga for{" "}
-              <span className="italic text-black/75">real life.</span>
+              <span className="italic text-[rgb(var(--mbm-accent))]">real life.</span>
             </h1>
 
             <p className="mt-6 max-w-xl text-base leading-relaxed text-[rgb(var(--mbm-muted))] sm:text-lg">
@@ -151,7 +151,7 @@ function Highlights() {
   ];
 
   return (
-    <section className="border-y border-[rgb(var(--mbm-line))] bg-white/25">
+    <section className="border-y border-[rgb(var(--mbm-line))] bg-[rgb(var(--mbm-accent-soft))]">
       <Container className="py-10 sm:py-12">
         <div className="grid gap-6 sm:grid-cols-3 sm:gap-8">
           {items.map((item) => (
@@ -218,9 +218,6 @@ function Offerings() {
             <p>
               Choose an active flow, a slower class, or a private session.
             </p>
-            <p>
-              Each class includes a warmup, guided movement, and time to rest. The pace and focus depend on the format.
-            </p>
           </div>
         </div>
 
@@ -230,23 +227,13 @@ function Offerings() {
               key={o.title}
               className="home-card group flex flex-col rounded-[1.75rem] border border-[rgb(var(--mbm-line))] bg-white/45 p-6 sm:p-7"
             >
-              <span className="home-card-num font-serif text-3xl leading-none text-black/15 transition-colors group-hover:text-black/25">
+              <span className="home-card-num font-serif text-3xl leading-none text-[rgb(var(--mbm-accent))]/45 transition-colors group-hover:text-[rgb(var(--mbm-accent))]">
                 {o.num}
               </span>
               <h3 className="mt-4 text-2xl leading-tight">{o.title}</h3>
               <p className="mt-3 flex-1 text-sm leading-relaxed text-[rgb(var(--mbm-muted))]">
                 {o.desc}
               </p>
-              <div className="mt-5 flex flex-wrap gap-1.5 border-t border-[rgb(var(--mbm-line))] pt-4">
-                {o.tags.map((tag) => (
-                  <span
-                    key={tag}
-                    className="rounded-full bg-[rgb(var(--mbm-bg))]/70 px-2.5 py-1 text-[11px] text-black/60 ring-1 ring-[rgb(var(--mbm-line))]"
-                  >
-                    {tag}
-                  </span>
-                ))}
-              </div>
             </article>
           ))}
         </div>
@@ -342,9 +329,6 @@ function BottomCta() {
                   Browse classes
                 </Button>
               </div>
-              <p className="mt-4 text-xs text-white/60">
-                NYC + online.
-              </p>
             </div>
           </div>
         </div>

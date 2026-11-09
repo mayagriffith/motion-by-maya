@@ -27,19 +27,19 @@ const selectClassName = `${inputClassName} appearance-none bg-[url('data:image/s
 const audiences = [
   {
     title: "New to yoga.",
-    desc: "You've been meaning to start for years. A private is the no-pressure way in. No room full of people, no guessing what the teacher meant.",
+    desc: "A no-pressure way in. No crowded room, no guessing what the teacher meant.",
   },
   {
     title: "Runners & lifters.",
-    desc: "You train hard and your hips, hamstrings and shoulders are telling you about it. We'll build the mobility and breathing that make the rest of your training better.",
+    desc: "Mobility and breathing that make the rest of your training better.",
   },
   {
     title: "Busy, stressed, over-scheduled.",
-    desc: "You don't have time to get to a studio at 6pm. I come to you, and the hour is actually yours.",
+    desc: "No studio commute. I come to you, and the hour is yours.",
   },
   {
     title: "Working around something.",
-    desc: "An old injury, a new baby, a desk-shaped back. We go at your pace with a plan that respects where you are.",
+    desc: "An old injury, a new baby, a desk-shaped back. We go at your pace.",
   },
 ];
 
@@ -147,7 +147,7 @@ function PrivateHero() {
             <Eyebrow>Private Sessions</Eyebrow>
             <h1 className="mt-6 text-[clamp(2.75rem,6vw,4.5rem)] leading-[0.92] tracking-tight">
               Yoga that fits your life,{" "}
-              <span className="italic text-black/75">in your living room.</span>
+              <span className="italic text-[rgb(var(--mbm-accent))]">in your living room.</span>
             </h1>
             <p className="mt-6 max-w-xl text-base leading-relaxed text-[rgb(var(--mbm-muted))] sm:text-lg">
               One-on-one sessions in Brooklyn and Manhattan, in your home or
@@ -239,7 +239,7 @@ function HowItWorks() {
               key={s.title}
               className="rounded-[1.75rem] border border-[rgb(var(--mbm-line))] bg-white/45 p-6 sm:p-7"
             >
-              <span className="font-serif text-3xl leading-none text-black/20">
+              <span className="font-serif text-3xl leading-none text-[rgb(var(--mbm-accent))]/60">
                 0{i + 1}
               </span>
               <h3 className="mt-4 text-2xl leading-tight">{s.title}</h3>
