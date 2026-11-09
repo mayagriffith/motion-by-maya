@@ -9,6 +9,7 @@ import WhatToExpect from "./pages/WhatToExpect.jsx";
 import Contact from "./pages/Contact.jsx";
 import Private from "./pages/Private.jsx";
 import Zoom from "./pages/Zoom.jsx";
+import Events from "./pages/Events.jsx";
 import NotFound from "./pages/NotFound.jsx";
 
 function LegacyJournalRedirect() {
@@ -26,6 +27,7 @@ export default function App() {
         <Route path="/private" element={<Private />} />
         <Route path="/book" element={<Navigate to="/private#book" replace />} />
         <Route path="/zoom" element={<Zoom />} />
+        <Route path="/events" element={<Events />} />
         <Route path="/schedule" element={<Navigate to="/classes#schedule" replace />} />
         <Route path="/blog" element={<Journal />} />
         <Route path="/blog/:slug" element={<JournalPost />} />

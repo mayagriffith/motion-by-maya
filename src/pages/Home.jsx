@@ -2,6 +2,7 @@ import { NavLink, Link } from "react-router-dom";
 import Container from "../components/Container.jsx";
 import Button from "../components/Button.jsx";
 import PageMeta from "../components/PageMeta.jsx";
+import { pages } from "../content/pageMeta.js";
 import NewsletterSignup from "../components/NewsletterSignup.jsx";
 import JournalCard from "../components/JournalCard.jsx";
 import { getFeaturedPost } from "../content/journal/posts.js";
@@ -11,12 +12,7 @@ import AddToCalendar from "../components/AddToCalendar.jsx";
 export default function Home() {
   return (
     <>
-      <PageMeta
-        title="Modern Yoga for Real Life"
-        description="Power and vinyasa-inspired yoga for runners, lifters, and beginners. Strength, mobility, recovery, and breath-led movement in NYC and online."
-        path="/"
-        keywords="yoga for runners, mobility, beginner yoga, yoga for strength training, recovery and movement, NYC yoga"
-      />
+      <PageMeta {...pages["/"]} />
       <Hero />
       <Highlights />
       <Offerings />
@@ -87,7 +83,7 @@ function Hero() {
                 <img
                   className="hero-photo block aspect-[4/5] w-full object-cover object-[center_70%]"
                   alt="Maya teaching a yoga class"
-                  src="/images/hero.png"
+                  src="/images/hero.webp"
                   width={520}
                   height={780}
                   loading="eager"
@@ -233,7 +229,7 @@ function Offerings() {
               groups. In person or on Zoom.
             </p>
             <div className="mt-6 grid">
-              <Button as={NavLink} to="/contact?class=Events%20%26%20Parties">
+              <Button as={NavLink} to="/events">
                 Plan an event
               </Button>
             </div>

@@ -12,13 +12,14 @@ export const posts = [
     title: "Introducing Gentle Thursday Flow",
     excerpt:
       "A weekly, donation-based yoga class on Zoom. Thursdays, 8:00 to 8:40pm Eastern, starting November 12.",
-    coverImage: "/images/blog/covers/gentle-thursday-flow.jpg",
+    coverImage: "/images/blog/covers/gentle-thursday-flow.webp",
+    coverAlt: "Line drawings of child's pose, reclined butterfly and legs up the wall on a dark background",
     date: "2026-11-08",
     tags: ["Zoom", "Weekly class", "All levels"],
     readingTime: 1,
     featured: false,
     seoDescription:
-      "Gentle Thursday Flow is a weekly, donation-based yoga class on Zoom with Maya Griffith, 200-hour certified (Ulu Yoga). Thursdays 8:00 to 8:40pm Eastern, all levels, starting November 12.",
+      "Gentle Thursday Flow: a weekly, donation-based yoga class on Zoom with Maya Griffith. Thursdays 8:00 to 8:40pm Eastern, all levels welcome.",
     body: [
       {
         type: "paragraph",
@@ -58,13 +59,14 @@ export const posts = [
     title: "What to expect in a first private session",
     excerpt:
       "How a first private yoga session with me works, from the intro call to what you take home.",
-    coverImage: "/images/blog/covers/first-private-session.jpg",
+    coverImage: "/images/blog/covers/first-private-session.webp",
+    coverAlt: "Line drawings of easy seat, cat-cow, low lunge and tree pose",
     date: "2026-11-08",
     tags: ["Private sessions", "Beginners"],
     readingTime: 2,
     featured: false,
     seoDescription:
-      "How a first private yoga session with Maya Griffith works in Brooklyn, Manhattan, or online: a free intro call, a 60-minute session, and a short plan to practice on your own.",
+      "What a first private yoga session with Maya Griffith looks like, in Brooklyn, Manhattan or on Zoom: the free intro call, the hour, and after.",
     body: [
       {
         type: "paragraph",
@@ -105,13 +107,14 @@ export const posts = [
     title: "Meet Cue: the class planning app I built for yoga teachers",
     excerpt:
       "Every teacher I know plans classes across notes apps, screenshots, and memory — then teaches off a phone that keeps going dark. Cue is my answer: plan, teach, and reflect on every class from one calm screen.",
-    coverImage: "/images/blog/cue/cue-cover.jpg",
+    coverImage: "/images/blog/cue/cue-cover.webp",
+    coverAlt: "Three phone screens from the Cue app: a Sun Salutation sequence in grid view, teaching mode on Standing Forward Fold, and the sequence in list view",
     date: "2026-09-09",
     tags: ["Cue", "Teaching", "Class planning"],
     readingTime: 4,
     featured: true,
     seoDescription:
-      "Cue is a yoga class planning app built by a teacher, for teachers — a visual sequence builder, a calm teaching mode with cues and timing, post-class reflections, and optional AI assistance. Free to try on web, iPhone, and Android.",
+      "Cue is a yoga class planning app built by a teacher: a visual sequence builder, a calm teaching mode with cues and timing, and post-class notes.",
     body: [
       {
         type: "paragraph",
@@ -138,17 +141,17 @@ export const posts = [
         type: "imageRow",
         images: [
           {
-            src: "/images/blog/cue/cue-builder-grid.png",
+            src: "/images/blog/cue/cue-builder-grid.webp",
             alt: "Cue's sequence builder in grid view, showing an 11-pose Sun Salutation A",
             caption: "The builder in grid view — the whole flow at a glance.",
           },
           {
-            src: "/images/blog/cue/cue-builder-list.png",
+            src: "/images/blog/cue/cue-builder-list.webp",
             alt: "Cue's sequence builder in list view, with cues, breath counts, and per-side tracking",
             caption: "List view, with cues and breath counts on every pose.",
           },
           {
-            src: "/images/blog/cue/cue-teaching-mode.png",
+            src: "/images/blog/cue/cue-teaching-mode.webp",
             alt: "Cue's teaching mode: a calm full-screen view with the pose, a countdown timer, and the cue",
             caption: "Teaching mode — pose, timer, cue, and what's up next.",
           },

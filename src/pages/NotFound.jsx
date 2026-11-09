@@ -1,9 +1,13 @@
 import { NavLink } from "react-router-dom";
 import Container from "../components/Container.jsx";
 import Button from "../components/Button.jsx";
+import PageMeta from "../components/PageMeta.jsx";
+import { notFoundMeta } from "../content/pageMeta.js";
 
 export default function NotFound() {
   return (
+    <>
+    <PageMeta {...notFoundMeta} />
     <section className="border-b border-[rgb(var(--mbm-line))]">
       <Container className="py-16">
         <div className="mx-auto max-w-2xl text-center">
@@ -27,5 +31,6 @@ export default function NotFound() {
         </div>
       </Container>
     </section>
+    </>
   );
 }

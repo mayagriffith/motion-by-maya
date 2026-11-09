@@ -1,3 +1,6 @@
-/book    /private#book    301
-/schedule    /classes#schedule    301
-/*       /index.html      200
+# Every page is pre-rendered to its own .html file, so there is no catch-all
+# rewrite: unknown URLs get 404.html with a real 404 status.
+/book            /private#book        301
+/schedule        /classes#schedule    301
+/journal         /blog                301
+/journal/*       /blog/:splat         301

@@ -25,8 +25,10 @@ export default function PageMeta({
   type = "website",
   keywords,
   jsonLd,
+  noindex = false,
 }) {
-  const fullTitle = title.includes(SITE_NAME) ? title : `${title} | ${SITE_NAME}`;
+  // Titles come complete from src/content/pageMeta.js.
+  const fullTitle = title;
   const url = `${SITE_URL}${path === "/" ? "" : path}`;
   // Structured data comes from the path (same source as the prerendered HTML).
   const data = jsonLd || jsonLdForPath(path || "/");
@@ -36,6 +38,8 @@ export default function PageMeta({
     document.title = fullTitle;
     upsertMeta("name", "description", description);
     upsertMeta("name", "keywords", keywords);
+    if (noindex) upsertMeta("name", "robots", "noindex");
+    else document.querySelector('meta[name="robots"]')?.remove();
     upsertMeta("property", "og:title", fullTitle);
     upsertMeta("property", "og:description", description);
     upsertMeta("property", "og:type", type);
@@ -54,7 +58,7 @@ export default function PageMeta({
       document.head.appendChild(canonical);
     }
     canonical.setAttribute("href", url);
-  }, [fullTitle, description, url, image, type, keywords]);
+  }, [fullTitle, description, url, image, type, keywords, noindex]);
 
   useEffect(() => {
     // The prerendered HTML may already carry this page's JSON-LD (or another

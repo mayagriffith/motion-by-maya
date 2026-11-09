@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import Container from "../components/Container.jsx";
 import PageMeta from "../components/PageMeta.jsx";
+import { pages } from "../content/pageMeta.js";
 import Accordion from "../components/Accordion.jsx";
 import Button from "../components/Button.jsx";
 
@@ -70,12 +71,7 @@ const faqItems = [
 export default function WhatToExpect() {
   return (
     <>
-      <PageMeta
-        title="What to Expect"
-        description="New to yoga? Learn what to wear, what class feels like, beginner modifications, and why all levels are welcome at Motion by Maya."
-        path="/what-to-expect"
-        keywords="beginner yoga, what to expect yoga class, first yoga class, yoga for beginners NYC"
-      />
+      <PageMeta {...pages["/what-to-expect"]} />
 
       <section className="border-b border-[rgb(var(--mbm-line))]">
         <Container className="py-14 sm:py-20">

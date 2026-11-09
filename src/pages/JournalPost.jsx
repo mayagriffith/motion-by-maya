@@ -1,6 +1,7 @@
 import { Link, Navigate, useParams } from "react-router-dom";
 import Container from "../components/Container.jsx";
 import PageMeta from "../components/PageMeta.jsx";
+import { postMeta } from "../content/pageMeta.js";
 import Button from "../components/Button.jsx";
 import { getPostBySlug } from "../content/journal/posts.js";
 
@@ -133,14 +134,7 @@ export default function JournalPost() {
 
   return (
     <>
-      <PageMeta
-        title={post.title}
-        description={post.seoDescription || post.excerpt}
-        path={`/blog/${post.slug}`}
-        image={post.coverImage ? `https://motionbymaya.com${post.coverImage}` : undefined}
-        type="article"
-        keywords={post.tags.join(", ")}
-      />
+      <PageMeta {...postMeta(post)} />
 
       <article className="border-b border-[rgb(var(--mbm-line))]">
         <Container className="py-14 sm:py-20">
@@ -182,7 +176,7 @@ export default function JournalPost() {
             <div className="journal-article-cover mt-10 overflow-hidden rounded-[1.75rem] border border-[rgb(var(--mbm-line))]">
               <img
                 src={post.coverImage}
-                alt=""
+                alt={post.coverAlt || ""}
                 className="aspect-[21/9] w-full object-cover"
                 loading="lazy"
               />

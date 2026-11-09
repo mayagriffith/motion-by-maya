@@ -3,6 +3,7 @@ import { Link, useSearchParams } from "react-router-dom";
 import Container from "../components/Container.jsx";
 import Button from "../components/Button.jsx";
 import PageMeta from "../components/PageMeta.jsx";
+import { pages } from "../content/pageMeta.js";
 import { trackEvent } from "../lib/analytics.js";
 import { neighborhoodOptions } from "../content/privateSessions.js";
 
@@ -99,11 +100,7 @@ export default function Contact() {
 
   return (
     <>
-      <PageMeta
-        title="Contact"
-        description="Get in touch with Maya about classes, private sessions, collaborations, and booking."
-        path="/contact"
-      />
+      <PageMeta {...pages["/contact"]} />
       <section className="border-b border-[rgb(var(--mbm-line))]">
       <Container className="py-12 sm:py-16">
         <div className="grid gap-10 lg:grid-cols-12">

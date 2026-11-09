@@ -25,7 +25,7 @@ export default function JournalCard({ post, featured = false }) {
         {post.coverImage ? (
           <img
             src={post.coverImage}
-            alt=""
+            alt={post.coverAlt || ""}
             className={`w-full object-cover ${featured ? "h-full min-h-56 lg:min-h-full" : "aspect-[16/10]"}`}
             loading="lazy"
             decoding="async"

@@ -40,6 +40,9 @@ export default function Footer() {
               <Link className={footerLinkClass} to="/private">
                 Private Sessions
               </Link>
+              <Link className={footerLinkClass} to="/events">
+                Events &amp; Parties
+              </Link>
               <Link className={footerLinkClass} to="/zoom">
                 Gentle Thursday Flow
               </Link>

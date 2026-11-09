@@ -2,6 +2,7 @@ import { NavLink } from "react-router-dom";
 import Container from "../components/Container.jsx";
 import Button from "../components/Button.jsx";
 import PageMeta from "../components/PageMeta.jsx";
+import { pages } from "../content/pageMeta.js";
 import ClassCalendar from "../components/ClassCalendar.jsx";
 import AddToCalendar from "../components/AddToCalendar.jsx";
 import { ZOOM_CLASS } from "../config/site.js";
@@ -18,7 +19,7 @@ const classes = [
     title: "Events & Parties",
     desc: "Corporate yoga, birthday parties, bachelorette parties and other groups. In person or on Zoom.",
     length: "Any group size",
-    link: { to: "/contact?class=Events%20%26%20Parties", label: "Plan an event" },
+    link: { to: "/events", label: "Plan an event" },
   },
   {
     title: "Modern Vinyasa",
@@ -45,12 +46,7 @@ const classes = [
 export default function Classes() {
   return (
     <>
-      <PageMeta
-        title="Classes & Schedule"
-        description="Gentle Thursday Flow on Zoom every week, plus vinyasa, power, hatha, and private yoga sessions with Maya. See the class calendar."
-        path="/classes"
-        keywords="online yoga class, zoom yoga, power yoga, vinyasa, yoga for runners, beginner yoga, yoga schedule, private yoga NYC"
-      />
+      <PageMeta {...pages["/classes"]} />
 
       <section className="border-b border-[rgb(var(--mbm-line))]">
         <Container className="py-14 sm:py-20">

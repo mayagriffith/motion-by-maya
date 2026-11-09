@@ -2,7 +2,8 @@ import { NavLink } from "react-router-dom";
 import Container from "../components/Container.jsx";
 import Button from "../components/Button.jsx";
 import PageMeta from "../components/PageMeta.jsx";
-import { CREDENTIAL, INSURED, YOGA_ALLIANCE_REGISTERED } from "../config/site.js";
+import { pages } from "../content/pageMeta.js";
+import { INSURED, YOGA_ALLIANCE_REGISTERED } from "../config/site.js";
 
 const focusAreas = [
   "Vinyasa Yoga",
@@ -28,11 +29,7 @@ const credentials = [
 export default function About() {
   return (
     <>
-      <PageMeta
-        title="About Maya"
-        description={`Meet Maya Griffith, ${CREDENTIAL} (Ulu Yoga), a Brooklyn yoga teacher offering private 1:1 sessions and vinyasa, power, and breath-led classes for athletes, beginners, and busy people.`}
-        path="/about"
-      />
+      <PageMeta {...pages["/about"]} />
       <AboutHero />
       <TrainingSection />
       <CueSection />
@@ -58,7 +55,7 @@ function AboutHero() {
                 <img
                   className="about-photo block aspect-[3/4] w-full object-cover"
                   alt="Maya in dancer pose at a waterfall"
-                  src="/images/about.png"
+                  src="/images/about.webp"
                   width={669}
                   height={900}
                   loading="lazy"

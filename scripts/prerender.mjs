@@ -17,87 +17,22 @@ import { fileURLToPath } from "node:url";
 import { posts } from "../src/content/journal/posts.js";
 import { CREDENTIAL, DONATION_LINKS, SITE_URL, ZOOM_CLASS } from "../src/config/site.js";
 import {
-  PRIVATE_META_DESCRIPTION,
   brooklynNeighborhoods,
   manhattanNeighborhoods,
   packages,
   privateFaq,
 } from "../src/content/privateSessions.js";
 import { jsonLdForPath } from "../src/content/structuredData.js";
+import { notFoundMeta, pages, postMeta } from "../src/content/pageMeta.js";
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 const SITE_NAME = "Motion by Maya";
 const DEFAULT_IMAGE = `${SITE_URL}/images/hero.png`;
 
+// Every page, with meta from src/content/pageMeta.js (same source as the app).
 const routes = [
-  {
-    path: "/",
-    title: "Motion by Maya | Modern Yoga for Real Life",
-    description:
-      "Yoga with Maya Griffith in Brooklyn and on Zoom: private 1:1 sessions at home or online, a weekly donation-based Gentle Thursday Flow, and corporate and group events. Beginners, runners and lifters welcome.",
-    keywords:
-      "private yoga brooklyn, yoga teacher brooklyn, online yoga class, zoom yoga, yoga for runners, beginner yoga, corporate yoga nyc",
-  },
-  {
-    path: "/private",
-    title: `Private Yoga Sessions in Brooklyn & Manhattan | ${SITE_NAME}`,
-    description: PRIVATE_META_DESCRIPTION,
-    keywords:
-      "private yoga instructor brooklyn, in-home yoga park slope, private yoga brooklyn heights, private yoga nyc, yoga for runners brooklyn",
-  },
-  {
-    path: "/zoom",
-    title: `Gentle Thursday Flow on Zoom | ${SITE_NAME}`,
-    description:
-      `A gentle 40-minute yoga flow on Zoom every Thursday at 8pm Eastern with Maya Griffith, ${CREDENTIAL}. All levels, no experience needed. Donation-based, so pay what feels right.`,
-    keywords:
-      "online yoga class, zoom yoga, donation based yoga, gentle yoga online, evening yoga class",
-  },
-  {
-    path: "/about",
-    title: `About Maya | ${SITE_NAME}`,
-    description:
-      `Meet Maya Griffith, ${CREDENTIAL} (Ulu Yoga), a Brooklyn yoga teacher offering private 1:1 sessions and vinyasa, power, and breath-led classes for athletes, beginners, and busy people.`,
-  },
-  {
-    path: "/classes",
-    title: `Classes & Schedule | ${SITE_NAME}`,
-    description:
-      "Gentle Thursday Flow on Zoom every week, plus vinyasa, power, hatha, and private yoga sessions with Maya. See the class calendar.",
-    keywords:
-      "power yoga, vinyasa, yoga for runners, mobility, beginner yoga, private yoga brooklyn, private yoga NYC",
-  },
-  {
-    path: "/what-to-expect",
-    title: `What to Expect | ${SITE_NAME}`,
-    description:
-      "New to yoga? Learn what to wear, what class feels like, beginner modifications, and why all levels are welcome at Motion by Maya.",
-    keywords:
-      "beginner yoga, what to expect yoga class, first yoga class, yoga for beginners NYC",
-  },
-  {
-    path: "/contact",
-    title: `Contact | ${SITE_NAME}`,
-    description:
-      "Get in touch with Maya about classes, private sessions, collaborations, and booking.",
-  },
-  {
-    path: "/blog",
-    title: `Blog | ${SITE_NAME}`,
-    description: "Posts from Maya about yoga, teaching, and current projects.",
-    keywords:
-      "yoga for strength training, mobility, recovery and movement, beginner yoga",
-  },
-  ...posts
-    .filter((post) => !post.archived)
-    .map((post) => ({
-      path: `/blog/${post.slug}`,
-      title: `${post.title} | ${SITE_NAME}`,
-      description: post.seoDescription || post.excerpt,
-      keywords: post.tags.join(", "),
-      image: post.coverImage ? `${SITE_URL}${post.coverImage}` : undefined,
-      type: "article",
-    })),
+  ...Object.values(pages),
+  ...posts.filter((post) => !post.archived).map(postMeta),
 ];
 
 function escapeHtml(str) {
@@ -118,6 +53,7 @@ function headBlock(route) {
     `<title>${title}</title>`,
     `<meta name="description" content="${description}" />`,
   ];
+  if (route.noindex) lines.push(`<meta name="robots" content="noindex" />`);
   if (route.keywords) {
     lines.push(`<meta name="keywords" content="${escapeHtml(route.keywords)}" />`);
   }
@@ -176,6 +112,15 @@ for (const route of routes) {
   count += 1;
 }
 
+// 404.html: Netlify serves it (with a real 404 status) for unknown URLs.
+{
+  const body = render("/this-page-does-not-exist");
+  const html = stripped
+    .replace(/<meta charset="UTF-8"\s*\/>/, `<meta charset="UTF-8" />\n    ${headBlock(notFoundMeta)}`)
+    .replace('<div id="root"></div>', `<div id="root">${body}</div>`);
+  writeFileSync(join(dist, "404.html"), html);
+}
+
 // sitemap.xml, generated from the same route list so it never goes stale.
 const today = new Date().toISOString().slice(0, 10);
 const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
@@ -205,7 +150,7 @@ ${packages.map((p) => `- ${p.name}: ${p.price}${p.perSession ? ` (${p.perSession
 - Sign up for the Zoom link and reminders: ${SITE_URL}/zoom
 
 ## Events and parties
-- Corporate yoga, birthday parties, bachelorette parties and other groups, in person or on Zoom. Inquiries: ${SITE_URL}/contact
+- Corporate yoga, birthday parties, bachelorette parties and other groups, in person or on Zoom. Details and quotes: ${SITE_URL}/events
 
 ## Class styles
 - Vinyasa, power flow, hatha, yoga for athletes and runners, mobility and recovery, breathwork. See ${SITE_URL}/classes

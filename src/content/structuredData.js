@@ -13,6 +13,8 @@ import {
   privateFaq,
 } from "./privateSessions.js";
 import { getPostBySlug } from "./journal/posts.js";
+import { eventFaq } from "./events.js";
+import { zoomFaq } from "./zoomFaq.js";
 
 const ORG_ID = `${SITE_URL}/#business`;
 const PERSON_ID = `${SITE_URL}/#maya`;
@@ -137,15 +139,33 @@ function thursdayClass() {
   };
 }
 
-function faqPage() {
+function faqPage(path, items) {
   return {
     "@type": "FAQPage",
-    "@id": `${SITE_URL}/private#faq`,
-    mainEntity: privateFaq.map((q) => ({
+    "@id": `${SITE_URL}${path}#faq`,
+    mainEntity: items.map((q) => ({
       "@type": "Question",
       name: q.question,
       acceptedAnswer: { "@type": "Answer", text: q.answer },
     })),
+  };
+}
+
+function eventsService() {
+  return {
+    "@type": "Service",
+    "@id": `${SITE_URL}/events#service`,
+    name: "Corporate, party and group yoga",
+    serviceType: "Group yoga classes for corporate teams, bachelorettes, birthdays and private groups",
+    description:
+      "Yoga sessions planned around your group, in offices, homes, rentals and parks in Brooklyn and Manhattan, or on Zoom.",
+    provider: { "@id": ORG_ID },
+    areaServed: [
+      { "@type": "City", name: "Brooklyn, NY" },
+      { "@type": "City", name: "Manhattan, NY" },
+      { "@type": "VirtualLocation", name: "Online on Zoom" },
+    ],
+    url: `${SITE_URL}/events`,
   };
 }
 
@@ -170,8 +190,10 @@ export function jsonLdForPath(path) {
   const clean = path.replace(/\/+$/, "") || "/";
   const graph = [website(), business(), person()];
 
-  if (clean === "/private") graph.push(faqPage());
-  if (clean === "/zoom" || clean === "/classes") graph.push(thursdayClass());
+  if (clean === "/private") graph.push(faqPage("/private", privateFaq));
+  if (clean === "/zoom") graph.push(thursdayClass(), faqPage("/zoom", zoomFaq));
+  if (clean === "/classes") graph.push(thursdayClass());
+  if (clean === "/events") graph.push(eventsService(), faqPage("/events", eventFaq));
   if (clean.startsWith("/blog/")) {
     const post = getPostBySlug(clean.slice("/blog/".length));
     if (post) graph.push(blogPosting(post));

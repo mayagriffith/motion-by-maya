@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import Container from "../components/Container.jsx";
 import PageMeta from "../components/PageMeta.jsx";
+import { pages } from "../content/pageMeta.js";
 import JournalCard from "../components/JournalCard.jsx";
 import Button from "../components/Button.jsx";
 import { getRecentPosts } from "../content/journal/posts.js";
@@ -10,12 +11,7 @@ export default function Journal() {
 
   return (
     <>
-      <PageMeta
-        title="Blog"
-        description="Posts from Maya about yoga, teaching, and current projects."
-        path="/blog"
-        keywords="yoga for strength training, mobility, recovery and movement, beginner yoga"
-      />
+      <PageMeta {...pages["/blog"]} />
 
       <section className="border-b border-[rgb(var(--mbm-line))]">
         <Container className="py-14 sm:py-20">

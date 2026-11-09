@@ -3,12 +3,12 @@ import clsx from "clsx";
 import Container from "../components/Container.jsx";
 import Button from "../components/Button.jsx";
 import PageMeta from "../components/PageMeta.jsx";
+import { pages } from "../content/pageMeta.js";
 import Accordion from "../components/Accordion.jsx";
 import { trackEvent } from "../lib/analytics.js";
 import { CAL_COM_LINK } from "../config/site.js";
 import { getRealTestimonials } from "../content/testimonials.js";
 import {
-  PRIVATE_META_DESCRIPTION,
   privateFaq,
   brooklynNeighborhoods,
   manhattanNeighborhoods,
@@ -64,12 +64,7 @@ export default function Private() {
 
   return (
     <>
-      <PageMeta
-        title="Private Yoga Sessions in Brooklyn & Manhattan"
-        description={PRIVATE_META_DESCRIPTION}
-        path="/private"
-        keywords="private yoga instructor brooklyn, in-home yoga park slope, private yoga brooklyn heights, private yoga nyc, yoga for runners brooklyn"
-      />
+      <PageMeta {...pages["/private"]} />
       <PrivateHero />
       <SectionNav />
       <WhoItsFor />

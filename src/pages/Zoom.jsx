@@ -3,15 +3,16 @@ import { NavLink } from "react-router-dom";
 import Container from "../components/Container.jsx";
 import Button from "../components/Button.jsx";
 import PageMeta from "../components/PageMeta.jsx";
+import { pages } from "../content/pageMeta.js";
 import { trackEvent } from "../lib/analytics.js";
-import { CREDENTIAL, DONATION_LINKS, ZOOM_CLASS, ZOOM_JOIN_URL } from "../config/site.js";
+import { DONATION_LINKS, ZOOM_CLASS, ZOOM_JOIN_URL } from "../config/site.js";
 import AddToCalendar from "../components/AddToCalendar.jsx";
+import Accordion from "../components/Accordion.jsx";
+import { zoomFaq } from "../content/zoomFaq.js";
 
 const EMAIL = "motionbymaya@gmail.com";
 const FORMSPREE_ID = import.meta.env.VITE_FORMSPREE_FORM_ID;
 
-const ZOOM_META_DESCRIPTION =
-  `A gentle 40-minute yoga flow on Zoom every Thursday at 8pm Eastern with Maya Griffith, ${CREDENTIAL}. All levels, no experience needed. Donation-based, so pay what feels right.`;
 
 const inputClassName =
   "w-full rounded-2xl bg-[rgb(var(--mbm-bg))]/70 px-4 py-3 text-sm ring-1 ring-[rgb(var(--mbm-line))] transition focus:outline-none focus:ring-2 focus:ring-black/20";
@@ -25,12 +26,7 @@ const details = [
 export default function Zoom() {
   return (
     <>
-      <PageMeta
-        title="Gentle Thursday Flow on Zoom"
-        description={ZOOM_META_DESCRIPTION}
-        path="/zoom"
-        keywords="online yoga class, zoom yoga, donation based yoga, gentle yoga online, evening yoga class"
-      />
+      <PageMeta {...pages["/zoom"]} />
       <section className="home-hero relative overflow-hidden">
         <div className="pointer-events-none absolute inset-0 -z-10">
           <div className="home-hero-glow home-hero-glow--left" />
@@ -97,7 +93,19 @@ export default function Zoom() {
               </article>
             ))}
           </div>
-          <p className="mt-8 text-sm text-[rgb(var(--mbm-muted))]">
+          <div className="mt-16 grid gap-12 lg:grid-cols-12 lg:gap-16">
+            <div className="lg:col-span-4">
+              <div className="home-eyebrow">
+                <span className="home-eyebrow-line" aria-hidden="true" />
+                FAQ
+              </div>
+              <h2 className="mt-5 text-[clamp(2rem,4vw,3rem)] leading-[1.02]">Good questions.</h2>
+            </div>
+            <div className="lg:col-span-8">
+              <Accordion items={zoomFaq} />
+            </div>
+          </div>
+          <p className="mt-10 text-sm text-[rgb(var(--mbm-muted))]">
             Want one-on-one instead?{" "}
             <NavLink className="underline underline-offset-4 hover:text-black" to="/private">
               Private sessions
