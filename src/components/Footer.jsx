@@ -41,10 +41,7 @@ export default function Footer() {
                 Private Sessions
               </Link>
               <Link className={footerLinkClass} to="/zoom">
-                Thursday Zoom Class
-              </Link>
-              <Link className={footerLinkClass} to="/schedule">
-                Schedule
+                Gentle Thursday Flow
               </Link>
               <Link className={footerLinkClass} to="/blog">
                 Blog

@@ -132,7 +132,7 @@ export default function WhatToExpect() {
                     If you&apos;re unsure which class to try, contact me and I&apos;ll help you choose.
                   </p>
                   <div className="mt-5 flex flex-wrap gap-3">
-                    <Button as={Link} to="/schedule" variant="inverse-ghost">
+                    <Button as={Link} to="/classes#schedule" variant="inverse-ghost">
                       View schedule
                     </Button>
                     <Button as={Link} to="/contact" variant="inverse">

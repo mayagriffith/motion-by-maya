@@ -8,8 +8,8 @@
  */
 export const posts = [
   {
-    slug: "introducing-thursday-night-flow",
-    title: "Introducing Thursday Night Flow",
+    slug: "introducing-gentle-thursday-flow",
+    title: "Introducing Gentle Thursday Flow",
     excerpt:
       "A weekly, donation-based yoga class on Zoom. Thursdays, 8:00 to 8:40pm Eastern, starting November 12.",
     date: "2026-11-08",
@@ -17,12 +17,12 @@ export const posts = [
     readingTime: 1,
     featured: false,
     seoDescription:
-      "Thursday Night Flow is a weekly, donation-based yoga class on Zoom with Maya Griffith, RYT-200. Thursdays 8:00 to 8:40pm Eastern, all levels, starting November 12.",
+      "Gentle Thursday Flow is a weekly, donation-based yoga class on Zoom with Maya Griffith, RYT-200. Thursdays 8:00 to 8:40pm Eastern, all levels, starting November 12.",
     body: [
       {
         type: "paragraph",
         content:
-          "Starting Thursday, November 12, I'm teaching a weekly class on Zoom. It's called Thursday Night Flow, and it runs every Thursday from 8:00 to 8:40pm Eastern.",
+          "Starting Thursday, November 12, I'm teaching a weekly class on Zoom. It's called Gentle Thursday Flow, and it runs every Thursday from 8:00 to 8:40pm Eastern.",
       },
       { type: "heading", content: "What it is" },
       {
@@ -48,7 +48,7 @@ export const posts = [
         type: "cta",
         content: "See you Thursday.",
         href: "/zoom",
-        label: "Sign up for Thursday Night Flow",
+        label: "Sign up for Gentle Thursday Flow",
       },
     ],
   },

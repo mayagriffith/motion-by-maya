@@ -39,7 +39,7 @@ const routes = [
   },
   {
     path: "/zoom",
-    title: `Thursday Night Flow on Zoom | ${SITE_NAME}`,
+    title: `Gentle Thursday Flow on Zoom | ${SITE_NAME}`,
     description:
       "A gentle 40-minute yoga flow on Zoom every Thursday at 8pm Eastern with Maya Griffith, RYT-200. All levels, no experience needed. Donation-based, so pay what feels right.",
     keywords:
@@ -53,17 +53,11 @@ const routes = [
   },
   {
     path: "/classes",
-    title: `Classes | ${SITE_NAME}`,
+    title: `Classes & Schedule | ${SITE_NAME}`,
     description:
-      "Explore vinyasa, power flow, hatha, yoga for athletes, gentle classes, and private yoga sessions with Maya.",
+      "Gentle Thursday Flow on Zoom every week, plus vinyasa, power, hatha, and private yoga sessions with Maya. See the class calendar.",
     keywords:
       "power yoga, vinyasa, yoga for runners, mobility, beginner yoga, private yoga brooklyn, private yoga NYC",
-  },
-  {
-    path: "/schedule",
-    title: `Class Schedule | ${SITE_NAME}`,
-    description:
-      "Upcoming Motion by Maya group yoga classes in Brooklyn, Manhattan, and online. Subscribe to the calendar, or book a private session any week.",
   },
   {
     path: "/what-to-expect",

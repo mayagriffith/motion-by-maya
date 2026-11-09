@@ -10,7 +10,7 @@ export const INSURED = false;
 // While empty, /private#book shows the "Request a session" form instead.
 export const CAL_COM_LINK = "";
 
-// Thursday Night Flow on Zoom (donation-based, see /zoom).
+// Gentle Thursday Flow on Zoom (donation-based, see /zoom).
 export const ZOOM_CLASS = {
   day: "Thursdays",
   time: "8:00 to 8:40pm Eastern",

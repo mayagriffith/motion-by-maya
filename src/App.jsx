@@ -3,7 +3,6 @@ import Layout from "./components/Layout.jsx";
 import Home from "./pages/Home.jsx";
 import About from "./pages/About.jsx";
 import Classes from "./pages/Classes.jsx";
-import Schedule from "./pages/Schedule.jsx";
 import Journal from "./pages/Journal.jsx";
 import JournalPost from "./pages/JournalPost.jsx";
 import WhatToExpect from "./pages/WhatToExpect.jsx";
@@ -27,7 +26,7 @@ export default function App() {
         <Route path="/private" element={<Private />} />
         <Route path="/book" element={<Navigate to="/private#book" replace />} />
         <Route path="/zoom" element={<Zoom />} />
-        <Route path="/schedule" element={<Schedule />} />
+        <Route path="/schedule" element={<Navigate to="/classes#schedule" replace />} />
         <Route path="/blog" element={<Journal />} />
         <Route path="/blog/:slug" element={<JournalPost />} />
         <Route path="/journal" element={<Navigate to="/blog" replace />} />

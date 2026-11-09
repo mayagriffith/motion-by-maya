@@ -26,7 +26,7 @@ export default function Zoom() {
   return (
     <>
       <PageMeta
-        title="Thursday Night Flow on Zoom"
+        title="Gentle Thursday Flow on Zoom"
         description={ZOOM_META_DESCRIPTION}
         path="/zoom"
         keywords="online yoga class, zoom yoga, donation based yoga, gentle yoga online, evening yoga class"
@@ -46,7 +46,7 @@ export default function Zoom() {
                 Weekly on Zoom
               </div>
               <h1 className="mt-6 text-[clamp(2.75rem,6vw,4.5rem)] leading-[0.92] tracking-tight">
-                Thursday Night{" "}
+                Gentle Thursday{" "}
                 <span className="italic text-[rgb(var(--mbm-accent))]">Flow.</span>
               </h1>
               <p className="mt-6 max-w-xl text-base leading-relaxed text-[rgb(var(--mbm-muted))] sm:text-lg">
