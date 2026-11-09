@@ -112,14 +112,10 @@ export default function Zoom() {
 function SignupForm() {
   const [status, setStatus] = useState("idle");
   const [errorMessage, setErrorMessage] = useState("");
+  const [emailed, setEmailed] = useState(false);
 
   async function handleSubmit(e) {
     e.preventDefault();
-    if (!FORMSPREE_ID) {
-      setStatus("error");
-      setErrorMessage(`Please email ${EMAIL} to sign up.`);
-      return;
-    }
 
     const form = e.currentTarget;
     const data = Object.fromEntries(new FormData(form).entries());
@@ -130,21 +126,42 @@ function SignupForm() {
     setErrorMessage("");
 
     try {
-      const response = await fetch(`https://formspree.io/f/${FORMSPREE_ID}`, {
+      // 1) Our own function: saves the sign-up, emails the Zoom link + invite,
+      //    and enrolls them in Thursday reminders.
+      const api = fetch("/api/thursday-signup", {
         method: "POST",
-        headers: { "Content-Type": "application/json", Accept: "application/json" },
-        body: JSON.stringify({
-          "form-name": "thursday-zoom-signup",
-          name,
-          email,
-          heard_from: data.heard_from,
-          _subject: `[Thursday Zoom sign-up] ${name}`,
-          _replyto: email,
-        }),
-      });
-      const json = await response.json().catch(() => ({}));
-      if (!response.ok) throw new Error(json.error || "Something went wrong. Please try again.");
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name, email, heardFrom: data.heard_from }),
+      })
+        .then(async (r) =>
+          r.ok && (r.headers.get("content-type") || "").includes("json") ? r.json() : null
+        )
+        .catch(() => null);
 
+      // 2) Formspree: notifies Maya by email, as before.
+      const formspree = FORMSPREE_ID
+        ? fetch(`https://formspree.io/f/${FORMSPREE_ID}`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json", Accept: "application/json" },
+            body: JSON.stringify({
+              "form-name": "thursday-zoom-signup",
+              name,
+              email,
+              heard_from: data.heard_from,
+              _subject: `[Thursday Zoom sign-up] ${name}`,
+              _replyto: email,
+            }),
+          })
+            .then((r) => r.ok)
+            .catch(() => false)
+        : Promise.resolve(false);
+
+      const [apiResult, notified] = await Promise.all([api, formspree]);
+      if (!apiResult?.ok && !notified) {
+        throw new Error(`Something went wrong. Please try again or email ${EMAIL}.`);
+      }
+
+      setEmailed(Boolean(apiResult?.emailed));
       setStatus("success");
       trackEvent("sign_up", { method: "thursday-zoom", heard_from: data.heard_from });
       form.reset();
@@ -164,8 +181,8 @@ function SignupForm() {
         <p className="font-serif text-3xl leading-tight">You&apos;re in.</p>
         <p className="mt-3 text-base leading-relaxed text-[rgb(var(--mbm-muted))]">
           {ZOOM_JOIN_URL
-            ? `Here's the Zoom link. It's the same every week, so save it. See you ${ZOOM_CLASS.day} at 8.`
-            : `I'll email you the Zoom link before class. See you ${ZOOM_CLASS.day} at 8.`}
+            ? `Here's the Zoom link. It's the same every week, so save it.${emailed ? " I've also emailed it to you with a calendar invite, and you'll get a reminder before each class." : ""} See you Thursday at 8.`
+            : `I'll email you the Zoom link before class. See you Thursday at 8.`}
         </p>
         {ZOOM_JOIN_URL && (
           <Button as="a" href={ZOOM_JOIN_URL} target="_blank" rel="noreferrer" className="mt-6">

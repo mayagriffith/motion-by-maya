@@ -8,3 +8,6 @@
   from = "/book"
   to = "/private#book"
   status = 301
+
+[functions]
+  directory = "netlify/functions"
