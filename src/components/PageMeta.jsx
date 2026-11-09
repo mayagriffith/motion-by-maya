@@ -1,7 +1,8 @@
 import { useEffect } from "react";
+import { SITE_URL } from "../config/site.js";
+import { jsonLdForPath } from "../content/structuredData.js";
 
 const SITE_NAME = "Motion by Maya";
-const SITE_URL = import.meta.env.VITE_SITE_URL || "https://motionbymaya.com";
 const DEFAULT_IMAGE = `${SITE_URL}/images/hero.png`;
 const JSON_LD_ID = "page-json-ld";
 
@@ -26,8 +27,10 @@ export default function PageMeta({
   jsonLd,
 }) {
   const fullTitle = title.includes(SITE_NAME) ? title : `${title} | ${SITE_NAME}`;
-  const url = `${SITE_URL}${path}`;
-  const jsonLdString = jsonLd ? JSON.stringify(jsonLd) : "";
+  const url = `${SITE_URL}${path === "/" ? "" : path}`;
+  // Structured data comes from the path (same source as the prerendered HTML).
+  const data = jsonLd || jsonLdForPath(path || "/");
+  const jsonLdString = data ? JSON.stringify(data) : "";
 
   useEffect(() => {
     document.title = fullTitle;

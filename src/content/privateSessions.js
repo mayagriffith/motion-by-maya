@@ -1,4 +1,4 @@
-import { CREDENTIAL } from "../config/site.js";
+import { CREDENTIAL, INSURED } from "../config/site.js";
 
 /**
  * Content for /private, shared with Contact (neighborhood select) and the
@@ -77,33 +77,47 @@ export const packages = [
 export const PRIVATE_META_DESCRIPTION =
   `Private 1:1 yoga in Brooklyn & Manhattan with Maya Griffith, ${CREDENTIAL}. In-home or Zoom sessions for beginners, runners, lifters, and busy people who want a practice that works. From $130 a session.`;
 
-/** schema.org LocalBusiness for /private. Shared by the page and the prerender script. */
-export function buildPrivateJsonLd(siteUrl) {
-  return {
-    "@context": "https://schema.org",
-    "@type": "HealthAndBeautyBusiness",
-    name: "Motion by Maya",
-    description: PRIVATE_META_DESCRIPTION,
-    url: `${siteUrl}/private`,
-    image: `${siteUrl}/images/hero.png`,
-    email: "motionbymaya@gmail.com",
-    priceRange: "$$$",
-    address: {
-      "@type": "PostalAddress",
-      addressLocality: "Brooklyn",
-      addressRegion: "NY",
-      addressCountry: "US",
-    },
-    areaServed: [
-      ...brooklynNeighborhoods.map((name) => ({
-        "@type": "Place",
-        name: `${name}, Brooklyn, NY`,
-      })),
-      ...manhattanNeighborhoods.map((name) => ({
-        "@type": "Place",
-        name: `${name}, Manhattan, NY`,
-      })),
-    ],
-    sameAs: ["https://instagram.com/motionbymaya", "https://tiktok.com/@motionbymaya"],
-  };
-}
+
+/** FAQ shown on /private (and published as FAQPage structured data). */
+export const privateFaq = [
+  {
+    question: "Do I need to be flexible, fit, or have done yoga before?",
+    answer: "No. The whole point of a private is that we start where you are.",
+  },
+  {
+    question: "What do I need?",
+    answer: "Floor space roughly the size of two mats. I bring mats, blocks and straps.",
+  },
+  {
+    question: "How often should I book?",
+    answer:
+      "Most clients do weekly or every other week. We'll figure out what's realistic for you on the intro call.",
+  },
+  {
+    question: "Do you work with injuries or pregnancy?",
+    answer:
+      "Yes, within my training. I'll ask about anything relevant up front, and if something's outside my scope I'll say so and point you to the right person.",
+  },
+  {
+    question: "Zoom: does it actually work?",
+    answer:
+      "It does, for most people. I use a two-camera setup so I can see alignment, and it's great for travel weeks.",
+  },
+  ...(INSURED
+    ? [
+        {
+          question: "Are you insured?",
+          answer: "Yes, professional and general liability.",
+        },
+      ]
+    : []),
+  {
+    question: "Do you teach groups and events?",
+    answer:
+      "Yes: corporate classes, birthday parties, bachelorette parties and other groups, in person or on Zoom. Send me the details through the contact page.",
+  },
+  {
+    question: "Can I gift a package?",
+    answer: "Yes. Email me and I'll send a gift note.",
+  },
+];

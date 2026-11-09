@@ -5,12 +5,12 @@ import Button from "../components/Button.jsx";
 import PageMeta from "../components/PageMeta.jsx";
 import Accordion from "../components/Accordion.jsx";
 import { trackEvent } from "../lib/analytics.js";
-import { CAL_COM_LINK, INSURED, SITE_URL } from "../config/site.js";
+import { CAL_COM_LINK } from "../config/site.js";
 import { getRealTestimonials } from "../content/testimonials.js";
 import {
   PRIVATE_META_DESCRIPTION,
+  privateFaq,
   brooklynNeighborhoods,
-  buildPrivateJsonLd,
   manhattanNeighborhoods,
   neighborhoodOptions,
   packages,
@@ -58,48 +58,6 @@ const steps = [
   },
 ];
 
-const faqItems = [
-  {
-    question: "Do I need to be flexible, fit, or have done yoga before?",
-    answer: "No. The whole point of a private is that we start where you are.",
-  },
-  {
-    question: "What do I need?",
-    answer: "Floor space roughly the size of two mats. I bring mats, blocks and straps.",
-  },
-  {
-    question: "How often should I book?",
-    answer:
-      "Most clients do weekly or every other week. We'll figure out what's realistic for you on the intro call.",
-  },
-  {
-    question: "Do you work with injuries or pregnancy?",
-    answer:
-      "Yes, within my training. I'll ask about anything relevant up front, and if something's outside my scope I'll say so and point you to the right person.",
-  },
-  {
-    question: "Zoom: does it actually work?",
-    answer:
-      "It does, for most people. I use a two-camera setup so I can see alignment, and it's great for travel weeks.",
-  },
-  ...(INSURED
-    ? [
-        {
-          question: "Are you insured?",
-          answer: "Yes, professional and general liability.",
-        },
-      ]
-    : []),
-  {
-    question: "Do you teach groups and events?",
-    answer:
-      "Yes: corporate classes, birthday parties, bachelorette parties and other groups, in person or on Zoom. Send me the details through the contact page.",
-  },
-  {
-    question: "Can I gift a package?",
-    answer: "Yes. Email me and I'll send a gift note.",
-  },
-];
 
 export default function Private() {
   const [selectedPackage, setSelectedPackage] = useState("");
@@ -111,7 +69,6 @@ export default function Private() {
         description={PRIVATE_META_DESCRIPTION}
         path="/private"
         keywords="private yoga instructor brooklyn, in-home yoga park slope, private yoga brooklyn heights, private yoga nyc, yoga for runners brooklyn"
-        jsonLd={buildPrivateJsonLd(SITE_URL)}
       />
       <PrivateHero />
       <SectionNav />
@@ -550,7 +507,7 @@ function Faq() {
             </h2>
           </div>
           <div className="lg:col-span-8">
-            <Accordion items={faqItems} />
+            <Accordion items={privateFaq} />
           </div>
         </div>
       </Container>

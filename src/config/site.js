@@ -43,6 +43,9 @@ export const DONATION_LINKS = [
 // page says "I'll email you the link" and you send it yourself.
 export const ZOOM_JOIN_URL = "https://us05web.zoom.us/j/81772984945?pwd=ZYQf81lkMbnuQKocs79uqgRYG1Hh2a.1";
 
-export const SITE_URL = import.meta.env?.VITE_SITE_URL || "https://motionbymaya.com";
+// The one public address. Deliberately not read from VITE_SITE_URL: that
+// Netlify setting still says motionbymaya.netlify.app, which made every page
+// name the Netlify address as its canonical URL.
+export const SITE_URL = "https://motionbymaya.com";
 export const INSTAGRAM_URL = "https://instagram.com/motionbymaya";
 export const TIKTOK_URL = "https://tiktok.com/@motionbymaya";
